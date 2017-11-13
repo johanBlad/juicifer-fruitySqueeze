@@ -1,0 +1,25 @@
+body {
+	background: #efe;
+	color: #353;
+}
+
+h1 {
+	color: #670;
+	text-transform: uppercase;
+	letter-spacing: 2pt;
+}
+
+#ordering {
+	margin:auto;
+	width: 40em;
+}
+
+#orders {
+	margin:auto;
+	width: 40em;
+}
+
+.ingredient {
+	border: 1px solid #cdc;
+	padding: 1em;
+}

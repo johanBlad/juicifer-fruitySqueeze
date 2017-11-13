@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Juicifer Craft Beverages </title>
+  <link rel="stylesheet" href="css/juicifer.css">
+  <script src="/vue/vue.js" defer></script>
+  <script src="/socket.io/socket.io.js" defer></script>
+  <script src="js/juicifer-main.js" defer></script>
+  <script src="js/ordering.js" defer></script>
+</head>
+<body>
+  <div id="ordering">
+    <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
+
+    <h1>{{ uiLabels.smoothie }}</h1>
+    <ingredient
+      ref="ingredient"
+      type="smoothie"
+      v-for="item in ingredients"
+      v-if="item.vol_smoothie > 0"
+      v-on:increment="addToOrder(item, 'smoothie')"  
+      :item="item" 
+      :lang="lang"
+      :key="item.ingredient_id">
+    </ingredient>
+
+    <h1>{{ uiLabels.juice }}</h1>
+    <ingredient
+      ref="ingredient"
+      type="juice"
+      v-for="item in ingredients"
+      v-if="item.vol_juice > 0"
+      v-on:increment="addToOrder(item, 'juice')"
+      :item="item"
+      :lang="lang"
+      :key="item.ingredient_id">
+    </ingredient>
+
+    <h1>{{ uiLabels.order }}</h1>
+    {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }} {{ volume }} ml, {{ price }} kr
+    <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
+
+    <h1>{{ uiLabels.ordersInQueue }}</h1>
+    <h2>{{ uiLabels.smoothie }}</h2>
+    <div>
+      <order-item 
+        v-for="(order, key) in orders"
+        v-if="!order.done && order.type == 'smoothie'"
+        :order-id="key"
+        :order="order" 
+        :ui-labels="uiLabels"
+        :lang="lang"
+        :key="key">
+      </order-item>
+    </div>
+    <h2>{{ uiLabels.juice }}</h2>
+    <div>
+      <order-item
+        v-for="(order, key) in orders"
+        v-if="!order.done && order.type == 'juice'"
+        :order-id="key"
+        :order="order"
+        :ui-labels="uiLabels"
+        :lang="lang"
+        :key="key">
+      </order-item>
+    </div>
+  </div>
+</body>
+</html>
