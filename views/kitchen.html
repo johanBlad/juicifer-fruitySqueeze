@@ -10,10 +10,126 @@
   <script src="js/juicifer-main.js" defer></script>
   <script src="js/kitchen.js" defer></script>
 </head>
-<body>
-  <div id="orders">
-    <h1>{{ uiLabels.ordersInQueue }}</h1>
-    <h2>{{ uiLabels.smoothie }}</h2>
+    
+<body onload="setTime()">
+
+    
+  <div id="main">
+      
+    <div id="orders-wrapper" v-on:click="showCurrentOrders()" v-bind:class="{ active: currentOrdersShown }">
+    
+      <h1 v-if="currentOrdersShown===false" id="verticalOrders">  
+        {{ uiLabels.ordersInQueue }}
+    <!--<h2>{{ uiLabels.smoothie }}</h2>-->
+        </h1>
+        
+    <div v-if="currentOrdersShown"> 
+        
+        <p id="orderNumber">Order nr</p>
+         <div id="time"></div>
+        
+        <h1 id="headlineOrders"> {{ uiLabels.ordersInQueue }}</h1>
+    
+            
+            <div id="time"></div> 
+      <order-item-to-prepare
+        ref="orderItem"
+        v-for="(order, key) in orders"
+        v-if="!order.done && order.type == 'smoothie'"
+        v-on:done="markDone(key)"
+        :order-id="key"
+        :order="order" 
+        :ui-labels="uiLabels"
+        :lang="lang"
+        :key="key"
+        id="orderDiv"
+                             >
+      </order-item-to-prepare>
+      
+      <order-item-to-prepare
+        ref="orderItem"
+        v-for="(order, key) in orders"
+        v-if="!order.done && order.type == 'juice'"
+        v-on:done="markDone(key)"
+        v-on:cancel="sendCancel(key)"
+        :order-id="key"
+        :order="order"
+        :ui-labels="uiLabels"
+        :lang="lang"
+        :key="key">
+      </order-item-to-prepare>
+            
+            </div>
+      
+        
+    </div>
+    
+<!--History -->
+
+    <div id="history-wrapper" v-on:click="showHistory()" v-bind:class="{ active: historyShown }">
+        
+        
+    <h1 v-if="historyShown===false" id=verticalHistory>{{ uiLabels.ordersFinished }}</h1>
+    
+        <div v-if="historyShown">
+            <div id="time"></div> 
+            
+            <h1 id="headlineHistory">{{ uiLabels.ordersFinished }}</h1>
+    
+            
+            
+      <order-item
+        v-for="(order, key) in orders"
+        v-if="order.done && order.type == 'smoothie'"
+        :order-id="key"
+        :order="order"
+        :lang="lang"
+        :ui-labels="uiLabels"
+        :key="key">
+      </order-item>
+    
+      <order-item
+        v-for="(order, key) in orders"
+        v-if="order.done && order.type == 'juice'"
+        :order-id="key"
+        :order="order"
+        :lang="lang"
+        :ui-labels="uiLabels"
+        :key="key">
+      </order-item>
+            
+        </div>
+    </div>
+
+      
+      
+      <div id="stock-wrapper" v-on:click="showStock()" v-bind:class="{ active: stockShown }">
+          
+    <h1 v-if="stockShown===false" id=verticalStock>{{ uiLabels.stock }}</h1>
+          
+          <div v-if="stockShown">
+              
+            <div id="time"></div> 
+              
+            <h1 id="headlineStock">{{ uiLabels.stock }}</h1>
+    
+              
+          </div>
+      
+          
+    </div>
+      
+
+      
+      
+       <div id="langButton"> 
+          <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
+        </div>
+      
+
+<!-- Stock -->
+    
+ <!--   <h1>{{ uiLabels.stock }}</h1>
     <div>
       <order-item-to-prepare
         v-for="(order, key) in orders"
@@ -25,47 +141,9 @@
         :lang="lang"
         :key="key">
       </order-item-to-prepare>
-    </div>
-    <h2>{{ uiLabels.juice }}</h2>
-    <div>
-      <order-item-to-prepare
-        v-for="(order, key) in orders"
-        v-if="!order.done && order.type == 'juice'"
-        v-on:done="markDone(key)"
-        :order-id="key"
-        :order="order"
-        :ui-labels="uiLabels"
-        :lang="lang"
-        :key="key">
-      </order-item-to-prepare>
-    </div>
-
-    <h1>{{ uiLabels.ordersFinished }}</h1>
-    <h2>{{ uiLabels.smoothie }}</h2>
-    <div>
-      <order-item
-        v-for="(order, key) in orders"
-        v-if="order.done && order.type == 'smoothie'"
-        :order-id="key"
-        :order="order"
-        :lang="lang"
-        :ui-labels="uiLabels"
-        :key="key">
-      </order-item>
-    </div>
-    <h2>{{ uiLabels.juice }}</h2>
-    <div>
-      <order-item
-        v-for="(order, key) in orders"
-        v-if="order.done && order.type == 'juice'"
-        :order-id="key"
-        :order="order"
-        :lang="lang"
-        :ui-labels="uiLabels"
-        :key="key">
-      </order-item>
-    </div>
-
-  </div>
+    </div>-->
+    
+      </div>
+    
 </body>
 </html>
