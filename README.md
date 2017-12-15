@@ -15,4 +15,4 @@ Do not use this skeleton code for creating production apps. Security and stabili
 6. Use a web browser to check what is happening at `localhost:3000`
 7. Use another device to check what is happening at `<your IP address>:3000` (for this you may need to adjust your computer's firewall to allow connections to Node)
 
-That should be enough to get started. Happy tinkering!
+That should be enough to get started. Happy tinkering!# juicifer-fruitySqueeze
