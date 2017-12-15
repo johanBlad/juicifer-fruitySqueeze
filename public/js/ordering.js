@@ -2,13 +2,35 @@
 /*global sharedVueStuff, Vue, socket */
 'use strict';
 
+Vue.component('product', {
+  props: ['basket'],
+  template: ' <div class="">\
+                <label>\
+                  {{ basket[0].productName }} {{ basket[0].price }}\
+              </div>',
+  data: function () {
+    return {
+
+    }
+  }
+});
+
 Vue.component('ingredient', {
   props: ['item', 'type', 'lang'],
   template: ' <div class="ingredient">\
                   <label>\
-                    <button v-on:click="incrementCounter">{{ counter }}</button>\
-                    {{item["ingredient_"+ lang]}} ({{ (type=="smoothie") ? item.vol_smoothie:item.vol_juice }} ml), {{item.selling_price}}:-, {{item.stock}} pcs\
+                    {{item["ingredient_"+ lang]}}\
                   </label>\
+                  <div style="float: right;">\
+                  <label>\
+                    {{ counter }}\
+                  </label>\
+                    <button class="minusButton" v-on:click="decreaseCounter">-</button>\
+                    <button class="plusButton"  v-on:click="incrementCounter">+</button>\
+                    <label style="margin-left: 10px;">\
+                      {{item.selling_price}}:-\
+                    </label>\
+                  </div>\
               </div>',
   data: function () {
     return {
@@ -22,10 +44,16 @@ Vue.component('ingredient', {
     },
     resetCounter: function () {
       this.counter = 0;
+    },
+    decreaseCounter: function () {
+      if (this.counter != 0) {
+        this.counter -= 1;
+        this.$emit('decrement');
+      }
     }
   }
 });
-
+  
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -38,26 +66,87 @@ function getOrderNumber() {
   return "#" + getRandomInt(1, 1000000);
 }
 
+function wrapProduct (_ingredients, _price, _volume, _productType, _productName) {
+  var  product = {
+    ingredients: _ingredients,
+    price: _price,
+    volume: _volume,
+    productType: _productType,
+    productName: _productName,
+  };
+  console.log('TEST wrapProduct price: ' + product.price);
+  console.log('TEST wrapProduct volume: ' + product.volume);
+  console.log('TEST wrapProduct type: ' + product.productType);
+  for (var i = 0; i < product.ingredients.length; i++) {
+    console.log('TEST wrapProduct ingredients: ' + product.ingredients[i].ingredient_en);
+  }
+  return product;
+}
+
 var vm = new Vue({
   el: '#ordering',
   mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
   data: {
-    type: '',
+    productType: '', 
     chosenIngredients: [],
+    productName: 'dummyName',
+    totalPrice: 0,
     volume: 0,
-    price: 0
+    basket: [],
+    price: 0,
+    ok: false,
   },
+
   methods: {
-    addToOrder: function (item, type) {
+    addIngredient: function (item, type) {
       this.chosenIngredients.push(item);
-      this.type = type;
-      if (type === "smoothie") {
-        this.volume += +item.vol_smoothie;
-      } else if (type === "juice") {
-        this.volume += +item.vol_juice;
-      }
-      this.price += +item.selling_price;
+      this.price += +item.selling_price;   
+      console.log(item.ingredient_en) 
     },
+
+    removeIngredient: function (item) {
+      var i;
+      for (i = 0; i < this.chosenIngredients.length; i++) {
+        if (this.chosenIngredients[i] === item) {
+          this.chosenIngredients.splice(i, 1);
+          this.price = this.price - item.selling_price;
+          break;
+        }
+      }
+    },
+
+    chooseType: function (choosenType) {
+      if (choosenType == 1) {
+        this.productType = 'smoothie';
+      } else if (choosenType == 2) {
+        this.productType = 'juice';
+      } else {
+        this.productType = 'coffee';
+      }
+      console.log(this.productType);
+    },
+
+    chooseSize: function (volume) {
+      this.volume = volume;
+      console.log(this.volume);
+    },
+
+    addToOrder: function () { 
+      console.log("------SQUEEZE IT!------");
+      this.basket.push(wrapProduct(this.chosenIngredients, this.price, this.volume, this.productType, this.productName));
+      this.totalPrice = this.totalPrice + this.price;
+      console.log('--------TEST BASKET---------');
+      console.log('Total price in basket: ' + this.totalPrice);
+      for (var k = 0; k < this.chosenIngredients.length; k++) {
+        console.log('Ingredients in first item in basket: ' + this.basket[0].ingredients[k].ingredient_en);
+      }
+      this.productType = '';
+      this.chosenIngredients = [];
+      this.price = 0;
+      this.volume = 0;
+      this.ok = true;
+    },
+
     placeOrder: function () {
       var i,
       //Wrap the order in an object
@@ -80,3 +169,6 @@ var vm = new Vue({
     }
   }
 });
+
+
+

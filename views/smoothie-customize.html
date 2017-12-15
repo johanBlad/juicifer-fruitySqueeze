@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Juicifer Craft Beverages </title>
+  <link rel="stylesheet" href="css/juicifer.css">
+  <script src="/vue/vue.js" defer></script>
+  <script src="/socket.io/socket.io.js" defer></script>
+  <script src="js/juicifer-main.js" defer></script>
+  <script src="js/ordering.js" defer></script>
+</head>
+<body>
+  <div id="ordering">
+    <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
+    <h1>Squeeze your own</h1>
+    <details>
+      <summary>Fruits & Greens</summary>
+      <ingredient
+        ref="ingredient"
+        type="juice"
+        v-for="item in ingredients"
+        v-if="item.vol_juice > 0"
+        v-on:increment="addToOrder(item, 'juice')"
+        :item="item"
+        :lang="lang"
+        :key="item.ingredient_id">
+      </ingredient>
+    </details>    
+    <details>
+      <summary>Extras</summary>
+      <ingredient
+        ref="ingredient"
+        type="juice"
+        v-for="item in ingredients"
+        v-if="item.vol_juice > 0"
+        v-on:increment="addToOrder(item, 'juice')"
+        :item="item"
+        :lang="lang"
+        :key="item.ingredient_id">
+      </ingredient>
+    </details> 
+
+    <div id="footRow">
+      <div class="footColumn"></div>
+      <div class="footColumn">
+         {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }} {{ price }} kr
+      </div>
+      <div class="footColumn">
+         <button class="nextbutton" v-on:click= 'window.location.href = "ordering.html"'>{{ uiLabels.placeOrder }}</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

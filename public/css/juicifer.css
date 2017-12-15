@@ -1,6 +1,8 @@
 body {
 	background: #efe;
 	color: #353;
+	height: 100%;
+	margin: 0;
 }
 
 h1 {
@@ -22,4 +24,218 @@ h1 {
 .ingredient {
 	border: 1px solid #cdc;
 	padding: 1em;
+    font-size: 17px;
 }
+
+.ingredient > label {
+    
+}
+
+/*Johan*/ 
+
+details {border: 1px solid #E1E1E1; border-radius: 5px; box-shadow: 0 1px 4px rgba(0, 0, 0, .4); color: #363636; margin: 0 0 .4em; padding: 1%;}
+details[open] {background: #d9ffb3;}
+summary {background: -webkit-linear-gradient(top, #FAFAFA 50%, #E1E1E1 50%); border-radius: 5px; cursor: pointer; font-size: .8em; font-weight: bold; margin: -1%; padding: 8px 0; position: relative; width: 102%;}
+summary:hover, details[open] summary {background: #66cc00;}
+summary::-webkit-details-marker {display: none}
+summary:before{border-radius: 5px; content: "+"; color: #363636; display: block; float: left; font-size: 1.5em; font-weight: bold; margin: -2px 10px 0 10px; padding: 0; text-align: center; width: 20px;}
+details[open] summary:before {content: "-"; margin-top: -4px;}
+
+.sequenceSection {
+	height:100vh;
+	position: relative;
+	border-style: dashed;
+	border-color: black;
+	margin: 20px;
+}
+
+.ingredientList {
+	height: 90vh;
+	overflow: auto;
+}
+
+.tableRow {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+	height: 10vh;
+	border-spacing: 10px;   
+	background-color: #b3ff66;
+}
+
+.tableColumn {
+	display: table-cell;
+	/*text-align: center;*/
+    border-style: dotted;
+}
+
+/*Calle*/ 
+
+.sizeButtons {
+    width: 170px;
+    height: 170px;
+    background-color: #33cc33;
+    border-radius: 100%
+}
+
+.mainDiv {
+    display: flex;
+    align-items: center;
+    margin-left: 25%;
+}
+
+.buttonDiv {
+    float: left;
+}
+
+.ingridientDiv {
+    flex: 1;
+}
+
+.chooseSize {
+    text-align: center;
+}
+
+.navButtonsDiv {
+    display: flex;
+}
+
+.navBack {
+    float: left;
+}
+
+.navForward {
+    float: right;
+}
+.navButtons {
+    width: 50px;
+    height: 50px;
+    background-color: #353;
+    border-radius: 100%;
+    font-size: 20px;
+}
+
+/*Adam*/
+/* Size of payment buttons till Payment.html*/
+#basketAdd {
+    text-align: right;
+    margin-bottom: 50px;
+}
+
+#editButton {
+    height: 40px;
+    width: 50px;
+    border-radius: 50px;
+    border: 1px solid #000000;
+    font-size: 22pt;
+}
+
+.minusButton {
+    height: 40px;
+    width: 50px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 1px solid #000000;
+    font-size: 22pt;
+}
+
+.plusButton {
+    height: 40px;
+    width: 50px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 1px solid #000000;
+    font-size: 22pt;
+}
+
+#addButton {
+    text-align: center;
+}
+
+#basketButton {
+    width: 420px;
+    height: 160px;
+    border-radius: 20px;
+    border: 2px solid #000000;
+    text-align: right;
+    font-size: 23pt;
+    top: 200px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+} 
+
+/*Plussymbol för basket.html*/
+#plusSymbol {
+    position: absolute;
+    margin-left: -100px;
+    top: 320px;
+    width: 100px;
+    text-align: right;
+}
+
+.headRow1 {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    height: 5vh;
+    border-spacing: 10px;
+    bottom: 0;
+}
+
+.headColumn1 {
+    display: table-cell;
+    text-align: center;
+}
+
+#goPayment {
+    height: 55px;
+    width: 150px;
+    font-size: 20pt;
+    background-color: #7CFC00;
+    border-radius: 10px;
+    border: 1px solid #000000;
+}
+
+.paymentButtons {
+    text-align: center;
+}
+
+/* Size of payment buttons till Payment.html*/
+.buttonDetails {
+    width: 390px;
+    height: 160px;
+    border-radius: 20px;
+    border: 2px solid #000000;
+    text-align: left;
+    font-size: 23pt;
+}
+
+/* Decide position of Swish symbol till Payment.html*/
+#swishSymbol {
+    position: absolute;
+    margin-left: 220px;
+    top: 160px;
+    width: 150px;
+}
+
+/* Decide position of card symbol till Payment.html*/
+#cardSymbol {
+    position: absolute;
+    margin-left: 160px;
+    top: 375px;;
+    width: 210px;
+}
+
+/*Text till ordernumber.html*/
+#orderPlaced {
+    margin-top: 150px;
+    text-align: center;
+}
+
+#numberBox {
+    margin-top: 50px;
+    text-align: center;
+}
+
+/*Sofia*/ 
+/*Alva*/ 

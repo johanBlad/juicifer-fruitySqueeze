@@ -11,7 +11,245 @@
   <script src="js/ordering.js" defer></script>
 </head>
 <body>
-  <div id="ordering">
+
+<div id="ordering">
+  <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
+
+<div id="chooseProduct" class="sequenceSection">
+  <button class="" v-on:click= "chooseType(1)">Choose Smoothie</button>
+</div>
+
+<div id="chooseSize" class="sequenceSection">
+  <h2 class="chooseSize">Choose size</h2>
+    <hr>
+    <div class="mainDiv">
+        <div class="buttonDiv">
+            <button class="sizeButtons" v-on:click= "chooseSize(30)"><img src="http://moziru.com/images/straw-clipart-smoothie-cup-9.png" width="80"></button>
+        </div>
+        <div class="ingridientDiv">
+            <p>
+                Small: 30 cl
+                <ul class="ingridientList">
+                    <li>1 Base</li>
+                    <li>2 Fruit</li>
+                    <li>1 Extra</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+    <div class="mainDiv">
+        <div class="buttonDiv">
+            <button class="sizeButtons" v-on:click= "chooseSize(40)"><img src="http://moziru.com/images/straw-clipart-smoothie-cup-9.png" width=100></button>
+        </div>
+        <div class="ingridientDiv">
+            <p>
+                Medium: 40 cl
+-                    <li>2 Base</li>
+                    <li>3 Fruit</li>
+                    <li>2 Extra</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+    <div class="mainDiv">
+        <div class="buttonDiv">
+            <button class="sizeButtons" v-on:click= "chooseSize(50)"><img src="http://moziru.com/images/straw-clipart-smoothie-cup-9.png" width="120"></button>
+        </div>
+        <div class="ingridientDiv">
+            <p>
+                Large: 50 cl
+                <ul class="ingridientList">
+                    <li>3 Base</li>
+                    <li>4 Fruie</li>
+                    <li>3 Extra</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+    <hr>
+    <div class="navButtonsDiv">
+        <div class="navBack">
+            <button class="navButtons">&lt;</button>
+        </div>
+        <div class="navForward">
+            <button class="navButtons" id="forwarButton">&gt;</button>
+        </div>
+    </div>
+</div>
+
+<div id="smoothieCustomize" class="sequenceSection">
+  <div class="ingredientList">
+    <h1 style="text-align: center;">Squeeze your own</h1> 
+  <div class="tableRow">
+      <div class="tableColumn" style="text-align: left;">
+           <ul>
+            <li v-for="item in chosenIngredients">
+              {{ item.ingredient_en }}
+            </li>
+           </ul>
+      </div>
+      <div class="tableColumn" style="text-align: left;">
+           <ul>
+            <li v-for="item in chosenIngredients">
+              {{ item.ingredient_en }}
+            </li>
+           </ul>
+      </div>
+      <div class="tableColumn" style="text-align: left;">
+           <ul>
+            <li v-for="item in chosenIngredients">
+              {{ item.ingredient_en }}
+            </li>
+           </ul>
+      </div>
+    </div>
+    <div>
+      <details>
+        <summary>Fruits & Greens</summary>
+        <ingredient
+          ref="ingredient"
+          type="smoothie"
+          v-for="item in ingredients"
+          v-if="item.vol_smoothie > 0"
+          v-on:increment="addIngredient(item, 'smoothie')"
+          v-on:decrement="removeIngredient(item, 'smoothie')"
+          :item="item"
+          :lang="lang"
+          :key="item.ingredient_id">
+        </ingredient>
+      </details>    
+      <details>
+        <summary>Extras</summary>
+        <ingredient
+          ref="ingredient"
+          type="smoothie"
+          v-for="item in ingredients"
+          v-if="item.vol_smoothie > 0"
+          v-on:increment="addIngredient(item, 'smoothie')"
+          v-on:decrement="removeIngredient(item, 'smoothie')"
+          :item="item"
+          :lang="lang"
+          :key="item.ingredient_id">
+        </ingredient>
+      </details> 
+      <div>
+        
+      </div>
+    </div>
+  </div>  
+  <div class="tableRow" style="bottom: 0; position: absolute;">
+      <div class="tableColumn" style="text-align: left;">
+        <button class="navButtons">&lt;</button>
+        <label>Back</label>
+      </div>
+      <div class="tableColumn" style="text-align: center;">
+         {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }} {{ price }} kr  
+      </div>
+      <div class="tableColumn" style="text-align: right;">
+        <label>Squeeze it!</label>
+        <button class="navButtons" id="forwarButton" v-on:click= "addToOrder()">&gt;</button> 
+      </div>
+    </div>    
+  </div>
+
+<div class="sequenceSection">
+        <div id="title">
+            <h1 align=center>Basket</h1>
+            <hr width=100% color=#000000>
+        </div>
+        <div id="basketContent">
+            <div id="basketAdd">
+
+                <button type="submit" id="editButton">&#9998</button>
+                <button type="submit" class="minusButton">&#8722</button><button type="submit" class="plusButton">&#43</button>
+            </div>
+            <hr width=100% color=#000000>
+        </div>
+        <div id="addButton">
+            <button type="submit" id="basketButton"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Nuvola_Green_Plus.svg/2000px-Nuvola_Green_Plus.svg.png" id="plusSymbol">Squeeze more to basket</button>
+            <hr width=100% color=#000000>
+        </div>
+        <div>
+            <div class="headRow1">
+                <div class="headColumn1">
+                    <h2>Subtotal:</h2>
+                </div>
+                <div class="headColumn1"></div>
+                <div class="headColumn1">
+                    <button type="submit" id="goPayment">Payment &#10161</button>
+                </div>
+            </div>
+        </div>
+</div>
+
+<!--
+<div id="basket" class="sequenceSection">
+        <div id="title">
+            <h1>Basket</h1>
+            <hr width=100% color=#000000>
+        </div>
+        <section id="basketcontent">
+            <div  v-if= "ok">
+              {{ basket[0].productName }}
+              <ol>
+                <li v-for="product in basket">
+                  <p>A PRODUCT!</p>
+                  {{ product.productName }}
+                </li>
+              </ol>
+            </div>
+            <button type="submit"></button>
+            <hr width=100% color=#000000>
+        </section>
+        <div id="addbutton">
+            <button type="submit" class="buttondetails"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Nuvola_Green_Plus.svg/2000px-Nuvola_Green_Plus.svg.png" id="plusimage">
+            <p>Squeeze more to basket</p></button>
+            <hr width=100% color=#000000>
+        </div>
+        <div>
+            <h3>Subtotal: </h3>
+        </div>
+</div>--> 
+
+<div class="sequenceSection">
+        <div>
+            <h1 align=center>Payment</h1>
+            <hr width=100% color=#000000>
+        </div>
+        <section>
+            <h2 align=center>Total: </h2>
+            <div class=paymentButtons>
+                <button type="submit" class="buttonDetails">
+                    <p>Pay with Swish</p>
+                    <img src="http://www.rkgrastorp.se/globalassets/ridklubben-i-grastorp---ridsport-boka-tid/bilder/logo_swish_product_benefit_280x280.png" id="swishSymbol">
+                </button>
+            </div>
+            <br>
+            <div class="paymentButtons">
+                <button type="submit" class="buttonDetails">
+                    <p>Pay by card</p>
+                    <img src="http://www.mygardenpizza.net/uploads/credit_card_logo_visa_mastercard.jpg" id="cardSymbol">
+                </button>
+            </div>
+        </section>
+
+</div>
+
+<div class="sequenceSection">
+        <div id="orderplaced">
+            <h1>Your order has <br> been placed!</h1>
+        </div>
+        <div id="numberbox">
+            
+        </div>
+</div>
+
+
+</div>
+
+
+
+<!--  <div id="ordering">
     <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
 
     <h1>{{ uiLabels.smoothie }}</h1>
@@ -67,6 +305,6 @@
         :key="key">
       </order-item>
     </div>
-  </div>
+  </div>-->
 </body>
 </html>
