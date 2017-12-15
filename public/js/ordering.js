@@ -154,7 +154,10 @@ var vm = new Vue({
           ingredients: this.chosenIngredients,
           volume: this.volume,
           type: this.type,
-          price: this.price
+          price: this.price,
+            //tillagt!!!
+          time: getCurrentTime(),
+            //--------
         };
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       socket.emit('order', {orderId: getOrderNumber(), order: order});
@@ -170,5 +173,22 @@ var vm = new Vue({
   }
 });
 
+
+//tillagt!!!! 
+function getCurrentTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    today = h + ":" + m + ":" + s;
+    return today;
+};
+
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+};
 
 
