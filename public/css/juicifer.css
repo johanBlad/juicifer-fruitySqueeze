@@ -239,3 +239,142 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 
 /*Sofia*/ 
 /*Alva*/ 
+
+/* Kitchen view */
+
+/*ORDERS*/
+#orders-wrapper {
+    display:inline-block;
+    height: 100%;
+    overflow: hidden;
+    width: 7%;
+    border: 4px dashed #ab1234;
+    transition: width 0.5s;
+}
+#verticalOrders{
+    transform: rotate(90deg);
+    margin-top: 300px 
+}
+
+#headlineOrders{
+    text-align: center;
+    overflow: hidden;
+}
+
+#orderNumber{
+    position: absolute;
+    font-size: 20px;
+    margin-left: 10px;
+    margin-bottom: 100px;
+}
+
+.orderDiv {
+    border: 1px solid #cdc;
+	padding: 1.5em;
+}
+
+.orderList {
+    display:inline-block;
+    width: 80%;
+}
+
+/*Denna klassen sätter tidsstämpeln till vänster om knapparna som hamnar lite mer till höger*/ 
+.timeStamp{
+   display:inline-block;
+    width:8%;
+    border: 1px solid black;
+}
+.buttonWrapper {
+    display: inline-block;
+    width:8%;
+}
+/*
+#buttonCancel{
+    font-size: 15px;
+    margin-left: 900px;
+    margin-bottom: 50px;
+    display:inline-block;
+    position:absolute;
+    z-index: 2;
+}
+
+#buttonDone{
+    font-size: 15px;
+    margin-left: 900px;
+    margin-bottom: 50px;
+    display:inline-block;
+    position:absolute;
+    z-index: 1;
+}
+/* --------- */
+
+/*HISTORY*/
+
+#history-wrapper {
+    display:inline-block;
+    height: 100%;
+    overflow: hidden;
+    width: 7%;
+    border: 4px dashed #ab1234;
+    transition: width 0.5s;
+}
+#verticalHistory{
+    transform: rotate(90deg);
+    margin-top: 300px 
+}
+#headlineHistory{
+    text-align: center;   
+}
+.historyItem {
+    border: 1px solid #cdc;
+	padding: 1.5em;
+}
+/*----------*/
+
+/*STOCK*/
+#stock-wrapper {
+    display:inline-block;
+    height: 100%;
+    overflow: hidden;
+    width: 7%;
+    border: 4px dashed #ab1234;
+    
+    transition: width 0.5s;
+}
+
+#verticalStock{
+    transform: rotate(90deg);
+    margin-top: 300px 
+}
+
+#headlineStock{
+    text-align: center; 
+}
+
+/* -------- */ 
+
+/*Skulle kunna ta denna, order nr och rubriken i en wrapper och göra procent för att det ska följa med!!*/
+#time{
+    position: absolute;
+    font-size: 24px;
+    margin-left: 900px;
+    margin-bottom: 100px;
+}
+
+.active {
+    display: inline-block !important;
+    width: 78% !important;
+}
+
+/*paddingen här under kan vi ändra för att få större på de två första*/
+.listItem{
+    overflow: hidden;
+    position: relative;
+    z-index: 100;
+}
+
+#main {
+    height: 700px;
+}
+
+/* ---------- slut på kitchen -------- */
