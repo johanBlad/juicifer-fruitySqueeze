@@ -100,6 +100,39 @@ Data.prototype.addOrder = function (order) {
   }
 };
 
+/* fanns inte i git-versionen men oklart vad den gör atm -- är det pga prototyp.addOrder är borttagen? 
+
+
+Data.prototype.makeTransaction = function(order,changeUnit){
+  var transactions = this.data[transactionsDataName],
+    //find out the currently highest transaction id
+    transId =  transactions[transactions.length - 1].transaction_id,
+    i = order.ingredients,
+    k;
+    
+  for (k = 0; k < i.length; k += 1) {
+    transId += 1;
+    transactions.push({transaction_id: transId,
+                       ingredient_id: i[k].ingredient_id,
+                       change: changeUnit});
+  }
+}
+
+*/
+
+/*
+
+  Adds an order to to the queue and makes an withdrawal from the
+  stock. If you have time, you should think a bit about whether
+  this is the right moment to do this... Den var inte här -- flyttad?? 
+
+Data.prototype.addOrder = function (order) {
+  this.orders[order.orderId] = order.order;
+  this.orders[order.orderId].done = false;
+  this.makeTransaction(order.order, -1)
+  
+};      */
+
 Data.prototype.getAllOrders = function () {
   return this.orders;
 };
@@ -108,8 +141,16 @@ Data.prototype.markOrderDone = function (orderId) {
   this.orders[orderId].done = true;
 };
 
+/*denna kallar på makeTransaction som ju är borttagen(borkommenterad - se ovan) Hur löser vi det??? */
+Data.prototype.cancelOrder = function (orderId) {
+  this.orders[orderId].done = true;
+  /*raden under här är det som kallar på maketransaction
+  this.makeTransaction(this.orders[orderId], 1)*/
+};
+
+
 var data = new Data();
-// Load initial ingredients. If you want to add columns, do it in the CSV file.
+// Load initial ingredients. If you want to add columns, do it in the CSS file.
 data.initializeData(ingredientsDataName);
 // Load initial stock. Make alterations in the CSV file.
 data.initializeData(transactionsDataName);
@@ -136,6 +177,14 @@ io.on('connection', function (socket) {
     data.markOrderDone(orderId);
     io.emit('currentQueue', {orders: data.getAllOrders() });
   });
+    
+    socket.on('cancelOrder', function (orderId) {
+    data.cancelOrder(orderId);
+    io.emit('currentQueue', {orders: data.getAllOrders(),
+                            ingredients: data.getIngredients() });
+  });
+    
+    
 });
 
 var server = http.listen(app.get('port'), function () {
