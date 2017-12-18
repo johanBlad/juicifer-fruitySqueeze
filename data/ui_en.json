@@ -4,11 +4,16 @@
   "ordersTrending" : "Trending orders",
   "placeOrder" : "Place order",
   "sideorders" : "Side orders",
-  "juice" : "Juice or Coffee Drink",
+  "juice" : "Juice",
+  "coffee" : "Coffee",
   "smoothie" : "Smoothie",
   "ingredients" : "Ingredients",
   "with" : "with",
   "ready" : "Done",
+  "cancel" : "Cancel",
   "order" : "My order",
-  "language" : "Svenska"
+  "language" : "Svenska",
+  "stock": "Stock",
+  "history" : "History",
+  "currentOrders" : "Orders"
 }

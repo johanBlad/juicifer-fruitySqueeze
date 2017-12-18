@@ -4,11 +4,18 @@
   "ordersTrending" : "Populära beställningar",
   "placeOrder" : "Beställ",
   "sideorders" : "Tillbehör",
-  "juice" : "Juice eller kaffedryck",
+  "juice" : "Juice",
+  "coffee" : "Kaffe",
   "smoothie" : "Smoothie",
   "ingredients" : "Ingredienser",
   "with" : "med",
   "ready" : "Klart",
+  "cancel" : "Avbryt",
   "order" : "Min beställning",
-  "language" : "English"
+  "language" : "English",
+  "stock" : "Lager",
+  "history" : "Historia",
+  "currentOrders" : "Beställningar"
 }
+
+
