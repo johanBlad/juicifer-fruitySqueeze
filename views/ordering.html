@@ -77,30 +77,43 @@
     </div>
 </div>
 
+<div id="chooseSize" class="sequenceSection">
+<h2 class="chooseSize">Choose size</h2>
+    <div class="navButtonsDiv">
+        <div class="navBack">
+            <button class="navButtons">&lt;</button>
+        </div>
+        <div class="navForward">
+            <button class="navButtons" id="forwarButton">&gt;</button>
+        </div>
+    </div>
+</div>
+
+
 <div id="smoothieCustomize" class="sequenceSection">
   <div class="ingredientList">
     <h1 style="text-align: center;">Squeeze your own</h1> 
   <div class="tableRow">
       <div class="tableColumn" style="text-align: left;">
-           <ul>
-            <li v-for="item in chosenIngredients">
-              {{ item.ingredient_en }}
+            <ul>
+            <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 1">
+                    {{ item.ingredient_en }}
             </li>
-           </ul>
+            </ul>
       </div>
       <div class="tableColumn" style="text-align: left;">
-           <ul>
-            <li v-for="item in chosenIngredients">
-              {{ item.ingredient_en }}
+            <ul>
+            <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 2">
+                    {{ item.ingredient_en }}
             </li>
-           </ul>
+            </ul>
       </div>
       <div class="tableColumn" style="text-align: left;">
-           <ul>
-            <li v-for="item in chosenIngredients">
-              {{ item.ingredient_en }}
+            <ul>
+            <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 3">
+                    {{ item.ingredient_en }}
             </li>
-           </ul>
+            </ul>
       </div>
     </div>
     <div>
@@ -143,7 +156,7 @@
         <label>Back</label>
       </div>
       <div class="tableColumn" style="text-align: center;">
-         {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }} {{ price }} kr  
+         {{ price }} kr  
       </div>
       <div class="tableColumn" style="text-align: right;">
         <label>Squeeze it!</label>
@@ -158,10 +171,12 @@
             <hr width=100% color=#000000>
         </div>
         <div id="basketContent">
-            <div id="basketAdd">
-
-                <button type="submit" id="editButton">&#9998</button>
-                <button type="submit" class="minusButton">&#8722</button><button type="submit" class="plusButton">&#43</button>
+            <div id="basketAdd" v-if="basket != []" style="text-align: left;">
+                <div v-for="product in basket" style="padding-left: 10px;">
+                    {{ product.quantity }}, {{ product.productName }}, {{ product.quantity * product.price }}
+                    <button type="submit" id="editButton">&#9998</button>
+                    <button type="submit" class="minusButton">&#8722</button><button type="submit" class="plusButton">&#43</button>
+                </div>
             </div>
             <hr width=100% color=#000000>
         </div>

@@ -3,7 +3,7 @@
 'use strict';
 
 Vue.component('product', {
-  props: ['basket'],
+  props: ['productItem'],
   template: ' <div class="">\
                 <label>\
                   {{ basket[0].productName }} {{ basket[0].price }}\
@@ -73,6 +73,7 @@ function wrapProduct (_ingredients, _price, _volume, _productType, _productName)
     volume: _volume,
     productType: _productType,
     productName: _productName,
+    quantity: 1,
   };
   console.log('TEST wrapProduct price: ' + product.price);
   console.log('TEST wrapProduct volume: ' + product.volume);
@@ -81,6 +82,10 @@ function wrapProduct (_ingredients, _price, _volume, _productType, _productName)
     console.log('TEST wrapProduct ingredients: ' + product.ingredients[i].ingredient_en);
   }
   return product;
+}
+
+function findProduct (product, productToAdd) {
+  return product == productToAdd;
 }
 
 var vm = new Vue({
@@ -133,7 +138,23 @@ var vm = new Vue({
 
     addToOrder: function () { 
       console.log("------SQUEEZE IT!------");
-      this.basket.push(wrapProduct(this.chosenIngredients, this.price, this.volume, this.productType, this.productName));
+
+      var productToAdd = wrapProduct(this.chosenIngredients, this.price, this.volume, this.productType, this.productName);
+      for (var i = 0; i < this.basket.length; i++) {
+        if (productToAdd.productName == this.basket[i].productName && 
+            productToAdd.volume == this.basket[i].volume) {
+            if (productToAdd.productName != "dummyName") {
+              this.basket[i].quantity++;
+            } else {
+              //Right now there is no functionality for incrementing the quantity of identical "Squeeze your own" smoothies
+              //This should be added here.
+              this.basket.push(productToAdd);
+            }
+        } else {
+            this.basket.push(productToAdd);
+            }
+      }
+      
       this.totalPrice = this.totalPrice + this.price;
       console.log('--------TEST BASKET---------');
       console.log('Total price in basket: ' + this.totalPrice);
