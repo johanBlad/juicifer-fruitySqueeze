@@ -170,7 +170,8 @@ io.on('connection', function (socket) {
     data.addOrder(order);
     // send updated info to all connected clients, note the use of io instead of socket
     io.emit('currentQueue', { orders: data.getAllOrders(),
-                          ingredients: data.getIngredients() });
+                          ingredients: data.getIngredients(),
+                          readymade: data.getReadymade() });
   });
   // send UI labels in the chosen language
   socket.on('switchLang', function (lang) {
@@ -185,7 +186,8 @@ io.on('connection', function (socket) {
     socket.on('cancelOrder', function (orderId) {
     data.cancelOrder(orderId);
     io.emit('currentQueue', {orders: data.getAllOrders(),
-                            ingredients: data.getIngredients() });
+                            ingredients: data.getIngredients(),
+                            readymade: data.getReadymade() });
   });
     
     

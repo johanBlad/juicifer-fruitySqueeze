@@ -136,25 +136,58 @@ var vm = new Vue({
       console.log(this.volume);
     },
 
+    getIngredientById: function (id) {
+      for (var i =0; i < this.ingredients.length; i += 1) {
+        if (this.ingredients[i].ingredient_id === id){
+          return this.ingredients[i];
+        }
+      }
+    },
+
+    orderReadymade: function (rm) {
+      console.log("Ordering a readymade drink");
+      var i;
+      for (i = 0; i < rm.rm_ingredients.length; i++) {
+        this.addIngredient(this.getIngredientById(rm.rm_ingredients[i]));
+      }
+      this.productName = rm.rm_name;
+      this.addToOrder();
+    },
+
+    getIngredientNameList: function (idArr) {
+      return idArr.map(function(id) {
+        return this.getIngredientById(id)["ingredient_" + this.lang];
+      }.bind(this)).join(", ");
+    },
+
     addToOrder: function () { 
       console.log("------SQUEEZE IT!------");
 
       var productToAdd = wrapProduct(this.chosenIngredients, this.price, this.volume, this.productType, this.productName);
-      for (var i = 0; i < this.basket.length; i++) {
-        if (productToAdd.productName == this.basket[i].productName && 
-            productToAdd.volume == this.basket[i].volume) {
-            if (productToAdd.productName != "dummyName") {
-              this.basket[i].quantity++;
-            } else {
-              //Right now there is no functionality for incrementing the quantity of identical "Squeeze your own" smoothies
-              //This should be added here.
+      if (this.basket.length != 0) {
+        console.log("In the first If..")
+        for (var i = 0; i < this.basket.length; i++) {
+          if (productToAdd.productName == this.basket[i].productName && 
+              productToAdd.volume == this.basket[i].volume) {
+                console.log("In the if-statement")
+              if (productToAdd.productName != "dummyName") {
+                this.basket[i].quantity++;
+                console.log("In the wrong place")
+              } else {
+                //Right now there is no functionality for incrementing the quantity of identical "Squeeze your own" smoothies
+                //This should be added here.
+                this.basket.push(productToAdd);
+                console.log("Pushing product (from within)");
+              }
+          } else {
+              console.log("Pushing product");
               this.basket.push(productToAdd);
-            }
-        } else {
-            this.basket.push(productToAdd);
-            }
-      }
-      
+              }
+        }
+    } else {
+      console.log("Pushing...")
+       this.basket.push(productToAdd);
+    }
       this.totalPrice = this.totalPrice + this.price;
       console.log('--------TEST BASKET---------');
       console.log('Total price in basket: ' + this.totalPrice);
