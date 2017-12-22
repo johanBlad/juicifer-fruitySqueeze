@@ -46,7 +46,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 	position: relative;
 	border-style: dashed;
 	border-color: black;
-	margin: 20px;
+    margin: 20px;
 }
 
 .ingredientList {
@@ -67,6 +67,11 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 	display: table-cell;
 	/*text-align: center;*/
     border-style: dotted;
+}
+
+.testDiv {
+    border-style: dashed;
+    margin: 5px;
 }
 
 /*Calle*/ 

@@ -148,18 +148,22 @@ Data.prototype.cancelOrder = function (orderId) {
   this.makeTransaction(this.orders[orderId], 1)*/
 };
 
+var readymadeDataName = "readymade";
 
 var data = new Data();
 // Load initial ingredients. If you want to add columns, do it in the CSS file.
 data.initializeData(ingredientsDataName);
 // Load initial stock. Make alterations in the CSV file.
 data.initializeData(transactionsDataName);
+//Load initial readymade drinks.
+data.initializeData(readymadeDataName);
 
 io.on('connection', function (socket) {
   // Send list of orders and text labels when a client connects
   socket.emit('initialize', { orders: data.getAllOrders(),
                           uiLabels: data.getUILabels(),
-                          ingredients: data.getIngredients() });
+                          ingredients: data.getIngredients(),
+                          readymade: data.getReadymade() });
 
   // When someone orders something
   socket.on('order', function (order) {
@@ -190,3 +194,8 @@ io.on('connection', function (socket) {
 var server = http.listen(app.get('port'), function () {
   console.log('Server listening on port ' + app.get('port'));
 });
+
+Data.prototype.getReadymade = function () {
+  var d = this.data;
+  return d[readymadeDataName];  
+}

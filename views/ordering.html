@@ -77,16 +77,41 @@
     </div>
 </div>
 
-<div id="chooseSize" class="sequenceSection">
-<h2 class="chooseSize">Choose size</h2>
-    <div class="navButtonsDiv">
-        <div class="navBack">
-            <button class="navButtons">&lt;</button>
-        </div>
-        <div class="navForward">
-            <button class="navButtons" id="forwarButton">&gt;</button>
+<div id="chooseSmoothie" class="sequenceSection">
+<h2> Choose Smoothie</h2>
+<hr>
+
+<div class="testDiv" style="height: 20vh;">
+
+
+</div>
+<div class="ingredientList;">
+    <div class="testDiv">
+        <h2>Juicifer Specials</h2>
+        <hr>
+        <div v-for="preparedDrink in readymade">
+            <label>
+                {{ preparedDrink.rm_id }}
+                {{ preparedDrink.rm_name }} {{preparedDrink.rm_ingredients}} 
+            </label>
+            
+            <button v-on:click="orderReadymade(preparedDrink)">BUY</button>
         </div>
     </div>
+</div>
+
+<div class="tableRow" style="bottom: 0; position: absolute;">
+    <div class="tableColumn" style="text-align: left;">
+      <button class="navButtons">&lt;</button>
+      <label>Back</label>
+    </div>
+    <div class="tableColumn" style="text-align: center;">
+    </div>
+    <div class="tableColumn" style="text-align: right;">
+      <label>Next</label>
+      <button class="navButtons" id="forwarButton" v-on:click= "addToOrder()">&gt;</button> 
+    </div>
+  </div>   
 </div>
 
 
