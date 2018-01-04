@@ -160,6 +160,18 @@ var vm = new Vue({
       }.bind(this)).join(", ");
     },
 
+    addAdditional: function (product) {
+      product.quantity++;
+      this.totalPrice = this.totalPrice + product.price;
+    },
+
+    removeProduct: function (product) {
+      if (product.quantity != 1) {
+        product.quantity--;
+        this.totalPrice = this.totalPrice - product.price;
+      }
+    },
+
     addToOrder: function () { 
       console.log("------SQUEEZE IT!------");
 

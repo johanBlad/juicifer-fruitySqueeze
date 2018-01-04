@@ -82,7 +82,9 @@
 <hr>
 
 <div class="testDiv" style="height: 20vh;">
-
+<button>
+    Squeeze Your Own!
+</button>
 
 </div>
 <div class="ingredientList;">
@@ -201,9 +203,10 @@
         <div id="basketContent">
             <div id="basketAdd" v-if="basket != []" style="text-align: left;">
                 <div v-for="product in basket" style="padding-left: 10px;">
-                    {{ product.quantity }}, {{ product.productName }}, {{ product.quantity * product.price }}
+                    {{ product.quantity }}, {{ product.productName }}, {{ product.volume }} ml, {{ product.quantity * product.price }}
                     <button type="submit" id="editButton">&#9998</button>
-                    <button type="submit" class="minusButton">&#8722</button><button type="submit" class="plusButton">&#43</button>
+                    <button v-on:click="removeProduct(product)" type="submit" class="minusButton">&#8722</button>
+                    <button v-on:click="addAdditional(product)" type="submit" class="plusButton">&#43</button>
                 </div>
             </div>
             <hr width=100% color=#000000>
@@ -215,7 +218,7 @@
         <div>
             <div class="headRow1">
                 <div class="headColumn1">
-                    <h2>Subtotal:</h2>
+                    <h2>Subtotal: {{ totalPrice }}:- </h2>
                 </div>
                 <div class="headColumn1"></div>
                 <div class="headColumn1">
