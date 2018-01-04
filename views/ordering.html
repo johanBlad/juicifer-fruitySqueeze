@@ -90,13 +90,15 @@
         <h2>Juicifer Specials</h2>
         <hr>
         <div v-for="preparedDrink in readymade">
-            <label>
-                {{ preparedDrink.rm_id }}
-                {{ preparedDrink.rm_name }}
-                <br>
-                 {{ getIngredientNameList(preparedDrink.rm_ingredients) }}   
-            </label>
-            <button v-on:click="orderReadymade(preparedDrink)">BUY</button>
+            <div class="premadeDrink">
+                <label>
+                    {{ preparedDrink.rm_id }}
+                    {{ preparedDrink.rm_name }}
+                    <br>
+                    {{ getIngredientNameList(preparedDrink.rm_ingredients) }}   
+                </label>
+                <button v-on:click="orderReadymade(preparedDrink)">BUY</button>
+            </div>
         </div>
     </div>
 </div>

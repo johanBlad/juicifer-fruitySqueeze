@@ -74,6 +74,11 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     margin: 5px;
 }
 
+.premadeDrink {
+    border: dotted;
+    margin: 5px;
+}
+
 /*Calle*/ 
 
 .sizeButtons {
