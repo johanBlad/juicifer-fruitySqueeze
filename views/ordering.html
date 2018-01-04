@@ -148,12 +148,12 @@
     </div>
     <div>
       <details>
-        <summary>Fruits & Greens</summary>
+        <summary>Base</summary>
         <ingredient
           ref="ingredient"
           type="smoothie"
           v-for="item in ingredients"
-          v-if="item.vol_smoothie > 0"
+          v-if="item.vol_smoothie > 0 && item.ingredient_type == 1"
           v-on:increment="addIngredient(item, 'smoothie')"
           v-on:decrement="removeIngredient(item, 'smoothie')"
           :item="item"
@@ -162,19 +162,33 @@
         </ingredient>
       </details>    
       <details>
-        <summary>Extras</summary>
+        <summary>Fruits & Greens</summary>
         <ingredient
           ref="ingredient"
           type="smoothie"
           v-for="item in ingredients"
-          v-if="item.vol_smoothie > 0"
+          v-if="item.vol_smoothie > 0 && item.ingredient_type == 2"
           v-on:increment="addIngredient(item, 'smoothie')"
           v-on:decrement="removeIngredient(item, 'smoothie')"
           :item="item"
           :lang="lang"
           :key="item.ingredient_id">
         </ingredient>
-      </details> 
+      </details>
+      <details>
+        <summary>Extras</summary>
+        <ingredient
+          ref="ingredient"
+          type="smoothie"
+          v-for="item in ingredients"
+          v-if="item.vol_smoothie > 0 && item.ingredient_type == 3"
+          v-on:increment="addIngredient(item, 'smoothie')"
+          v-on:decrement="removeIngredient(item, 'smoothie')"
+          :item="item"
+          :lang="lang"
+          :key="item.ingredient_id">
+        </ingredient>
+      </details>
       <div>
         
       </div>
