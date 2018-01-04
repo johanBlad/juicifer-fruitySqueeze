@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Lobster);
 body {
 	font-family: Lobster;
-    background: #efe;
+    background: #FFFFFF;
 	color: #353;
 	height: 100%;
 	margin: 0;
@@ -104,6 +104,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 
 .headline {
     font-size: 20pt;
+    text-align: center;
 }
 .cancelButton {
     font-family: Lobster;
@@ -147,9 +148,6 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     flex: 1;
 }
 
-.chooseSize {
-    text-align: center;
-}
 
 .navButtonsDiv {
     display: flex;
