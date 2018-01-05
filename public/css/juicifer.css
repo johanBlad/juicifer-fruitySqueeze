@@ -193,7 +193,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     background-color: #555;
     color: #fff;
     text-align: center;
-    border-radius: 6px;
+    border-radius: 20px;
     padding: 8px 0;
     position: absolute;
     z-index: 1;
@@ -382,8 +382,23 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 }
 
 #numberBox {
-    margin-top: 50px;
     text-align: center;
+    font-size: 25pt;
+    width: 400px;
+    height: 100px;
+    border: 1px solid #000;
+    border-radius: 20px;
+    stroke-width: 3;
+    position: absolute;
+    top: 40%;
+    left: 17%;
+    border-width: 4px;
+}
+
+#finished {
+    text-align: center;
+    font-size: 40pt;
+    margin-top: 30%;
 }
 
 
