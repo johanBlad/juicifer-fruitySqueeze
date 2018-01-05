@@ -15,7 +15,8 @@
   "language" : "English",
   "stock" : "Lager",
   "history" : "Historia",
-  "currentOrders" : "Beställningar"
+  "currentOrders" : "Beställningar",
+    "stockQuantity" : "Lager"
 }
 
 
