@@ -16,8 +16,11 @@
   <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
 
 <div id="chooseProduct" class="sequenceSection">
-  <h2 class="headLine">Juicifer Craft Beverages</h2>
-    <hr>
+    <div class="headRow">
+        <div class="headColumn"></div>
+        <div class="headColumn"><h1>Juicifer Craft Beverages</h1></div>
+        <div class="headColumn"></div>
+    </div>
     <div class="mainDiv">
         <div class="buttonDiv">
             <button class="chooseButtons"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="100" class="icon"></button>
@@ -118,6 +121,7 @@
 </div>
 
 <div id="chooseSmoothie" class="sequenceSection">
+
     <div class="headRow">
         <div class="headColumn"><img src="https://i.imgur.com/86WLceg.png"></div>
         <div class="headColumn"><h2>Choose smoothie</h2></div>
@@ -137,6 +141,7 @@
         <h2>Juicifer Specials</h2>
         <hr>
         <div v-for="preparedDrink in readymade">
+            
             <div class="premadeDrink">
                 <label>
                     {{ preparedDrink.rm_id }}
@@ -144,9 +149,21 @@
                     <br>
                     {{ getIngredientNameList(preparedDrink.rm_ingredients) }}   
                 </label>
-                <button v-on:click="orderReadymade(preparedDrink)">BUY</button>
+                <button v-on:click="setSelectedProduct(preparedDrink)">BUY</button>
+                <br>
             </div>
         </div>
+
+        <readymadedrink
+          ref="readymadedrink"
+          v-for="product in readymade"
+          v-on:showIngredients="getIngredientNameList(product[rm_ingredients])"
+          :ingredients="ingredients"
+          :product="product"
+          :lang="lang"
+          :key="product.rm_id">
+        </readymadedrink>
+
     </div>
 </div>
 
@@ -159,7 +176,7 @@
     </div>
     <div class="tableColumn" style="text-align: right;">
       <label>Next</label>
-      <button class="navButtons" id="forwarButton" v-on:click= "addToOrder()">&gt;</button> 
+      <button v-on:click="orderReadymade(selectedProduct)" class="navButtons" id="forwarButton" v-on:click= "addToOrder()">&gt;</button> 
     </div>
   </div>   
 </div>
