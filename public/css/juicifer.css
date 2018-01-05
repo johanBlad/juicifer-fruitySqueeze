@@ -45,6 +45,10 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 	border-style: dashed;
 	border-color: black;
     margin: 20px;
+    background: url(https://i.imgur.com/Azmjyfm.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
 }
 
 .ingredientList {
