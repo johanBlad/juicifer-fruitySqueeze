@@ -1,7 +1,7 @@
 /*jslint es5:true, indent: 2 */
 /*global sharedVueStuff, Vue, socket */
 'use strict';
-
+var productSize = {};
 Vue.component('product', {
   props: ['product'],
   template: ' <div class="">\
@@ -204,9 +204,24 @@ var vm = new Vue({
     chooseSize: function (volume) {
       this.volume = volume;
       console.log(this.volume);
+      var btn1 = document.getElementById('firstButton');
+      var btn2 = document.getElementById('secondButton');
+      var small = document.createTextNode('Small');
+      var medium = document.createTextNode('Medium');
+      var large = document.createTextNode('Large');
+      if (this.volume == 30) {
+        btn1.appendChild(medium);
+        btn2.appendChild(large);
+      }
+      else if (this.volume == 40) {
+        btn1.appendChild(small);
+        btn2.appendChild(large);
+      }
+      else {
+        btn1.appendChild(small);
+        btn2.appendChild(medium);
+      }
     },
-
-
 
     confirmProductChoice: function () {
       if (selectedProduct != null) {
@@ -344,4 +359,22 @@ function checkTime(i) {
 function popupFunction() {
     var popup = document.getElementById("myPopup");
     popup.classList.toggle("show");
+    /*var size = productSize.volume;
+    var btn1 = document.getElementById('firstButton');
+    var btn2 = document.getElementById('secondButton');
+    var small = document.createTextNode('Small');
+    var medium = document.createTextNode('Medium');
+    var large = document.createTextNode('Large');
+    if (size == 30) {
+        btn1.appendChild(medium);
+        btn2.appendChild(large);
+    }
+    else if (size == 40) {
+        btn1.appendChild(small);
+        btn2.appendChild(large);
+    }
+    else if (size == 50) {
+        btn1.appendChild(small);
+        btn2.appendChild(medium);
+    }*/
 }
