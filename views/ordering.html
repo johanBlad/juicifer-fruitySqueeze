@@ -226,9 +226,13 @@
       </details>
     </div>
   </div>
-    <div>
-        <button id="resizeButton">Change size</button>
-    </div>
+    <div id="sizeRectangle">
+                <div class="popup" onclick="popupFunction()">Change size
+                    <span class="popupcontent" id="myPopup">
+                        <button class="changeSize">Small</button>
+                        <button class="changeSize">Large</button></span>
+                </div>
+            </div>
   <div class="tableRow" style="bottom: 0; position: absolute;">
       <div class="tableColumn" style="text-align: left;">
         <button class="navButtons">&lt;</button>
@@ -246,10 +250,8 @@
 
 <div class="sequenceSection">
         <div id="title">
-            <h1 align=center>Basket</h1>
-            <div class="popup">
-            <hr width=100% color=#000000>
-        </div>
+        <h1 align=center>Basket</h1>
+        <hr width=100% color=#000000>
         <div id="basketContent">
             <div id="basketAdd" v-if="basket != []" style="text-align: left;">
                 <div v-for="product in basket" style="padding-left: 10px;">
