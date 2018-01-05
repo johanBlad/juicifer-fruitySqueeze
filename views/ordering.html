@@ -51,8 +51,13 @@
 </div>
 
 <div id="chooseSize" class="sequenceSection">
-  <h2 class="chooseSize">Choose size</h2>
-    <hr>
+      <div class="headRow">
+        <div class="headColumn"><img src="https://i.imgur.com/kj0zPIk.png"></div>
+        <div class="headColumn"><h2>Choose size</h2></div>
+        <div class="headColumn">
+            <button class="cancelButton"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
+        </div>
+    </div>
     <div class="mainDiv">
         <div class="buttonDiv">
             <button class="chooseButtons" v-on:click= "chooseSize(30)"><img src="https://png.icons8.com/ios/540/milkshake.png" width="100" class="icon"></button>
@@ -75,7 +80,8 @@
         <div class="ingridientDiv">
             <p>
                 Medium: 40 cl
--                    <li>2 Base</li>
+                <ul class="ingridientList">
+-                   <li>2 Base</li>
                     <li>3 Fruit</li>
                     <li>2 Extra</li>
                 </ul>
@@ -97,21 +103,35 @@
             </p>
         </div>
     </div>
-    <hr>
-    <div class="navButtonsDiv">
-        <div class="navBack">
-            <button class="navButtons">&lt;</button>
+    <div class="tableRow" style="bottom: 0; position: absolute;">
+        <div class="tableColumn" style="text-align: left;">
+          <button class="navButtons">&lt;</button>
+          <label>Back</label>
         </div>
-        <div class="navForward">
-            <button class="navButtons" id="forwarButton">&gt;</button>
+        <div class="tableColumn" style="text-align: center;">
         </div>
-    </div>
+        <div class="tableColumn" style="text-align: right;">
+          <label>Next</label>
+          <button class="navButtons" id="forwarButton">&gt;</button> 
+        </div>
+      </div>   
 </div>
 
 <div id="chooseSmoothie" class="sequenceSection">
+<<<<<<< HEAD
 <h2> Choose Smoothie</h2>
 <hr>
 <button v-on:click="initButtons()"></button>
+=======
+    <div class="headRow">
+        <div class="headColumn"><img src="https://i.imgur.com/86WLceg.png"></div>
+        <div class="headColumn"><h2>Choose smoothie</h2></div>
+        <div class="headColumn">
+            <button class="cancelButton"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
+        </div>
+    </div>
+
+>>>>>>> 6795389c77b4c374354221fbc68347f11165db8d
 <div class="testDiv" style="height: 20vh;">
 <button v-on:click="setSelectedProduct("customSmoothie")">
     Squeeze Your Own!
@@ -165,8 +185,14 @@
 
 
 <div id="smoothieCustomize" class="sequenceSection">
-  <div class="ingredientList">
-    <h1 style="text-align: center;">Squeeze your own</h1> 
+    <div class="headRow">
+        <div class="headColumn"><img src="https://i.imgur.com/86WLceg.png"></div>
+        <div class="headColumn"><h2>Squeeze your own</h2></div>
+        <div class="headColumn">
+            <button class="cancelButton"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
+        </div>
+    </div>
+<div class="ingredientList">
   <div class="tableRow">
       <div class="tableColumn" style="text-align: left;">
             <ul>
@@ -233,11 +259,15 @@
           :key="item.ingredient_id">
         </ingredient>
       </details>
-      <div>
-        
-      </div>
     </div>
-  </div>  
+  </div>
+    <div id="sizeRectangle">
+                <div class="popup" onclick="popupFunction()">Change size
+                    <span class="popupcontent" id="myPopup">
+                        <button class="changeSize">Small</button>
+                        <button class="changeSize">Large</button></span>
+                </div>
+            </div>
   <div class="tableRow" style="bottom: 0; position: absolute;">
       <div class="tableColumn" style="text-align: left;">
         <button class="navButtons">&lt;</button>
@@ -250,14 +280,17 @@
         <label>Squeeze it!</label>
         <button class="navButtons" id="forwarButton" v-on:click= "addToOrder()">&gt;</button> 
       </div>
-    </div>    
+    </div>
   </div>
 
 <div class="sequenceSection">
-        <div id="title">
-            <h1 align=center>Basket</h1>
-            <hr width=100% color=#000000>
+    <div class="headRow">
+        <div class="headColumn"><img src="https://i.imgur.com/TTGLBLp.png"></div>
+        <div class="headColumn"><h2>Basket</h2></div>
+        <div class="headColumn">
+            <button class="cancelButton"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
         </div>
+    </div>
         <div id="basketContent">
             <div id="basketAdd" v-if="basket != []" style="text-align: left;">
                 <div v-for="product in basket" style="padding-left: 10px;">
@@ -267,7 +300,6 @@
                     <button v-on:click="addAdditional(product)" type="submit" class="plusButton">&#43</button>
                 </div>
             </div>
-            <hr width=100% color=#000000>
         </div>
         <div id="addButton">
             <button type="submit" id="basketButton"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Nuvola_Green_Plus.svg/2000px-Nuvola_Green_Plus.svg.png" id="plusSymbol">Squeeze more to basket</button>
@@ -316,10 +348,13 @@
 </div>--> 
 
 <div class="sequenceSection">
-        <div>
-            <h1 align=center>Payment</h1>
-            <hr width=100% color=#000000>
+    <div class="headRow">
+        <div class="headColumn"><img src="https://i.imgur.com/kD0kZib.png"></div>
+        <div class="headColumn"><h2>Payment</h2></div>
+        <div class="headColumn">
+            <button class="cancelButton"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
         </div>
+    </div>
         <section>
             <h2 align=center>Total: </h2>
             <div class=paymentButtons>
