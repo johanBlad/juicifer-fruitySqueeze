@@ -16,15 +16,46 @@
   <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
 
 <div id="chooseProduct" class="sequenceSection">
-  <button class="" v-on:click= "chooseType(1)">Choose Smoothie</button>
-</div>
-
-<div id="chooseSize" class="sequenceSection">
-  <h2 class="chooseSize">Choose size</h2>
+  <h2 class="headLine">Juicifer Craft Beverages</h2>
     <hr>
     <div class="mainDiv">
         <div class="buttonDiv">
-            <button class="sizeButtons" v-on:click= "chooseSize(30)"><img src="http://moziru.com/images/straw-clipart-smoothie-cup-9.png" width="80"></button>
+            <button class="chooseButtons"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="100" class="icon"></button>
+        </div>
+        <div class="headlineDiv">
+            <p>
+                Juice
+            </p>
+        </div>
+    </div>
+    <div class="mainDiv">
+        <div class="buttonDiv">
+            <button class="chooseButtons"><img src="https://png.icons8.com/ios/540/milkshake.png" width=120 class="icon"></button>
+        </div>
+        <div class="headlineDiv">
+            <p>
+                Smoothies
+            </p>
+        </div>
+    </div>
+    <div class="mainDiv">
+        <div class="buttonDiv">
+            <button class="chooseButtons"><img src="http://freevector.co/wp-content/uploads/2013/10/34819-hot-coffee-mug-outline.png" width="100" class="icon"></button>
+        </div>
+        <div class="headlineDiv">
+            <p>
+                Hot Drinks
+            </p>
+        </div>
+    </div>
+</div>
+
+<div id="chooseSize" class="sequenceSection">
+  <h2 class="headLine">Choose size</h2>
+    <hr>
+    <div class="mainDiv">
+        <div class="buttonDiv">
+            <button class="chooseButtons" v-on:click= "chooseSize(30)"><img src="https://png.icons8.com/ios/540/milkshake.png" width="100" class="icon"></button>
         </div>
         <div class="ingridientDiv">
             <p>
@@ -39,7 +70,7 @@
     </div>
     <div class="mainDiv">
         <div class="buttonDiv">
-            <button class="sizeButtons" v-on:click= "chooseSize(40)"><img src="http://moziru.com/images/straw-clipart-smoothie-cup-9.png" width=100></button>
+            <button class="chooseButtons" v-on:click= "chooseSize(40)"><img src="https://png.icons8.com/ios/540/milkshake.png" width=120 class="icon"></button>
         </div>
         <div class="ingridientDiv">
             <p>
@@ -54,7 +85,7 @@
     </div>
     <div class="mainDiv">
         <div class="buttonDiv">
-            <button class="sizeButtons" v-on:click= "chooseSize(50)"><img src="http://moziru.com/images/straw-clipart-smoothie-cup-9.png" width="120"></button>
+            <button class="chooseButtons" v-on:click= "chooseSize(50)"><img src="https://png.icons8.com/ios/540/milkshake.png" width="140" class="icon"></button>
         </div>
         <div class="ingridientDiv">
             <p>
@@ -67,15 +98,18 @@
             </p>
         </div>
     </div>
-    <hr>
-    <div class="navButtonsDiv">
-        <div class="navBack">
-            <button class="navButtons">&lt;</button>
+    <div class="tableRow" style="bottom: 0; position: absolute;">
+        <div class="tableColumn" style="text-align: left;">
+          <button class="navButtons">&lt;</button>
+          <label>Back</label>
         </div>
-        <div class="navForward">
-            <button class="navButtons" id="forwarButton">&gt;</button>
+        <div class="tableColumn" style="text-align: center;">
         </div>
-    </div>
+        <div class="tableColumn" style="text-align: right;">
+          <label>Next</label>
+          <button class="navButtons" id="forwarButton">&gt;</button> 
+        </div>
+      </div>   
 </div>
 
 <div id="chooseSmoothie" class="sequenceSection">
