@@ -44,7 +44,8 @@
         <div class="ingridientDiv">
             <p>
                 Medium: 40 cl
--                    <li>2 Base</li>
+                <ul class="ingridientList">
+-                   <li>2 Base</li>
                     <li>3 Fruit</li>
                     <li>2 Extra</li>
                 </ul>
@@ -189,11 +190,11 @@
           :key="item.ingredient_id">
         </ingredient>
       </details>
-      <div>
-        
-      </div>
     </div>
-  </div>  
+  </div>
+    <div>
+        <button id="resizeButton">Change size</button>
+    </div>
   <div class="tableRow" style="bottom: 0; position: absolute;">
       <div class="tableColumn" style="text-align: left;">
         <button class="navButtons">&lt;</button>
@@ -206,12 +207,13 @@
         <label>Squeeze it!</label>
         <button class="navButtons" id="forwarButton" v-on:click= "addToOrder()">&gt;</button> 
       </div>
-    </div>    
+    </div>
   </div>
 
 <div class="sequenceSection">
         <div id="title">
             <h1 align=center>Basket</h1>
+            <div class="popup">
             <hr width=100% color=#000000>
         </div>
         <div id="basketContent">
