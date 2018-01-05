@@ -189,7 +189,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 /* The actual popup */
 .popup .popupcontent {
     visibility: hidden;
-    width: 160px;
+    width: 300px;
     background-color: #555;
     color: #fff;
     text-align: center;
@@ -198,7 +198,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     position: absolute;
     z-index: 1;
     bottom: 125%;
-    left: 50%;
+    left: -3%;
     margin-left: -80px;
 }
 
@@ -245,6 +245,10 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     margin-left: -40px;
     border-width: 4px;
     background-color: azure;
+}
+
+#popupText {
+    font-size: 16pt;
 }
 
 .changeSize {
@@ -295,6 +299,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 }
 
 #basketButton {
+    font-family: Lobster;
     width: 420px;
     height: 160px;
     border-radius: 20px;
@@ -330,6 +335,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 }
 
 #goPayment {
+    font-family: Lobster;
     height: 55px;
     width: 150px;
     font-size: 20pt;
@@ -344,6 +350,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 
 /* Size of payment buttons till Payment.html*/
 .buttonDetails {
+    font-family: Lobster;
     width: 390px;
     height: 160px;
     border-radius: 20px;

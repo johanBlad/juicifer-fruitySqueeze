@@ -63,7 +63,7 @@
     </div>
     <div class="mainDiv">
         <div class="buttonDiv">
-            <button class="chooseButtons" v-on:click= "chooseSize(30)"><img src="https://png.icons8.com/ios/540/milkshake.png" width="100" class="icon"></button>
+            <button class="chooseButtons" v-on:click= "chooseSize(30, 'Small')"><img src="https://png.icons8.com/ios/540/milkshake.png" width="100" class="icon"></button>
         </div>
         <div class="ingridientDiv">
             <p>
@@ -78,13 +78,13 @@
     </div>
     <div class="mainDiv">
         <div class="buttonDiv">
-            <button class="chooseButtons" v-on:click= "chooseSize(40)"><img src="https://png.icons8.com/ios/540/milkshake.png" width=120 class="icon"></button>
+            <button class="chooseButtons" v-on:click= "chooseSize(40, 'Medium')"><img src="https://png.icons8.com/ios/540/milkshake.png" width=120 class="icon"></button>
         </div>
         <div class="ingridientDiv">
             <p>
                 Medium: 40 cl
                 <ul class="ingridientList">
--                   <li>2 Base</li>
+                    <li>2 Base</li>
                     <li>3 Fruit</li>
                     <li>2 Extra</li>
                 </ul>
@@ -93,7 +93,7 @@
     </div>
     <div class="mainDiv">
         <div class="buttonDiv">
-            <button class="chooseButtons" v-on:click= "chooseSize(50)"><img src="https://png.icons8.com/ios/540/milkshake.png" width="140" class="icon"></button>
+            <button class="chooseButtons" v-on:click= "chooseSize(50, 'Large')"><img src="https://png.icons8.com/ios/540/milkshake.png" width="140" class="icon"></button>
         </div>
         <div class="ingridientDiv">
             <p>
@@ -262,8 +262,9 @@
   <div id="sizeRectangle">
       <div class="popup" onclick="popupFunction()">Change size
           <span class="popupcontent" id="myPopup">
-              <button class="changeSize" id="firstButton"></button>
-              <button class="changeSize" id="secondButton"></button>
+              <p id="popupText">Changed your mind? No worries,<br> feel free to choose a new size below!</p>
+              <button class="changeSize" id="firstButton" v-on:click="getNewSize('firstButton')"></button>
+              <button class="changeSize" id="secondButton" v-on:click="getNewSize('secondButton')"></button>
           </span>
       </div>
   </div>

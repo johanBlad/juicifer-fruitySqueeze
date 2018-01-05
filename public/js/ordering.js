@@ -148,6 +148,7 @@ var vm = new Vue({
     productName: 'dummyName',
     totalPrice: 0,
     volume: 0,
+    size: '',
     basket: [],
     price: 0,
     availableProducts: [],
@@ -201,26 +202,31 @@ var vm = new Vue({
       console.log(this.productType);
     },
 
-    chooseSize: function (volume) {
+    chooseSize: function (volume, selectedSize) {
       this.volume = volume;
+      this.size = selectedSize;
       console.log(this.volume);
-      var btn1 = document.getElementById('firstButton');
-      var btn2 = document.getElementById('secondButton');
-      var small = document.createTextNode('Small');
-      var medium = document.createTextNode('Medium');
-      var large = document.createTextNode('Large');
-      if (this.volume == 30) {
-        btn1.appendChild(medium);
-        btn2.appendChild(large);
-      }
-      else if (this.volume == 40) {
-        btn1.appendChild(small);
-        btn2.appendChild(large);
-      }
-      else {
-        btn1.appendChild(small);
-        btn2.appendChild(medium);
-      }
+      console.log(this.size);
+      setAlternativeSizes(this.volume);
+    },
+      
+    getNewSize: function (selectedButton) {
+        var newSize = document.getElementById(selectedButton).textContent;
+        if (newSize == 'Small') {
+            this.volume = 30;
+            this.size = newSize;
+        }
+        else if (newSize == 'Medium') {
+            this.volume = 40;
+            this.size = newSize;
+        }
+        else {
+            this.volume = 50;
+            this.size = newSize;
+        }
+        console.log(this.volume);
+        console.log(this.size);
+        setAlternativeSizes(this.volume);
     },
 
     confirmProductChoice: function () {
@@ -350,6 +356,28 @@ function getCurrentTime() {
     return today;
 };
 
+function setAlternativeSizes(volume) {
+    var btn1 = document.getElementById('firstButton');
+    var btn2 = document.getElementById('secondButton');
+    btn1.textContent = '';
+    btn2.textContent = '';
+    var small = document.createTextNode('Small');
+    var medium = document.createTextNode('Medium');
+    var large = document.createTextNode('Large');
+    if (volume == 30) {
+        btn1.appendChild(medium);
+        btn2.appendChild(large);
+      }
+    else if (volume == 40) {
+        btn1.appendChild(small);
+        btn2.appendChild(large);
+    }
+    else {
+        btn1.appendChild(small);
+        btn2.appendChild(medium);
+    }
+}
+
 function checkTime(i) {
     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
     return i;
@@ -359,22 +387,5 @@ function checkTime(i) {
 function popupFunction() {
     var popup = document.getElementById("myPopup");
     popup.classList.toggle("show");
-    /*var size = productSize.volume;
-    var btn1 = document.getElementById('firstButton');
-    var btn2 = document.getElementById('secondButton');
-    var small = document.createTextNode('Small');
-    var medium = document.createTextNode('Medium');
-    var large = document.createTextNode('Large');
-    if (size == 30) {
-        btn1.appendChild(medium);
-        btn2.appendChild(large);
-    }
-    else if (size == 40) {
-        btn1.appendChild(small);
-        btn2.appendChild(large);
-    }
-    else if (size == 50) {
-        btn1.appendChild(small);
-        btn2.appendChild(medium);
-    }*/
 }
+
