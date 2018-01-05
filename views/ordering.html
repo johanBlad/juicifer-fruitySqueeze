@@ -111,9 +111,9 @@
 <div id="chooseSmoothie" class="sequenceSection">
 <h2> Choose Smoothie</h2>
 <hr>
-
+<button v-on:click="initButtons()"></button>
 <div class="testDiv" style="height: 20vh;">
-<button>
+<button v-on:click="setSelectedProduct("customSmoothie")">
     Squeeze Your Own!
 </button>
 
@@ -123,6 +123,7 @@
         <h2>Juicifer Specials</h2>
         <hr>
         <div v-for="preparedDrink in readymade">
+            
             <div class="premadeDrink">
                 <label>
                     {{ preparedDrink.rm_id }}
@@ -130,9 +131,21 @@
                     <br>
                     {{ getIngredientNameList(preparedDrink.rm_ingredients) }}   
                 </label>
-                <button v-on:click="orderReadymade(preparedDrink)">BUY</button>
+                <button v-on:click="setSelectedProduct(preparedDrink)">BUY</button>
+                <br>
             </div>
         </div>
+
+        <readymadedrink
+          ref="readymadedrink"
+          v-for="product in readymade"
+          v-on:showIngredients="getIngredientNameList(product[rm_ingredients])"
+          :ingredients="ingredients"
+          :product="product"
+          :lang="lang"
+          :key="product.rm_id">
+        </readymadedrink>
+
     </div>
 </div>
 
@@ -145,7 +158,7 @@
     </div>
     <div class="tableColumn" style="text-align: right;">
       <label>Next</label>
-      <button class="navButtons" id="forwarButton" v-on:click= "addToOrder()">&gt;</button> 
+      <button v-on:click="orderReadymade(selectedProduct)" class="navButtons" id="forwarButton" v-on:click= "addToOrder()">&gt;</button> 
     </div>
   </div>   
 </div>

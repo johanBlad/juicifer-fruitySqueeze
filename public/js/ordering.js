@@ -3,7 +3,7 @@
 'use strict';
 
 Vue.component('product', {
-  props: ['productItem'],
+  props: ['product'],
   template: ' <div class="">\
                 <label>\
                   {{ basket[0].productName }} {{ basket[0].price }}\
@@ -12,6 +12,57 @@ Vue.component('product', {
     return {
 
     }
+  }
+});
+
+var readymadeDrinks = Vue.component('readymadedrink', {
+  props: ['product', 'ingredients', 'lang'],
+  template: ' <div class="premadeDrink">\
+  <label>\
+  {{ product["rm_id"] }}\
+  {{ product["rm_name"] }}\
+  <br>\
+  {{ getIngredientNameList(product["rm_ingredients"]) }}\
+  </label>\
+  <button v-on:click="markSelected" >Select</button>\
+  </div>',
+  data: function () {
+    return {
+      isSelected: false
+    };
+  },
+  methods: {
+    markSelected: function () {
+      this.$emit('select');
+    },
+
+    getIngredientById: function (id) {
+      for (var i =0; i < this.ingredients.length; i += 1) {
+        if (this.ingredients[i].ingredient_id === id){
+          return this.ingredients[i];
+        }
+      }
+    },
+
+    getIngredientNameList: function (idArr) {
+      return idArr.map(function(id) {
+        return this.getIngredientById(id)["ingredient_" + this.lang];
+      }.bind(this)).join(", ");
+    },
+
+   /* getIngredientById: function (id, totalIngredients) {
+      for (var i =0; i < totalIngredients.length; i += 1) {
+        if (totalIngredients[i].ingredient_id === id){
+          return totalIngredients[i];
+        }
+      }
+    },
+
+    getIngredientNameList: function (idArr, totalIngredients) {
+      return idArr.map(function(id, totalIngredients) {
+        return this.getIngredientById(id, totalIngredients)["ingredient_" + this.lang];
+      }.bind(this)).join(", ");
+    },*/
   }
 });
 
@@ -99,9 +150,11 @@ var vm = new Vue({
     volume: 0,
     basket: [],
     price: 0,
+    availableProducts: [],
+    selectedProduct: null,
     ok: false,
   },
-
+  components: {readymadeDrinks: readymadeDrinks},
   methods: {
     addIngredient: function (item, type) {
       this.chosenIngredients.push(item);
@@ -117,6 +170,23 @@ var vm = new Vue({
           this.price = this.price - item.selling_price;
           break;
         }
+      }
+    },
+
+    initButtons: function () {
+
+    },
+
+    setSelectedProduct: function (_product) {
+      this.selectedProduct = null;
+      this.productName = "";
+
+      if (_product === "customSmoothie") {
+        this.productName = "Custom Smoothie" 
+      } else if (_product === "customJuice") {
+        this.productName = "Custom Juice";
+      } else {
+        this.selectedProduct = _product;
       }
     },
 
@@ -136,11 +206,16 @@ var vm = new Vue({
       console.log(this.volume);
     },
 
-    getIngredientById: function (id) {
-      for (var i =0; i < this.ingredients.length; i += 1) {
-        if (this.ingredients[i].ingredient_id === id){
-          return this.ingredients[i];
-        }
+
+
+    confirmProductChoice: function () {
+      if (selectedProduct != null) {
+        orderReadymade(selectedProduct);
+        //Go to basket
+      } else if (this.productName == "Custom Smoothie") {
+        //Go to Custom Smoothie
+      } else {
+        //Go to Custom Juice 
       }
     },
 
@@ -152,6 +227,14 @@ var vm = new Vue({
       }
       this.productName = rm.rm_name;
       this.addToOrder();
+    },
+
+    getIngredientById: function (id) {
+      for (var i =0; i < this.ingredients.length; i += 1) {
+        if (this.ingredients[i].ingredient_id === id){
+          return this.ingredients[i];
+        }
+      }
     },
 
     getIngredientNameList: function (idArr) {
