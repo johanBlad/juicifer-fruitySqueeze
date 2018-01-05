@@ -253,6 +253,10 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     margin-top: 10px;
 }
 
+.button {
+    hover:
+}
+
 /*Adam*/
 /* Size of payment buttons till Payment.html*/
 #basketAdd {
