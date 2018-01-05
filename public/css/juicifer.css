@@ -7,11 +7,7 @@ body {
 	margin: 0;
 }
 
-h1 {
-	color: #670;
-	text-transform: uppercase;
-	letter-spacing: 2pt;
-}
+
 
 #ordering {
 	margin:auto;
@@ -91,7 +87,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 	display: table;
 	table-layout: fixed;
 	width: 100%;
-	height: 2vh;
+	height: 20%;
 	border-spacing: 10px;
     top: 0;
 	background-color: lightgrey;

@@ -51,8 +51,13 @@
 </div>
 
 <div id="chooseSize" class="sequenceSection">
-  <h2 class="headLine">Choose size</h2>
-    <hr>
+      <div class="headRow">
+        <div class="headColumn"><img src="https://i.imgur.com/piKCPoc.png"></div>
+        <div class="headColumn"><h2>Choose size</h2></div>
+        <div class="headColumn">
+            <button class="cancelButton"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
+        </div>
+    </div>
     <div class="mainDiv">
         <div class="buttonDiv">
             <button class="chooseButtons" v-on:click= "chooseSize(30)"><img src="https://png.icons8.com/ios/540/milkshake.png" width="100" class="icon"></button>
@@ -113,8 +118,13 @@
 </div>
 
 <div id="chooseSmoothie" class="sequenceSection">
-<h2> Choose Smoothie</h2>
-<hr>
+    <div class="headRow">
+        <div class="headColumn"><img src="https://i.imgur.com/86WLceg.png"></div>
+        <div class="headColumn"><h2>Choose smoothie</h2></div>
+        <div class="headColumn">
+            <button class="cancelButton"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
+        </div>
+    </div>
 
 <div class="testDiv" style="height: 20vh;">
 <button>
@@ -156,8 +166,14 @@
 
 
 <div id="smoothieCustomize" class="sequenceSection">
-  <div class="ingredientList">
-    <h1 style="text-align: center;">Squeeze your own</h1> 
+    <div class="headRow">
+        <div class="headColumn"><img src="https://i.imgur.com/86WLceg.png"></div>
+        <div class="headColumn"><h2>Squeeze your own</h2></div>
+        <div class="headColumn">
+            <button class="cancelButton"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
+        </div>
+    </div>
+<div class="ingredientList">
   <div class="tableRow">
       <div class="tableColumn" style="text-align: left;">
             <ul>
@@ -249,9 +265,19 @@
   </div>
 
 <div class="sequenceSection">
+<<<<<<< HEAD
         <div id="title">
         <h1 align=center>Basket</h1>
         <hr width=100% color=#000000>
+=======
+    <div class="headRow">
+        <div class="headColumn"><img src="https://i.imgur.com/TTGLBLp.png"></div>
+        <div class="headColumn"><h2>Basket</h2></div>
+        <div class="headColumn">
+            <button class="cancelButton"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
+        </div>
+    </div>
+>>>>>>> 4e0f19fb712ad5591150d9270c5ccacd9308ff54
         <div id="basketContent">
             <div id="basketAdd" v-if="basket != []" style="text-align: left;">
                 <div v-for="product in basket" style="padding-left: 10px;">
@@ -310,10 +336,13 @@
 </div>--> 
 
 <div class="sequenceSection">
-        <div>
-            <h1 align=center>Payment</h1>
-            <hr width=100% color=#000000>
+    <div class="headRow">
+        <div class="headColumn"><img src="https://i.imgur.com/kD0kZib.png"></div>
+        <div class="headColumn"><h2>Payment</h2></div>
+        <div class="headColumn">
+            <button class="cancelButton"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
         </div>
+    </div>
         <section>
             <h2 align=center>Total: </h2>
             <div class=paymentButtons>
