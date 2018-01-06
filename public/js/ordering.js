@@ -320,10 +320,9 @@ var vm = new Vue({
       var i,
       //Wrap the order in an object
         order = {
-          ingredients: this.chosenIngredients,
-          volume: this.volume,
-          type: this.type,
-          price: this.price,
+          products: this.basket,
+          price: this.totalPrice,
+          ingredients: getOrderIngredients(this.basket),
             //tillagt!!!
           time: getCurrentTime(),
             //--------
@@ -341,6 +340,16 @@ var vm = new Vue({
     }
   }
 });
+
+function getOrderIngredients (basket) {
+  var i;
+  var allIngredients = [];
+  for (i = 0; i < basket.length; i++) {
+    allIngredients = allIngredients.concat(basket[i].ingredients);
+  }
+  console.log("Placing order with ingredients: " + allIngredients);
+  return allIngredients;
+}
 
 function deselectAll () {
   var rmdrinks = vm.$refs.readymadedrink;
