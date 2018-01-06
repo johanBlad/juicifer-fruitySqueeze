@@ -15,5 +15,6 @@
   "language" : "Svenska",
   "stock": "Stock",
   "history" : "History",
-  "currentOrders" : "Orders"
+  "currentOrders" : "Orders",
+    "stockQuantity" : "Quantity"
 }
