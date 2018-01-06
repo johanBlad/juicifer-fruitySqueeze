@@ -611,13 +611,14 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     margin-bottom: 20px;
 }
 
-/*
-#smoothieCircle{
+
+#piechart{
     display:inline-block;
-    width: 900px; 
-    height: 500px; 
-    margin-left: 100px;
+    width: 50%; 
+    height: 60%; 
+    margin-bottom: 1050px;
+    margin-left:50px;
     
-}*/
+}
 
 /* ---------- slut på kitchen -------- */
