@@ -107,7 +107,7 @@
 
 <!--Stock-->
       
-      <div id="stock-wrapper" v-on:click="showStock()" v-bind:class="{ active: stockShown }">
+      <div id="stock-wrapper" v-on:click="showStock(); showPieChart();" v-bind:class="{ active: stockShown }">
           
     <h1 v-if="stockShown===false" id=verticalStock>{{ uiLabels.stock }}</h1>
           
@@ -132,8 +132,10 @@
                   <!-- lägg till {{item.vol_juice}}-->
                   </div>
               </div>
-              <!--Funkar ej när den ligger här men funkar i main 
-             <div id="piechart" style="width: 200px; height: 100px;"></div>-->
+              
+              
+              <!--Funkar ej när den ligger här men funkar i main -->
+             <div id="piechart"></div>
               
 <!--
     <div id="smoothieCircle"></div>
