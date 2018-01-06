@@ -158,7 +158,7 @@
           ref="readymadedrink"
           v-for="product in readymade"
           v-on:select="setSelectedProduct(product)"
-          v-on:deselect="setSelectedProduct(null)"
+          v-on:deselect="setSelectedProduct(undefined)"
           :ingredients="ingredients"
           :product="product"
           :lang="lang"
