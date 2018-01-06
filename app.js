@@ -149,6 +149,7 @@ Data.prototype.cancelOrder = function (orderId) {
 };
 
 var readymadeDataName = "readymade";
+var hotDrinksName = "hotdrinks";
 
 var data = new Data();
 // Load initial ingredients. If you want to add columns, do it in the CSS file.
@@ -157,6 +158,8 @@ data.initializeData(ingredientsDataName);
 data.initializeData(transactionsDataName);
 //Load initial readymade drinks.
 data.initializeData(readymadeDataName);
+
+data.initializeData(hotDrinksName);
 
 io.on('connection', function (socket) {
   // Send list of orders and text labels when a client connects

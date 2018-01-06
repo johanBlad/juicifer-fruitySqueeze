@@ -231,7 +231,7 @@
         </ingredient>
       </details>    
       <details>
-        <summary>Fruits & Greens</summary>
+        <summary>Fruits &amp; Greens</summary>
         <ingredient
           ref="ingredient"
           type="smoothie"
@@ -283,6 +283,8 @@
       </div>
     </div>
   </div>
+
+
 <div id="hotDrinks" class="sequenceSection">
         <div class="headRow">
         <div class="headColumn"><img src="https://i.imgur.com/kj0zPIk.png"></div>
@@ -291,19 +293,20 @@
             <button class="cancelButton"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
         </div>
     </div>
-    <div class="hotDrinkTableRow" style="margin-top: 0">
-        <div class="hotDrinkNameColumn" style="background-color: #b3ff66;">Drink</div>
-        <div class="hotDrinkSizeColumn" style="background-color: #b3ff66;">Small</div>
-        <div class="hotDrinkSizeColumn" style="background-color: #b3ff66;">Medium</div>
-        <div class="hotDrinkSizeColumn" style="background-color: #b3ff66;">Large</div>
-    </div>
     <div class="hotDrinkTableRow">
-        <div class="hotDrinkNameColumn">Black Coffee</div>
-        <div class="hotDrinkSizeColumn">20 kr</div>
-        <div class="hotDrinkSizeColumn">25 kr</div>
-        <div class="hotDrinkSizeColumn">32 kr</div>
+        <div class="hotDrinkNameColumn">Drink</div>
+        <div class="hotDrinkSizeColumn">Small</div>
+        <div class="hotDrinkSizeColumn">Medium</div>
+        <div class="hotDrinkSizeColumn">Large</div>
     </div>
-    
+    <hotdrink
+          ref="hotdrink"
+          type="coffee"
+          v-for="hotDrink in hotdrinks"
+          :hotDrink="hotDrink"
+          :lang="lang"
+          :key="hotDrink.hd_id">
+    </hotdrink>
         
         <!--<table id="hotDrinksTable">
             <tr>

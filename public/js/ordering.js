@@ -1,7 +1,7 @@
 /*jslint es5:true, indent: 2 */
 /*global sharedVueStuff, Vue, socket */
 'use strict';
-var productSize = {};
+
 Vue.component('product', {
   props: ['product'],
   template: ' <div class="">\
@@ -99,7 +99,26 @@ Vue.component('ingredient', {
     }
   }
 });
-  
+
+Vue.component('hotdrink', {
+    props: ['hotDrink', 'lang'],
+    template: ' <div class="coffees">\
+                <label>\
+                {{hotDrink["hd_name_"+ lang]}}\
+                </label>\
+                <div style="float: right;">\
+                </label>\
+                {{ counter }}\
+                </label>\
+                <button class="minusButton" v-on:click="decreaseCounter">-</button>\
+                <button class="plusButton"  v-on:click="incrementCounter">+</button>\
+                <label style="margin-left: 10px;">\
+                {{hotDrink.selling_price_s}}:-\
+                </label>\
+                </div>\
+                </div>',
+});
+               
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);

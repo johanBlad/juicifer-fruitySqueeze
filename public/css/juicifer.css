@@ -19,6 +19,12 @@ body {
 	width: 40em;
 }
 
+.coffees {
+	border: 1px solid #cdc;
+	padding: 1em;
+    font-size: 17px;
+}
+
 .ingredient {
 	border: 1px solid #cdc;
 	padding: 1em;
@@ -85,16 +91,23 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     width: 100%;
     height: 5vh;
     border-spacing: 5px:
+        
 }
 
 .hotDrinkNameColumn {
     display: table-cell;
     border-style: dotted;
+    background-color: #b3ff66;
+    font-size: 20pt;
+    width: 50%;
 }
 
 .hotDrinkSizeColumn {
     display: table-cell;
     border-style: dotted;
+    background-color: #b3ff66;
+    font-size: 20pt;
+    width: 10%;
 }
 .testDiv {
     border-style: dashed;
@@ -122,32 +135,6 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 	background-color: lightgrey;
 }
 
-#hotDrinksTable {
-    width: 100%;
-    border: dotted;
-}
-
-#scrollTableHotDrinks {
-    width: 100;
-    overflow: auto;
-    border: dotted;
-}
-
-.hotDrinkNameHeader {
-    width: 40%;
-}
-
-.hotDrinkSizeHeader {
-    width: 20%;
-}
-
-.hotDrinkName {
-    width: 40%;
-}
-
-.hotDrinkSize {
-    width: 20%;
-}
 
 .headColumn {
     display: table-cell;
