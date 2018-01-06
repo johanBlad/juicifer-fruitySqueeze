@@ -24,7 +24,7 @@ var readymadeDrinks = Vue.component('readymadedrink', {
   <br>\
   {{ getIngredientNameList(product["rm_ingredients"]) }}\
   </label>\
-  <button v-on:click="markSelected" >Select</button>\
+  <button class="productButton" v-bind:class="{ productSelected: isSelected }" v-on:click="markSelected" >Select</button>\
   </div>',
   data: function () {
     return {
@@ -32,8 +32,17 @@ var readymadeDrinks = Vue.component('readymadedrink', {
     };
   },
   methods: {
+    
     markSelected: function () {
-      this.$emit('select');
+      if (this.isSelected == false) {
+        deselectAll();
+        this.isSelected = true;
+        this.$emit('select');
+      } else {
+        deselectAll();
+        this.$emit('deselect');
+      }
+      
     },
 
     getIngredientById: function (id) {
@@ -49,20 +58,6 @@ var readymadeDrinks = Vue.component('readymadedrink', {
         return this.getIngredientById(id)["ingredient_" + this.lang];
       }.bind(this)).join(", ");
     },
-
-   /* getIngredientById: function (id, totalIngredients) {
-      for (var i =0; i < totalIngredients.length; i += 1) {
-        if (totalIngredients[i].ingredient_id === id){
-          return totalIngredients[i];
-        }
-      }
-    },
-
-    getIngredientNameList: function (idArr, totalIngredients) {
-      return idArr.map(function(id, totalIngredients) {
-        return this.getIngredientById(id, totalIngredients)["ingredient_" + this.lang];
-      }.bind(this)).join(", ");
-    },*/
   }
 });
 
@@ -174,7 +169,9 @@ var vm = new Vue({
     },
 
     initButtons: function () {
-
+      var rmdrinks = vm.$refs.readymadedrink;
+      
+      console.log("Testing component: " + rmdrinks[0].$data.isSelected);
     },
 
     setSelectedProduct: function (_product) {
@@ -185,6 +182,8 @@ var vm = new Vue({
         this.productName = "Custom Smoothie" 
       } else if (_product === "customJuice") {
         this.productName = "Custom Juice";
+      } else if (_product === undefined) {
+        this.selectedProduct = undefined;
       } else {
         this.selectedProduct = _product;
       }
@@ -321,6 +320,15 @@ var vm = new Vue({
     }
   }
 });
+
+function deselectAll () {
+  var rmdrinks = vm.$refs.readymadedrink;
+  var i;
+  console.log("Deselecting!")
+  for (i = 0; i < rmdrinks.length; i++) {
+    rmdrinks[i].$data.isSelected = false;
+  }
+}
 
 
 //tillagt!!!! 

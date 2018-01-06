@@ -131,7 +131,7 @@
     </div>
 
 <div class="testDiv" style="height: 20vh;">
-<button>
+<button v-on:click="initButtons()">
     Squeeze Your Own!
 </button>
 
@@ -157,7 +157,8 @@
         <readymadedrink
           ref="readymadedrink"
           v-for="product in readymade"
-          v-on:showIngredients="getIngredientNameList(product[rm_ingredients])"
+          v-on:select="setSelectedProduct(product)"
+          v-on:deselect="setSelectedProduct(null)"
           :ingredients="ingredients"
           :product="product"
           :lang="lang"
