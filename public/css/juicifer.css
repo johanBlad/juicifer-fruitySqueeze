@@ -39,6 +39,14 @@ summary::-webkit-details-marker {display: none}
 summary:before{border-radius: 5px; content: "+"; color: #363636; display: block; float: left; font-size: 1.5em; font-weight: bold; margin: -2px 10px 0 10px; padding: 0; text-align: center; width: 20px;}
 details[open] summary:before {content: "-"; margin-top: -4px;}
 
+.productSelected {
+    background-color: green;
+}
+
+.productButton {
+    
+}
+
 .sequenceSection {
 	height:100vh;
 	position: relative;
@@ -540,5 +548,32 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 #main {
     height: 700px;
 }
+
+#stock-wrapper{
+    overflow: auto;
+}
+
+#stockIngredients{
+    display: inline-block;
+    width: 20%;
+    margin-left: 40px;
+    margin-bottom: 20px;
+}
+
+#stockQuantity{
+    display: inline-block;
+    text-align: center;
+    width: 20%;
+    margin-bottom: 20px;
+}
+
+/*
+#smoothieCircle{
+    display:inline-block;
+    width: 900px; 
+    height: 500px; 
+    margin-left: 100px;
+    
+}*/
 
 /* ---------- slut på kitchen -------- */
