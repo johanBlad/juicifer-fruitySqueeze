@@ -63,7 +63,7 @@
     </div>
     <div class="mainDiv">
         <div class="buttonDiv">
-            <button class="chooseButtons" v-on:click= "chooseSize(30, 'Small')"><img src="https://png.icons8.com/ios/540/milkshake.png" width="100" class="icon"></button>
+            <button class="chooseButtons" v-on:click= "chooseSize(30, 'Small', 1)"><img src="https://png.icons8.com/ios/540/milkshake.png" width="100" class="icon"></button>
         </div>
         <div class="ingridientDiv">
             <p>
@@ -78,7 +78,7 @@
     </div>
     <div class="mainDiv">
         <div class="buttonDiv">
-            <button class="chooseButtons" v-on:click= "chooseSize(40, 'Medium')"><img src="https://png.icons8.com/ios/540/milkshake.png" width=120 class="icon"></button>
+            <button class="chooseButtons" v-on:click= "chooseSize(40, 'Medium', 1)"><img src="https://png.icons8.com/ios/540/milkshake.png" width=120 class="icon"></button>
         </div>
         <div class="ingridientDiv">
             <p>
@@ -93,7 +93,7 @@
     </div>
     <div class="mainDiv">
         <div class="buttonDiv">
-            <button class="chooseButtons" v-on:click= "chooseSize(50, 'Large')"><img src="https://png.icons8.com/ios/540/milkshake.png" width="140" class="icon"></button>
+            <button class="chooseButtons" v-on:click= "chooseSize(50, 'Large', 1)"><img src="https://png.icons8.com/ios/540/milkshake.png" width="140" class="icon"></button>
         </div>
         <div class="ingridientDiv">
             <p>
@@ -129,7 +129,7 @@
     </div>
     <div class="mainDiv">
         <div class="buttonDiv">
-            <button class="chooseButtons" v-on:click= "chooseSize(30, 'Small')"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="70" class="icon"></button>
+            <button class="chooseButtons" v-on:click= "chooseSize(30, 'Small', 2)"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="70" class="icon"></button>
         </div>
         <div class="ingridientDiv">
             <p>
@@ -143,7 +143,7 @@
     </div>
     <div class="mainDiv">
         <div class="buttonDiv">
-            <button class="chooseButtons" v-on:click= "chooseSize(40, 'Medium')"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width=90 class="icon"></button>
+            <button class="chooseButtons" v-on:click= "chooseSize(40, 'Medium', 2)"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width=90 class="icon"></button>
         </div>
         <div class="ingridientDiv">
             <p>
@@ -157,7 +157,7 @@
     </div>
     <div class="mainDiv">
         <div class="buttonDiv">
-            <button class="chooseButtons" v-on:click= "chooseSize(50, 'Large')"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="110" class="icon"></button>
+            <button class="chooseButtons" v-on:click= "chooseSize(50, 'Large', 2)"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="110" class="icon"></button>
         </div>
         <div class="ingridientDiv">
             <p>
@@ -331,8 +331,96 @@
       <div class="popup" onclick="popupFunction()">Change size
           <span class="popupcontent" id="myPopup">
               <p id="popupText">Changed your mind? No worries,<br> feel free to choose a new size below!<br>Current size: {{ size }}</p>
-              <button class="changeSize" id="firstButton" v-on:click="getNewSize('firstButton')"></button>
-              <button class="changeSize" id="secondButton" v-on:click="getNewSize('secondButton')"></button>
+              <button class="changeSize" id="firstButton" v-on:click="getNewSize('firstButton', 1)"></button>
+              <button class="changeSize" id="secondButton" v-on:click="getNewSize('secondButton', 1)"></button>
+          </span>
+      </div>
+  </div>
+  <div class="tableRow" style="bottom: 0; position: absolute;">
+      <div class="tableColumn" style="text-align: left;">
+        <button class="navButtons">&#8678;</button>
+        <label>Back</label>
+      </div>
+      <div class="tableColumn" style="text-align: center;">
+         {{ price }} kr  
+      </div>
+      <div class="tableColumn" style="text-align: right;">
+        <label>Squeeze it!</label>
+          <button class="navButtons" id="forwarButton" v-on:click= "addToOrder()">&#8680;</button> 
+      </div>
+    </div>
+  </div>
+
+
+<div id="juiceCustomize" class="sequenceSection">
+    <div class="headRow">
+        <div class="headColumn"><img src="https://i.imgur.com/86WLceg.png"></div>
+        <div class="headColumn"><h2>Custom juice</h2></div>
+        <div class="headColumn">
+            <button class="cancelButton"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
+        </div>
+    </div>
+    <div id="tooManyModal" class="modal">
+        <div class="modalContent">
+            <p>Oops! It looks like you have chosen too many ingredients for your selected size. Remove some or up the size of your order!</p>
+        </div>
+    </div>
+<div class="ingredientList">
+  <div class="tableRow">
+      <div class="tableColumn" style="text-align: left;">
+            <ul>Fruits &amp; Greens: ({{ counter2 }}/{{ fruits }})
+                <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 2">
+                    {{ item.ingredient_en }}
+                </li>
+            </ul>
+      </div>
+      <div class="tableColumn" style="text-align: left;">
+      </div>
+      <div class="tableColumn" style="text-align: left;">
+            <ul>Extras: ({{ counter3 }}/{{ extras }})
+                <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 3">
+                    {{ item.ingredient_en }}
+                </li>
+            </ul>
+      </div>
+    </div>
+    <div>   
+      <details>
+        <summary>Fruits &amp; Greens</summary>
+        <ingredient
+          ref="ingredient"
+          type="juice"
+          v-for="item in ingredients"
+          v-if="item.vol_juice > 0 && item.ingredient_type == 2"
+          v-on:increment="addIngredient(item, 'juice', 2)"
+          v-on:decrement="removeIngredient(item, 'juice', 2)"
+          :item="item"
+          :lang="lang"
+          :key="item.ingredient_id">
+        </ingredient>
+      </details>
+      <details>
+        <summary>Extras</summary>
+        <ingredient
+          ref="ingredient"
+          type="juice"
+          v-for="item in ingredients"
+          v-if="item.vol_juice > 0 && item.ingredient_type == 3"
+          v-on:increment="addIngredient(item, 'juice', 3)"
+          v-on:decrement="removeIngredient(item, 'juice', 3)"
+          :item="item"
+          :lang="lang"
+          :key="item.ingredient_id">
+        </ingredient>
+      </details>
+    </div>
+  </div>
+  <div id="sizeRectangle">
+      <div class="popup" onclick="popupFunction2()">Change size
+          <span class="popupcontent" id="myPopup2">
+              <p id="popupText">Changed your mind? No worries,<br> feel free to choose a new size below!<br>Current size: {{ size }}</p>
+              <button class="changeSize" id="firstButton" v-on:click="getNewSize('firstButton', 2)"></button>
+              <button class="changeSize" id="secondButton" v-on:click="getNewSize('secondButton', 2)"></button>
           </span>
       </div>
   </div>
