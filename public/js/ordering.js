@@ -388,7 +388,13 @@ var vm = new Vue({
       this.chosenIngredients = [];
       this.price = 0;
       this.volume = 0;
+      this.counter1 = 0;
+      this.counter2 = 0;
+      this.counter3 = 0;
       this.ok = true;
+      for (var i = 0; i < this.$refs.ingredient.length; i += 1) {
+        this.$refs.ingredient[i].resetCounter();
+      }
     },
 
     placeOrder: function () {
