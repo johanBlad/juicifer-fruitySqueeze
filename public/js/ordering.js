@@ -412,6 +412,7 @@ var vm = new Vue({
       this.chosenIngredients = [];
       this.price = 0;
       this.volume = 0;
+      this.size = '';
       this.counter1 = 0;
       this.counter2 = 0;
       this.counter3 = 0;
