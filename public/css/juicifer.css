@@ -166,9 +166,11 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     background-color: #33cc33;
     border-radius: 100%;
     border: none;
-    margin-top: 5px;
+    margin-top: 10%;
     text-align: center;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
+
 
 .chooseButtons:active {
     background-color: #339933;
@@ -348,6 +350,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     top: 200px;
     margin-top: 100px;
     margin-bottom: 100px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 } 
 
 /*Plussymbol för basket.html*/
@@ -387,6 +390,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     text-align: center;
 }
 
+
 /* Size of payment buttons till Payment.html*/
 .buttonDetails {
     font-family: Lobster;
@@ -396,6 +400,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     border: 2px solid #000000;
     text-align: left;
     font-size: 23pt;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 /* Decide position of Swish symbol till Payment.html*/

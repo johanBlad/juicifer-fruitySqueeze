@@ -101,10 +101,10 @@ Vue.component('ingredient', {
 });
 
 Vue.component('hotdrink', {
-    props: ['hotDrink', 'lang'],
+    props: ['item', 'lang'],
     template: ' <div class="coffees">\
                 <label>\
-                {{hotDrink["hd_name_"+ lang]}}\
+                {{item["hd_name_"+ lang]}}\
                 </label>\
                 <div style="float: right;">\
                 </label>\
@@ -113,7 +113,7 @@ Vue.component('hotdrink', {
                 <button class="minusButton" v-on:click="decreaseCounter">-</button>\
                 <button class="plusButton"  v-on:click="incrementCounter">+</button>\
                 <label style="margin-left: 10px;">\
-                {{hotDrink.selling_price_s}}:-\
+                {{item.selling_price_s}}:-\
                 </label>\
                 </div>\
                 </div>',
@@ -163,30 +163,55 @@ var vm = new Vue({
     totalPrice: 0,
     volume: 0,
     size: '',
+    base: 0,
+    fruits: 0,
+    extras: 0,
     basket: [],
     price: 0,
+    counter1: 0,
+    counter2: 0,
+    counter3: 0,
     availableProducts: [],
     selectedProduct: null,
     ok: false,
   },
   components: {readymadeDrinks: readymadeDrinks},
   methods: {
-    addIngredient: function (item, type) {
+    addIngredient: function (item, type, ing_type) {
       this.chosenIngredients.push(item);
-      this.price += +item.selling_price;   
+      this.price += +item.selling_price;
+      if (ing_type == 1) {
+            this.counter1 += 1; 
+      }
+      else if (ing_type == 2) {
+            this.counter2 += 1;
+      }
+      else {
+            this.counter3 += 1;
+      }
       console.log(item.ingredient_en) 
     },
 
-    removeIngredient: function (item) {
+    removeIngredient: function (item, type, ing_type) {
       var i;
       for (i = 0; i < this.chosenIngredients.length; i++) {
         if (this.chosenIngredients[i] === item) {
           this.chosenIngredients.splice(i, 1);
           this.price = this.price - item.selling_price;
+          if (ing_type == 1) {
+                this.counter1 -= 1; 
+            }
+            else if (ing_type == 2) {
+                this.counter2 -= 1;
+            }
+            else {
+                this.counter3 -= 1;
+      }
           break;
         }
       }
     },
+
 
     initButtons: function () {
       var rmdrinks = vm.$refs.readymadedrink;
@@ -226,6 +251,21 @@ var vm = new Vue({
       console.log(this.volume);
       console.log(this.size);
       setAlternativeSizes(this.volume);
+        if (selectedSize == 'Small') {
+            this.base = 1;
+            this.fruits = 2;
+            this.extras = 1;
+        }
+        else if (selectedSize == 'Medium') {
+            this.base = 2;
+            this.fruits = 3;
+            this.extras = 2;
+        }
+        else {
+            this.base = 3;
+            this.fruits = 4;
+            this.extras = 3;
+        }
     },
       
     getNewSize: function (selectedButton) {
@@ -245,6 +285,21 @@ var vm = new Vue({
         console.log(this.volume);
         console.log(this.size);
         setAlternativeSizes(this.volume);
+        if (newSize == 'Small') {
+            this.base = 1;
+            this.fruits = 2;
+            this.extras = 1;
+        }
+        else if (newSize == 'Medium') {
+            this.base = 2;
+            this.fruits = 3;
+            this.extras = 2;
+        }
+        else {
+            this.base = 3;
+            this.fruits = 4;
+            this.extras = 3;
+        }
     },
 
     confirmProductChoice: function () {

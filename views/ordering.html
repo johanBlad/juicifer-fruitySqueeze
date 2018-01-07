@@ -26,7 +26,7 @@
             <button class="chooseButtons"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="100" class="icon"></button>
         </div>
         <div class="headlineDiv">
-            <p>
+            <p style="font-size: 20pt;">
                 Juice
             </p>
         </div>
@@ -36,7 +36,7 @@
             <button class="chooseButtons"><img src="https://png.icons8.com/ios/540/milkshake.png" width=120 class="icon"></button>
         </div>
         <div class="headlineDiv">
-            <p>
+            <p style="font-size: 20pt;">
                 Smoothies
             </p>
         </div>
@@ -46,7 +46,7 @@
             <button class="chooseButtons"><img src="http://freevector.co/wp-content/uploads/2013/10/34819-hot-coffee-mug-outline.png" width="100" class="icon"></button>
         </div>
         <div class="headlineDiv">
-            <p>
+            <p style="font-size: 20pt;">
                 Hot Drinks
             </p>
         </div>
@@ -54,7 +54,7 @@
 </div>
 
 <div id="chooseSize" class="sequenceSection">
-      <div class="headRow">
+    <div class="headRow">
         <div class="headColumn"><img src="https://i.imgur.com/kj0zPIk.png"></div>
         <div class="headColumn"><h2>Choose size</h2></div>
         <div class="headColumn">
@@ -100,7 +100,7 @@
                 Large: 50 cl
                 <ul class="ingridientList">
                     <li>3 Base</li>
-                    <li>4 Fruie</li>
+                    <li>4 Fruit</li>
                     <li>3 Extra</li>
                 </ul>
             </p>
@@ -108,14 +108,14 @@
     </div>
     <div class="tableRow" style="bottom: 0; position: absolute;">
         <div class="tableColumn" style="text-align: left;">
-          <button class="navButtons">&lt;</button>
+          <button class="navButtons">&#8678;</button>
           <label>Back</label>
         </div>
         <div class="tableColumn" style="text-align: center;">
         </div>
         <div class="tableColumn" style="text-align: right;">
           <label>Next</label>
-          <button class="navButtons" id="forwarButton">&gt;</button> 
+          <button class="navButtons" id="forwarButton">&#8680;</button> 
         </div>
       </div>   
 </div>
@@ -170,14 +170,14 @@
 
 <div class="tableRow" style="bottom: 0; position: absolute;">
     <div class="tableColumn" style="text-align: left;">
-      <button class="navButtons">&lt;</button>
+      <button class="navButtons">&#8678;</button>
       <label>Back</label>
     </div>
     <div class="tableColumn" style="text-align: center;">
     </div>
     <div class="tableColumn" style="text-align: right;">
       <label>Next</label>
-      <button v-on:click="orderReadymade(selectedProduct)" class="navButtons" id="forwarButton" v-on:click= "addToOrder()">&gt;</button> 
+      <button v-on:click="orderReadymade(selectedProduct)" class="navButtons" id="forwarButton" v-on:click= "addToOrder()">&#8680;</button> 
     </div>
   </div>   
 </div>
@@ -194,21 +194,21 @@
 <div class="ingredientList">
   <div class="tableRow">
       <div class="tableColumn" style="text-align: left;">
-            <ul>
+            <ul>Base:({{ counter1 }}/{{ base }})
             <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 1">
                     {{ item.ingredient_en }}
             </li>
             </ul>
       </div>
       <div class="tableColumn" style="text-align: left;">
-            <ul>
+            <ul>Fruits &amp; Greens: ({{ counter2 }}/{{ fruits }})
             <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 2">
                     {{ item.ingredient_en }}
             </li>
             </ul>
       </div>
       <div class="tableColumn" style="text-align: left;">
-            <ul>
+            <ul>Extras: ({{ counter3 }}/{{ extras }})
             <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 3">
                     {{ item.ingredient_en }}
             </li>
@@ -223,8 +223,8 @@
           type="smoothie"
           v-for="item in ingredients"
           v-if="item.vol_smoothie > 0 && item.ingredient_type == 1"
-          v-on:increment="addIngredient(item, 'smoothie')"
-          v-on:decrement="removeIngredient(item, 'smoothie')"
+          v-on:increment="addIngredient(item, 'smoothie', 1)"
+          v-on:decrement="removeIngredient(item, 'smoothie', 1)"
           :item="item"
           :lang="lang"
           :key="item.ingredient_id">
@@ -237,8 +237,8 @@
           type="smoothie"
           v-for="item in ingredients"
           v-if="item.vol_smoothie > 0 && item.ingredient_type == 2"
-          v-on:increment="addIngredient(item, 'smoothie')"
-          v-on:decrement="removeIngredient(item, 'smoothie')"
+          v-on:increment="addIngredient(item, 'smoothie', 2)"
+          v-on:decrement="removeIngredient(item, 'smoothie', 2)"
           :item="item"
           :lang="lang"
           :key="item.ingredient_id">
@@ -251,8 +251,8 @@
           type="smoothie"
           v-for="item in ingredients"
           v-if="item.vol_smoothie > 0 && item.ingredient_type == 3"
-          v-on:increment="addIngredient(item, 'smoothie')"
-          v-on:decrement="removeIngredient(item, 'smoothie')"
+          v-on:increment="addIngredient(item, 'smoothie', 3)"
+          v-on:decrement="removeIngredient(item, 'smoothie', 3)"
           :item="item"
           :lang="lang"
           :key="item.ingredient_id">
@@ -263,7 +263,7 @@
   <div id="sizeRectangle">
       <div class="popup" onclick="popupFunction()">Change size
           <span class="popupcontent" id="myPopup">
-              <p id="popupText">Changed your mind? No worries,<br> feel free to choose a new size below!</p>
+              <p id="popupText">Changed your mind? No worries,<br> feel free to choose a new size below!<br>Current size: {{ size }}</p>
               <button class="changeSize" id="firstButton" v-on:click="getNewSize('firstButton')"></button>
               <button class="changeSize" id="secondButton" v-on:click="getNewSize('secondButton')"></button>
           </span>
@@ -271,7 +271,7 @@
   </div>
   <div class="tableRow" style="bottom: 0; position: absolute;">
       <div class="tableColumn" style="text-align: left;">
-        <button class="navButtons">&lt;</button>
+        <button class="navButtons">&#8678;</button>
         <label>Back</label>
       </div>
       <div class="tableColumn" style="text-align: center;">
@@ -279,7 +279,7 @@
       </div>
       <div class="tableColumn" style="text-align: right;">
         <label>Squeeze it!</label>
-        <button class="navButtons" id="forwarButton" v-on:click= "addToOrder()">&gt;</button> 
+          <button class="navButtons" id="forwarButton" v-on:click= "addToOrder()">&#8680;</button> 
       </div>
     </div>
   </div>
@@ -299,13 +299,23 @@
         <div class="hotDrinkSizeColumn">Medium</div>
         <div class="hotDrinkSizeColumn">Large</div>
     </div>
+
+    <!--<div v-for="item in hotdrinks">   
+        <div class="premadeHotDrinks">
+            <label>
+                {{ item.hd_id }}
+                {{ item.hd_name_en }}   
+            </label>
+        </div>
+    </div>
+    
     <hotdrink
           ref="hotdrink"
           type="coffee"
-          v-for="hotDrink in hotdrinks"
-          :hotDrink="hotDrink"
+          v-for="item in hotdrinks"
+          :item="item"
           :lang="lang"
-          :key="hotDrink.hd_id">
+          :key="item.hd_id">
     </hotdrink>
         
         <!--<table id="hotDrinksTable">
@@ -360,7 +370,7 @@
         <div id="basketContent">
             <div id="basketAdd" v-if="basket != []" style="text-align: left;">
                 <div v-for="product in basket" style="padding-left: 10px;">
-                    {{ product.quantity }}, {{ product.productName }}, {{ product.volume }} ml, {{ product.quantity * product.price }}
+                    {{ product.quantity }}, {{ product.productName }}, {{ product.volume }} cl, {{ product.quantity * product.price }} kr
                     <button type="submit" id="editButton">&#9998</button>
                     <button v-on:click="removeProduct(product)" type="submit" class="minusButton">&#8722</button>
                     <button v-on:click="addAdditional(product)" type="submit" class="plusButton">&#43</button>
@@ -374,7 +384,7 @@
         <div>
             <div class="headRow1">
                 <div class="headColumn1">
-                    <h2>Subtotal: {{ totalPrice }}:- </h2>
+                    <h2>Subtotal: {{ totalPrice }} kr </h2>
                 </div>
                 <div class="headColumn1"></div>
                 <div class="headColumn1">
@@ -422,7 +432,7 @@
         </div>
     </div>
         <section>
-            <h2 align=center>Total: </h2>
+            <h2 align=center>Total: {{ totalPrice }} kr</h2>
             <div class=paymentButtons>
                 <button type="submit" class="buttonDetails">
                     <p>Pay with Swish</p>
@@ -442,7 +452,7 @@
 
 <div class="sequenceSection">
         <div id="orderPlaced">
-            <h1>Your order has <br> been placed!<br>Order number: </h1>
+            <h1>Your order has <br> been placed!<br>Your order number is: </h1>
         </div>
         <div id="numberBox"></div>
         <p id="finished">Enjoy!</p>
