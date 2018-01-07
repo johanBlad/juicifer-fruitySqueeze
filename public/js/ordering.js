@@ -354,30 +354,31 @@ var vm = new Vue({
       console.log("------SQUEEZE IT!------");
 
       var productToAdd = wrapProduct(this.chosenIngredients, this.price, this.volume, this.productType, this.productName);
-      if (this.basket.length != 0) {
-        console.log("In the first If..")
-        for (var i = 0; i < this.basket.length; i++) {
-          if (productToAdd.productName == this.basket[i].productName && 
+      console.log(productToAdd.productName); 
+      console.log("BASKET SIZE: " + this.basket.length); 
+      var basketSize = this.basket.length;
+
+      if (basketSize != 0) {
+        var i;
+        var existingProduct = false;
+        for (i = 0; i < basketSize; i++) {
+          if (productToAdd.productName != "dummyName" &&
+              productToAdd.productName == this.basket[i].productName && 
               productToAdd.volume == this.basket[i].volume) {
-                console.log("In the if-statement")
-              if (productToAdd.productName != "dummyName") {
+                existingProduct = true;
                 this.basket[i].quantity++;
-                console.log("In the wrong place")
-              } else {
-                //Right now there is no functionality for incrementing the quantity of identical "Squeeze your own" smoothies
-                //This should be added here.
-                this.basket.push(productToAdd);
-                console.log("Pushing product (from within)");
-              }
-          } else {
-              console.log("Pushing product");
-              this.basket.push(productToAdd);
+                console.log("Increasing 'quantity' of: " + this.basket[i].productName);
               }
         }
-    } else {
-      console.log("Pushing...")
-       this.basket.push(productToAdd);
-    }
+        if (!existingProduct) {
+          this.basket.push(productToAdd);
+          console.log("Adding new product to basket: " + productToAdd.productName);
+        }
+      } else {
+        this.basket.push(productToAdd);
+        console.log("Adding first product to basket: " + productToAdd.productName);
+      }
+
       this.totalPrice = this.totalPrice + this.price;
       console.log('--------TEST BASKET---------');
       console.log('Total price in basket: ' + this.totalPrice);
@@ -386,6 +387,7 @@ var vm = new Vue({
       }
       this.productType = '';
       this.chosenIngredients = [];
+      this.productName = 'dummyName';
       this.price = 0;
       this.volume = 0;
       this.ok = true;
