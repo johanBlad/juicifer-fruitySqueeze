@@ -178,18 +178,19 @@ var vm = new Vue({
   components: {readymadeDrinks: readymadeDrinks},
   methods: {
     addIngredient: function (item, type, ing_type) {
-      this.chosenIngredients.push(item);
-      this.price += +item.selling_price;
-      if (ing_type == 1) {
-            this.counter1 += 1; 
-      }
-      else if (ing_type == 2) {
-            this.counter2 += 1;
-      }
-      else {
-            this.counter3 += 1;
-      }
-      console.log(item.ingredient_en) 
+      
+          this.chosenIngredients.push(item);
+          this.price += +item.selling_price;
+          if (ing_type == 1) {
+                this.counter1 += 1; 
+          }
+          else if (ing_type == 2) {
+                this.counter2 += 1;
+          }
+          else {
+                this.counter3 += 1;
+          }
+          console.log(item.ingredient_en) 
     },
 
     removeIngredient: function (item, type, ing_type) {

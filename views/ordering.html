@@ -135,7 +135,7 @@
             <p>
                 Small: 30 cl
                 <ul class="ingridientList">
-                    <li>3 Fruits &amp; greens</li>
+                    <li>3 Fruits &amp; Greens</li>
                     <li>1 Extra</li>
                 </ul>
             </p>
@@ -149,7 +149,7 @@
             <p>
                 Medium: 40 cl
                 <ul class="ingridientList">
-                    <li>5 Fruits &amp; greens</li>
+                    <li>5 Fruits &amp; Greens</li>
                     <li>2 Extra</li>
                 </ul>
             </p>
@@ -163,7 +163,7 @@
             <p>
                 Large: 50 cl
                 <ul class="ingridientList">
-                    <li>7 Fruits &amp; greens</li>
+                    <li>7 Fruits &amp; Greens</li>
                     <li>2 Extra</li>
                 </ul>
             </p>
@@ -171,14 +171,14 @@
     </div>
     <div class="tableRow" style="bottom: 0; position: absolute;">
         <div class="tableColumn" style="text-align: left;">
-          <button class="navButtons">&lt;</button>
+          <button class="navButtons">&#8678;</button>
           <label>Back</label>
         </div>
         <div class="tableColumn" style="text-align: center;">
         </div>
         <div class="tableColumn" style="text-align: right;">
           <label>Next</label>
-          <button class="navButtons" id="forwarButton">&gt;</button> 
+          <button class="navButtons" id="forwarButton">&#8680;</button> 
         </div>
       </div>   
 </div>
@@ -255,30 +255,30 @@
     </div>
     <div id="tooManyModal" class="modal">
         <div class="modalContent">
-            <p>Oops! It looks like you have chosen too many ingridients for your selected size. Remove some or up the size of your order!</p>
+            <p>Oops! It looks like you have chosen too many ingredients for your selected size. Remove some or up the size of your order!</p>
         </div>
     </div>
 <div class="ingredientList">
   <div class="tableRow">
       <div class="tableColumn" style="text-align: left;">
             <ul>Base:({{ counter1 }}/{{ base }})
-            <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 1">
+                <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 1">
                     {{ item.ingredient_en }}
-            </li>
+                </li>
             </ul>
       </div>
       <div class="tableColumn" style="text-align: left;">
             <ul>Fruits &amp; Greens: ({{ counter2 }}/{{ fruits }})
-            <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 2">
+                <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 2">
                     {{ item.ingredient_en }}
-            </li>
+                </li>
             </ul>
       </div>
       <div class="tableColumn" style="text-align: left;">
             <ul>Extras: ({{ counter3 }}/{{ extras }})
-            <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 3">
+                <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 3">
                     {{ item.ingredient_en }}
-            </li>
+                </li>
             </ul>
       </div>
     </div>
