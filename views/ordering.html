@@ -524,11 +524,11 @@
     </div>
         <div id="basketContent">
             <div id="basketAdd" v-if="basket != []" style="text-align: left;">
-                <div v-for="product in basket" style="padding-left: 10px;">
+                <div v-for="product in basket" style="padding-left: 10px; font-size: 20pt;">
                     {{ product.quantity }}, {{ product.productName }}, {{ product.volume }} cl, {{ product.quantity * product.price }} kr
-                    <button type="submit" id="editButton">&#9998</button>
-                    <button v-on:click="removeProduct(product)" type="submit" class="minusButton">&#8722</button>
-                    <button v-on:click="addAdditional(product)" type="submit" class="plusButton">&#43</button>
+                    <button v-on:click="addAdditional(product)" type="submit" class="plusButton" style="float: right">&#43;</button>
+                    <button v-on:click="removeProduct(product)" type="submit" class="minusButton"  style="float: right">&#8722;</button>
+                    <button type="submit" id="editButton" style="float: right">&#9998;</button>
                 </div>
             </div>
         </div>
@@ -543,7 +543,7 @@
                 </div>
                 <div class="headColumn1"></div>
                 <div class="headColumn1">
-                    <button v-on:click="placeOrder()" type="submit" id="goPayment">Payment &#10161</button>
+                    <button v-on:click="placeOrder()" type="submit" id="goPayment">Payment &#10161;</button>
                 </div>
             </div>
         </div>
