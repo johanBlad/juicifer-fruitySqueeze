@@ -25,11 +25,14 @@ Vue.component('order-item-to-prepare', {
          </div>',
   methods: {
     orderDone: function () {
-        this.$emit('done');
+        this.$emit('done'); 
     },
     cancelOrder: function () {
         this.$emit('cancel');
-    }
+    },
+    /*sendToHistory: function(){
+        socket.emit('done',orderid);
+    }*/
   }
 });
 
@@ -105,7 +108,6 @@ var vm = new Vue({
 
     })
 
-//Göra en ny vue component som heter typ total order, för alla objekt som är i en order
 
 var vm = new Vue({
   el: '#main',
