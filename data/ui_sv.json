@@ -16,7 +16,8 @@
   "stock" : "Lager",
   "history" : "Historia",
   "currentOrders" : "Beställningar",
-    "stockQuantity" : "Lager"
+  "stockQuantity" : "Lager",
+  "popularIngredients": "Mest populära ingredienser"
 }
 
 

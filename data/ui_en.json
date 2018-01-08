@@ -16,5 +16,6 @@
   "stock": "Stock",
   "history" : "History",
   "currentOrders" : "Orders",
-    "stockQuantity" : "Quantity"
+  "stockQuantity" : "Quantity",
+  "popularIngredients": "Most popular ingredients"
 }
