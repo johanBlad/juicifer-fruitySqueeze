@@ -16,9 +16,9 @@
   <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
 
 <div id="chooseProduct" class="sequenceSection">
-    <div class="headRow">
+    <div class="headRow1">
         <div class="headColumn"></div>
-        <div class="headColumn"><h1 id="frontPageTitle">Juicifer Craft Beverages</h1></div>
+        <div class="headColumn"><h1>Juicifer Craft Beverages</h1></div>
         <div class="headColumn"></div>
     </div>
     <div class="mainDiv">
@@ -233,7 +233,7 @@
 
 <div class="tableRow" style="bottom: 0; position: absolute;">
     <div class="tableColumn" style="text-align: left;">
-      <button class="navButtons">&#8678;</button>
+      <button class="navButtons" id="backButton">&#8678;</button>
       <label>Back</label>
     </div>
     <div class="tableColumn" style="text-align: center;">
@@ -472,7 +472,20 @@
           :item="item"
           :lang="lang"
           :key="item.hd_id">
-    </hotdrink>
+    </hotdrink>-->
+
+<div class="tableRow" style="bottom: 0; position: absolute;">
+    <div class="tableColumn" style="text-align: left;">
+      <button class="navButtons" id="backButton">&#8678;</button>
+      <label>Back</label>
+    </div>
+    <div class="tableColumn" style="text-align: center;">
+    </div>
+    <div class="tableColumn" style="text-align: right;">
+      <label>Next</label>
+      <button v-on:click="orderReadymade(selectedProduct)" class="navButtons" id="forwardButton" v-on:click= "addToOrder()">&#8680;</button> 
+    </div>
+  </div>
         
         <!--<table id="hotDrinksTable">
             <tr>

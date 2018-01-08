@@ -343,9 +343,10 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     margin-bottom: 50px;
 }
 
-#frontPageTitle {
-    text-shadow: 5px 5px 10px grey;
-}
+/*#frontPageTitle {
+    text-shadow: 2px 2px 20px grey;
+}*/
+
 #squeezeOwnButton {
     font-family: Lobster;
     font-size: 22pt;
