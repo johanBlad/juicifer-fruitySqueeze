@@ -136,11 +136,13 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 }
 
 .modalContent {
+    font-size: 20pt;
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
-    border: 1px solid #888;
-    width: 30%;
+    border: 6px solid #000000;
+    border-radius: 20px;
+    width: 40%;
 }
 
 
@@ -337,6 +339,25 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 }
 
 /*Adam*/
+
+#langButton {
+    font-family: Lobster;
+    font-size: 14pt;
+    width: 15%;
+    border-radius: 20px;
+    border: 1px solid #000000;
+    margin-top: 1%;
+    margin-left: 1%;
+    background-color: azure;
+}
+
+#closeModal {
+    color: #aaaaaa;
+    float: right;
+    font-size: 40px;
+    font-weight: bold;
+}
+
 /* Size of payment buttons till Payment.html*/
 #basketAdd {
     text-align: right;
@@ -347,6 +368,10 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     text-shadow: 2px 2px 20px grey;
 }*/
 
+#menu {
+    position: fixed;
+    top: 20%;
+}
 #squeezeOwnButton {
     font-family: Lobster;
     font-size: 22pt;
