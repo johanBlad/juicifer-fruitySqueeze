@@ -86,6 +86,7 @@ Data.prototype.initializeData = function (table) {
 Data.prototype.addOrder = function (order) {
   this.orders[order.orderId] = order.order;
   this.orders[order.orderId].done = false;
+  this.orders[order.orderId].cancel = false;
   var transactions = this.data[transactionsDataName],
     //find out the currently highest transaction id
     transId =  transactions[transactions.length - 1].transaction_id,
@@ -120,18 +121,6 @@ Data.prototype.makeTransaction = function(order,changeUnit){
 
 */
 
-/*
-
-  Adds an order to to the queue and makes an withdrawal from the
-  stock. If you have time, you should think a bit about whether
-  this is the right moment to do this... Den var inte här -- flyttad?? 
-
-Data.prototype.addOrder = function (order) {
-  this.orders[order.orderId] = order.order;
-  this.orders[order.orderId].done = false;
-  this.makeTransaction(order.order, -1)
-  
-};      */
 
 Data.prototype.getAllOrders = function () {
   return this.orders;
@@ -143,7 +132,8 @@ Data.prototype.markOrderDone = function (orderId) {
 
 /*denna kallar på makeTransaction som ju är borttagen(borkommenterad - se ovan) Hur löser vi det??? */
 Data.prototype.cancelOrder = function (orderId) {
-  this.orders[orderId].done = true;
+  //this.orders[orderId].done = true;
+  this.orders[orderId].cancel = true;
   /*raden under här är det som kallar på maketransaction
   this.makeTransaction(this.orders[orderId], 1)*/
 };
@@ -183,6 +173,7 @@ io.on('connection', function (socket) {
   // when order is marked as done, send updated queue to all connected clients
   socket.on('orderDone', function (orderId) {
     data.markOrderDone(orderId);
+    
     io.emit('currentQueue', {orders: data.getAllOrders() });
   });
     
@@ -191,6 +182,8 @@ io.on('connection', function (socket) {
     io.emit('currentQueue', {orders: data.getAllOrders(),
                             ingredients: data.getIngredients(),
                             readymade: data.getReadymade() });
+        
+        
   });
     
     
