@@ -82,7 +82,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 .tableColumn {
 	display: table-cell;
 	/*text-align: center;*/
-    border-style: dotted;
+    font-size: 12pt;
 }
 
 .hotDrinkTableRow {
@@ -136,11 +136,13 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 }
 
 .modalContent {
+    font-size: 20pt;
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
-    border: 1px solid #888;
-    width: 30%;
+    border: 6px solid #000000;
+    border-radius: 20px;
+    width: 40%;
 }
 
 
@@ -176,6 +178,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     background-color: red;
     border-radius: 10px;
     border: none;
+    font-size: 10pt;
 }
 
 .cancelButton:active {
@@ -223,16 +226,27 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 
 .navForward {
     margin-left: 83%;
+    margin-right: 3%;
 }
 .navButtons {
     width: 50px;
     height: 50px;
     background-color: #33cc33;
     border-radius: 100%;
-    border: none;
-    font-size: 20px;
+    font-size: 30px;
     color: white;
+    border: 1px solid #000000;
+    margin-top: 3%;
 }
+
+#backButton {
+    margin-left: 5%;
+}
+
+#forwardButton {
+    margin-right: 5%;
+}
+
 
 .navButtons:active {
     background-color:#339933;
@@ -325,10 +339,49 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 }
 
 /*Adam*/
+
+#langButton {
+    font-family: Lobster;
+    font-size: 14pt;
+    width: 15%;
+    border-radius: 20px;
+    border: 1px solid #000000;
+    margin-top: 1%;
+    margin-left: 1%;
+    background-color: azure;
+}
+
+#closeModal {
+    color: #aaaaaa;
+    float: right;
+    font-size: 40px;
+    font-weight: bold;
+}
+
 /* Size of payment buttons till Payment.html*/
 #basketAdd {
     text-align: right;
     margin-bottom: 50px;
+}
+
+/*#frontPageTitle {
+    text-shadow: 2px 2px 20px grey;
+}*/
+
+#menu {
+    position: fixed;
+    top: 20%;
+}
+#squeezeOwnButton {
+    font-family: Lobster;
+    font-size: 22pt;
+    margin-left: 23%;
+    margin-top: 3%;
+    border-radius: 20px;
+    height: 50px;
+    width: 300px;
+    border: 2px solid #000000;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 #editButton {
