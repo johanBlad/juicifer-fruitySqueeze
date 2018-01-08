@@ -104,7 +104,7 @@ Vue.component('ingredient', {
 Vue.component('cancelmodal', {
     template: ' <div id="cancelModal" class="modal">\
                     <div class="modalContent">\
-                        <p>&#10071; Are you sure you want to cancel your order&#10071;</p>\
+                        <p>&#10071; Are you sure you want to cancel the order? &#10071;</p>\
                         <button class="modalButtons" id="exit" style="background-color:#ADFF2F;">Yes</button><button class="modalButtons" id="noExit" style="background-color:#FF0000;">No</button>\
                     </div>\
                 </div>'
