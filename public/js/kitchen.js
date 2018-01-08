@@ -145,25 +145,27 @@ var vm = new Vue({
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
     
-    function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
-        ]);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+              ['Task', 'Hours per Day'],
+              ['Work',     11],
+              ['Eat',      2],
+              ['Commute',  2],
+              ['Watch TV', 2],
+              ['Sleep',    7]
+            ]);
 
-        var options = {
-          title: 'My Daily Activities'
-        };
+            var options = {
+              title: "Mest populära ingredienserna" // TODO: Hämta från uiLabels
+            };
+            
 
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            
+    var selection = chart.getSelection();
+            chart.draw(data, options);
 
-        chart.draw(data, options);
-      
-    }
+        }
         
     }
   }
