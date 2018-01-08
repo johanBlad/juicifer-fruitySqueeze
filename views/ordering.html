@@ -18,7 +18,7 @@
 <div id="chooseProduct" class="sequenceSection">
     <div class="headRow">
         <div class="headColumn"></div>
-        <div class="headColumn"><h1>Juicifer Craft Beverages</h1></div>
+        <div class="headColumn"><h1 id="frontPageTitle">Juicifer Craft Beverages</h1></div>
         <div class="headColumn"></div>
     </div>
     <div class="mainDiv">
@@ -108,14 +108,14 @@
     </div>
     <div class="tableRow" style="bottom: 0; position: absolute;">
         <div class="tableColumn" style="text-align: left;">
-          <button class="navButtons">&#8678;</button>
+          <button class="navButtons" id="backButton">&#8678;</button>
           <label>Back</label>
         </div>
         <div class="tableColumn" style="text-align: center;">
         </div>
         <div class="tableColumn" style="text-align: right;">
           <label>Next</label>
-          <button class="navButtons" id="forwarButton">&#8680;</button> 
+          <button class="navButtons" id="forwardButton">&#8680;</button> 
         </div>
       </div>   
 </div>
@@ -171,14 +171,14 @@
     </div>
     <div class="tableRow" style="bottom: 0; position: absolute;">
         <div class="tableColumn" style="text-align: left;">
-          <button class="navButtons">&#8678;</button>
+          <button class="navButtons" id="backButton">&#8678;</button>
           <label>Back</label>
         </div>
         <div class="tableColumn" style="text-align: center;">
         </div>
         <div class="tableColumn" style="text-align: right;">
           <label>Next</label>
-          <button class="navButtons" id="forwarButton">&#8680;</button> 
+          <button class="navButtons" id="forwardButton">&#8680;</button> 
         </div>
       </div>   
 </div>
@@ -193,16 +193,17 @@
     </div>
 
 <div class="testDiv" style="height: 20vh;">
-<button v-on:click="initButtons()">
+<button v-on:click="initButtons()" id="squeezeOwnButton">
     Squeeze Your Own!
 </button>
+    <p style="text-align: center; font-size: 16pt;">Choose from a wide variety of ingredients and customize your very own delicious smoothie. Great fun!</p>
 
 </div>
 <div class="ingredientList;">
     <div class="testDiv">
         <h2>Juicifer Specials</h2>
         <hr>
-        <div v-for="preparedDrink in readymade">
+        <!--<div v-for="preparedDrink in readymade">
             
             <div class="premadeDrink">
                 <label>
@@ -214,7 +215,7 @@
                 <button v-on:click="setSelectedProduct(preparedDrink)">BUY</button>
                 <br>
             </div>
-        </div>
+        </div>-->
 
         <readymadedrink
           ref="readymadedrink"
@@ -239,7 +240,7 @@
     </div>
     <div class="tableColumn" style="text-align: right;">
       <label>Next</label>
-      <button v-on:click="orderReadymade(selectedProduct)" class="navButtons" id="forwarButton" v-on:click= "addToOrder()">&#8680;</button> 
+      <button v-on:click="orderReadymade(selectedProduct)" class="navButtons" id="forwardButton" v-on:click= "addToOrder()">&#8680;</button> 
     </div>
   </div>   
 </div>
@@ -338,7 +339,7 @@
   </div>
   <div class="tableRow" style="bottom: 0; position: absolute;">
       <div class="tableColumn" style="text-align: left;">
-        <button class="navButtons">&#8678;</button>
+        <button class="navButtons" id="backButton">&#8678;</button>
         <label>Back</label>
       </div>
       <div class="tableColumn" style="text-align: center;">
@@ -346,7 +347,7 @@
       </div>
       <div class="tableColumn" style="text-align: right;">
         <label>Squeeze it!</label>
-          <button class="navButtons" id="forwarButton" v-on:click= "addToOrder()">&#8680;</button> 
+          <button class="navButtons" id="forwardButton" v-on:click= "addToOrder()">&#8680;</button> 
       </div>
     </div>
   </div>
@@ -426,7 +427,7 @@
   </div>
   <div class="tableRow" style="bottom: 0; position: absolute;">
       <div class="tableColumn" style="text-align: left;">
-        <button class="navButtons">&#8678;</button>
+        <button class="navButtons" id="backButton">&#8678;</button>
         <label>Back</label>
       </div>
       <div class="tableColumn" style="text-align: center;">
@@ -434,7 +435,7 @@
       </div>
       <div class="tableColumn" style="text-align: right;">
         <label>Squeeze it!</label>
-          <button class="navButtons" id="forwarButton" v-on:click= "addToOrder()">&#8680;</button> 
+          <button class="navButtons" id="forwardButton" v-on:click= "addToOrder()">&#8680;</button> 
       </div>
     </div>
   </div>
@@ -604,7 +605,7 @@
         </section>
     <div class="tableRow" style="bottom: 0; position: absolute;">
     <div class="tableColumn" style="text-align: left;">
-      <button class="navButtons">&#8678;</button>
+      <button class="navButtons" id="backButton">&#8678;</button>
       <label>Back</label>
     </div>
     <div class="tableColumn" style="text-align: center;">
