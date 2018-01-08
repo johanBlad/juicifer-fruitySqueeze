@@ -62,7 +62,7 @@ var readymadeDrinks = Vue.component('readymadedrink', {
 });
 
 Vue.component('ingredient', {
-  props: ['item', 'type', 'lang'],
+  props: ['item', 'lang'],
   template: ' <div class="ingredient">\
                   <label>\
                     {{item["ingredient_"+ lang]}}\
