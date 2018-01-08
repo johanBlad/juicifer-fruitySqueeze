@@ -65,6 +65,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     background-size: 60%;
 }
 
+
 .ingredientList {
 	height: 90vh;
 	overflow: auto;
@@ -89,14 +90,14 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     display: table;
     table-layout: auto;
     width: 100%;
-    height: 5vh;
-    border-spacing: 5px:
-        
+    height: 6vh;
+    /*border-spacing: 5px;*/
 }
 
 .hotDrinkNameColumn {
     display: table-cell;
-    border-style: dotted;
+    border: 2px solid; 
+    /*border-style: solid;*/
     background-color: #b3ff66;
     font-size: 20pt;
     width: 50%;
@@ -104,10 +105,10 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 
 .hotDrinkSizeColumn {
     display: table-cell;
-    border-style: dotted;
+    border: 2px solid;
     background-color: #b3ff66;
     font-size: 20pt;
-    width: 10%;
+    width: 15%;
 }
 .testDiv {
     /*border-style: dashed;*/
@@ -115,8 +116,11 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 }
 
 .premadeDrink {
-    border: dotted;
+    border: 2px solid;
     margin: 5px;
+    font-size: 14pt;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
 /*Calle*/ 
@@ -237,6 +241,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     color: white;
     border: 1px solid #000000;
     margin-top: 3%;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
 }
 
 #backButton {
@@ -369,7 +374,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     border-radius: 50px;
     border: 3px solid #000000;
     font-size: 16pt;
-    margin-top: 10px;
+    margin-top: 5%;
     margin-right: 10%;
 }
 

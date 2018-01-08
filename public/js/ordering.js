@@ -19,7 +19,7 @@ var readymadeDrinks = Vue.component('readymadedrink', {
   props: ['product', 'ingredients', 'lang'],
   template: ' <div class="premadeDrink">\
   <label>\
-  {{ product["rm_id"] }}\
+  {{ product["rm_id"] }}.\
   {{ product["rm_name"] }}\
   <br>\
   {{ getIngredientNameList(product["rm_ingredients"]) }}\
