@@ -178,19 +178,25 @@ var vm = new Vue({
   components: {readymadeDrinks: readymadeDrinks},
   methods: {
     addIngredient: function (item, type, ing_type) {
-      
-          this.chosenIngredients.push(item);
-          this.price += +item.selling_price;
-          if (ing_type == 1) {
+          if (ing_type == 1 && this.counter1 < this.base) {
                 this.counter1 += 1; 
+                this.chosenIngredients.push(item);
+                this.price += +item.selling_price;
           }
-          else if (ing_type == 2) {
+          else if (ing_type == 2 && this.counter2 < this.fruits) {
                 this.counter2 += 1;
+                this.chosenIngredients.push(item);
+                this.price += +item.selling_price;
           }
-          else {
+          else if (ing_type == 3 && this.counter3 < this.extras) {
                 this.counter3 += 1;
+                this.chosenIngredients.push(item);
+                this.price += +item.selling_price;
           }
-          console.log(item.ingredient_en) 
+        else {
+            showModal();
+        }
+          console.log(item.ingredient_en)
     },
 
     removeIngredient: function (item, type, ing_type) {
@@ -512,4 +518,18 @@ function checkTime(i) {
 function popupFunction() {
     var popup = document.getElementById("myPopup");
     popup.classList.toggle("show");
+}
+
+function showModal() {
+    var modal = document.getElementById('tooManyModal');
+    var span = document.getElementById("closeModal");
+    modal.style.display = 'block';
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
 }
