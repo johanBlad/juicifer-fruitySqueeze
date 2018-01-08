@@ -33,6 +33,7 @@ Vue.component('order-item-to-prepare', {
   }
 });
 
+//lägg till vue orderitem history
 
 Vue.component('stockItem', {
   props: ['item', 'type', 'lang'],
@@ -123,6 +124,7 @@ var vm = new Vue({
     sendCancel: function (orderid) {
       socket.emit("cancelOrder", orderid);
     },
+      
     showCurrentOrders: function(){
         this.currentOrdersShown = true;
         this.stockShown = false;

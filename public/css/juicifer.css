@@ -19,6 +19,12 @@ body {
 	width: 40em;
 }
 
+.coffees {
+	border: 1px solid #cdc;
+	padding: 1em;
+    font-size: 17px;
+}
+
 .ingredient {
 	border: 1px solid #cdc;
 	padding: 1em;
@@ -76,7 +82,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 .tableColumn {
 	display: table-cell;
 	/*text-align: center;*/
-    border-style: dotted;
+    font-size: 12pt;
 }
 
 .hotDrinkTableRow {
@@ -85,16 +91,23 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     width: 100%;
     height: 5vh;
     border-spacing: 5px:
+        
 }
 
 .hotDrinkNameColumn {
     display: table-cell;
     border-style: dotted;
+    background-color: #b3ff66;
+    font-size: 20pt;
+    width: 50%;
 }
 
 .hotDrinkSizeColumn {
     display: table-cell;
     border-style: dotted;
+    background-color: #b3ff66;
+    font-size: 20pt;
+    width: 10%;
 }
 .testDiv {
     border-style: dashed;
@@ -163,6 +176,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     background-color: red;
     border-radius: 10px;
     border: none;
+    font-size: 10pt;
 }
 
 .cancelButton:active {
@@ -175,9 +189,11 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     background-color: #33cc33;
     border-radius: 100%;
     border: none;
-    margin-top: 5px;
+    margin-top: 10%;
     text-align: center;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
+
 
 .chooseButtons:active {
     background-color: #339933;
@@ -208,16 +224,27 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 
 .navForward {
     margin-left: 83%;
+    margin-right: 3%;
 }
 .navButtons {
     width: 50px;
     height: 50px;
     background-color: #33cc33;
     border-radius: 100%;
-    border: none;
-    font-size: 20px;
+    font-size: 30px;
     color: white;
+    border: 1px solid #000000;
+    margin-top: 3%;
 }
+
+#backButton {
+    margin-left: 5%;
+}
+
+#forwardButton {
+    margin-right: 5%;
+}
+
 
 .navButtons:active {
     background-color:#339933;
@@ -316,6 +343,21 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     margin-bottom: 50px;
 }
 
+#frontPageTitle {
+    text-shadow: 5px 5px 10px grey;
+}
+#squeezeOwnButton {
+    font-family: Lobster;
+    font-size: 22pt;
+    margin-left: 23%;
+    margin-top: 3%;
+    border-radius: 20px;
+    height: 50px;
+    width: 300px;
+    border: 2px solid #000000;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
 #editButton {
     height: 40px;
     width: 50px;
@@ -357,6 +399,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     top: 200px;
     margin-top: 100px;
     margin-bottom: 100px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 } 
 
 /*Plussymbol för basket.html*/
@@ -396,6 +439,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     text-align: center;
 }
 
+
 /* Size of payment buttons till Payment.html*/
 .buttonDetails {
     font-family: Lobster;
@@ -405,6 +449,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     border: 2px solid #000000;
     text-align: left;
     font-size: 23pt;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 /* Decide position of Swish symbol till Payment.html*/

@@ -18,7 +18,7 @@
 <div id="chooseProduct" class="sequenceSection">
     <div class="headRow">
         <div class="headColumn"></div>
-        <div class="headColumn"><h1>Juicifer Craft Beverages</h1></div>
+        <div class="headColumn"><h1 id="frontPageTitle">Juicifer Craft Beverages</h1></div>
         <div class="headColumn"></div>
     </div>
     <div class="mainDiv">
@@ -26,7 +26,7 @@
             <button class="chooseButtons"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="100" class="icon"></button>
         </div>
         <div class="headlineDiv">
-            <p>
+            <p style="font-size: 20pt;">
                 Juice
             </p>
         </div>
@@ -36,7 +36,7 @@
             <button class="chooseButtons"><img src="https://png.icons8.com/ios/540/milkshake.png" width=120 class="icon"></button>
         </div>
         <div class="headlineDiv">
-            <p>
+            <p style="font-size: 20pt;">
                 Smoothies
             </p>
         </div>
@@ -46,7 +46,7 @@
             <button class="chooseButtons"><img src="http://freevector.co/wp-content/uploads/2013/10/34819-hot-coffee-mug-outline.png" width="100" class="icon"></button>
         </div>
         <div class="headlineDiv">
-            <p>
+            <p style="font-size: 20pt;">
                 Hot Drinks
             </p>
         </div>
@@ -54,7 +54,7 @@
 </div>
 
 <div id="chooseSize" class="sequenceSection">
-      <div class="headRow">
+    <div class="headRow">
         <div class="headColumn"><img src="https://i.imgur.com/kj0zPIk.png"></div>
         <div class="headColumn"><h2>Choose size</h2></div>
         <div class="headColumn">
@@ -63,7 +63,7 @@
     </div>
     <div class="mainDiv">
         <div class="buttonDiv">
-            <button class="chooseButtons" v-on:click= "chooseSize(30, 'Small')"><img src="https://png.icons8.com/ios/540/milkshake.png" width="100" class="icon"></button>
+            <button class="chooseButtons" v-on:click= "chooseSize(30, 'Small', 1)"><img src="https://png.icons8.com/ios/540/milkshake.png" width="100" class="icon"></button>
         </div>
         <div class="ingridientDiv">
             <p>
@@ -78,7 +78,7 @@
     </div>
     <div class="mainDiv">
         <div class="buttonDiv">
-            <button class="chooseButtons" v-on:click= "chooseSize(40, 'Medium')"><img src="https://png.icons8.com/ios/540/milkshake.png" width=120 class="icon"></button>
+            <button class="chooseButtons" v-on:click= "chooseSize(40, 'Medium', 1)"><img src="https://png.icons8.com/ios/540/milkshake.png" width=120 class="icon"></button>
         </div>
         <div class="ingridientDiv">
             <p>
@@ -93,7 +93,7 @@
     </div>
     <div class="mainDiv">
         <div class="buttonDiv">
-            <button class="chooseButtons" v-on:click= "chooseSize(50, 'Large')"><img src="https://png.icons8.com/ios/540/milkshake.png" width="140" class="icon"></button>
+            <button class="chooseButtons" v-on:click= "chooseSize(50, 'Large', 1)"><img src="https://png.icons8.com/ios/540/milkshake.png" width="140" class="icon"></button>
         </div>
         <div class="ingridientDiv">
             <p>
@@ -108,14 +108,14 @@
     </div>
     <div class="tableRow" style="bottom: 0; position: absolute;">
         <div class="tableColumn" style="text-align: left;">
-          <button class="navButtons">&lt;</button>
+          <button class="navButtons" id="backButton">&#8678;</button>
           <label>Back</label>
         </div>
         <div class="tableColumn" style="text-align: center;">
         </div>
         <div class="tableColumn" style="text-align: right;">
           <label>Next</label>
-          <button class="navButtons" id="forwarButton">&gt;</button> 
+          <button class="navButtons" id="forwardButton">&#8680;</button> 
         </div>
       </div>   
 </div>
@@ -129,13 +129,13 @@
     </div>
     <div class="mainDiv">
         <div class="buttonDiv">
-            <button class="chooseButtons" v-on:click= "chooseSize(30, 'Small')"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="70" class="icon"></button>
+            <button class="chooseButtons" v-on:click= "chooseSize(30, 'Small', 2)"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="70" class="icon"></button>
         </div>
         <div class="ingridientDiv">
             <p>
                 Small: 30 cl
                 <ul class="ingridientList">
-                    <li>3 Fruits &amp; greens</li>
+                    <li>3 Fruits &amp; Greens</li>
                     <li>1 Extra</li>
                 </ul>
             </p>
@@ -143,13 +143,13 @@
     </div>
     <div class="mainDiv">
         <div class="buttonDiv">
-            <button class="chooseButtons" v-on:click= "chooseSize(40, 'Medium')"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width=90 class="icon"></button>
+            <button class="chooseButtons" v-on:click= "chooseSize(40, 'Medium', 2)"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width=90 class="icon"></button>
         </div>
         <div class="ingridientDiv">
             <p>
                 Medium: 40 cl
                 <ul class="ingridientList">
-                    <li>5 Fruits &amp; greens</li>
+                    <li>5 Fruits &amp; Greens</li>
                     <li>2 Extra</li>
                 </ul>
             </p>
@@ -157,13 +157,13 @@
     </div>
     <div class="mainDiv">
         <div class="buttonDiv">
-            <button class="chooseButtons" v-on:click= "chooseSize(50, 'Large')"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="110" class="icon"></button>
+            <button class="chooseButtons" v-on:click= "chooseSize(50, 'Large', 2)"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="110" class="icon"></button>
         </div>
         <div class="ingridientDiv">
             <p>
                 Large: 50 cl
                 <ul class="ingridientList">
-                    <li>7 Fruits &amp; greens</li>
+                    <li>7 Fruits &amp; Greens</li>
                     <li>2 Extra</li>
                 </ul>
             </p>
@@ -171,14 +171,14 @@
     </div>
     <div class="tableRow" style="bottom: 0; position: absolute;">
         <div class="tableColumn" style="text-align: left;">
-          <button class="navButtons">&lt;</button>
+          <button class="navButtons" id="backButton">&#8678;</button>
           <label>Back</label>
         </div>
         <div class="tableColumn" style="text-align: center;">
         </div>
         <div class="tableColumn" style="text-align: right;">
           <label>Next</label>
-          <button class="navButtons" id="forwarButton">&gt;</button> 
+          <button class="navButtons" id="forwardButton">&#8680;</button> 
         </div>
       </div>   
 </div>
@@ -193,16 +193,17 @@
     </div>
 
 <div class="testDiv" style="height: 20vh;">
-<button v-on:click="initButtons()">
+<button v-on:click="initButtons()" id="squeezeOwnButton">
     Squeeze Your Own!
 </button>
+    <p style="text-align: center; font-size: 16pt;">Choose from a wide variety of ingredients and customize your very own delicious smoothie. Great fun!</p>
 
 </div>
 <div class="ingredientList;">
     <div class="testDiv">
         <h2>Juicifer Specials</h2>
         <hr>
-        <div v-for="preparedDrink in readymade">
+        <!--<div v-for="preparedDrink in readymade">
             
             <div class="premadeDrink">
                 <label>
@@ -214,7 +215,7 @@
                 <button v-on:click="setSelectedProduct(preparedDrink)">BUY</button>
                 <br>
             </div>
-        </div>
+        </div>-->
 
         <readymadedrink
           ref="readymadedrink"
@@ -232,14 +233,14 @@
 
 <div class="tableRow" style="bottom: 0; position: absolute;">
     <div class="tableColumn" style="text-align: left;">
-      <button class="navButtons">&lt;</button>
+      <button class="navButtons">&#8678;</button>
       <label>Back</label>
     </div>
     <div class="tableColumn" style="text-align: center;">
     </div>
     <div class="tableColumn" style="text-align: right;">
       <label>Next</label>
-      <button v-on:click="orderReadymade(selectedProduct)" class="navButtons" id="forwarButton" v-on:click= "addToOrder()">&gt;</button> 
+      <button v-on:click="orderReadymade(selectedProduct)" class="navButtons" id="forwardButton" v-on:click= "addToOrder()">&#8680;</button> 
     </div>
   </div>   
 </div>
@@ -255,30 +256,30 @@
     </div>
     <div id="tooManyModal" class="modal">
         <div class="modalContent">
-            <p>Oops! It looks like you have chosen too many ingridients for your selected size. Remove some or up the size of your order!</p>
+            <p>Oops! It looks like you have chosen too many ingredients for your selected size. Remove some or up the size of your order!</p>
         </div>
     </div>
 <div class="ingredientList">
   <div class="tableRow">
       <div class="tableColumn" style="text-align: left;">
-            <ul>
-            <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 1">
+            <ul>Base:({{ counter1 }}/{{ base }})
+                <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 1">
                     {{ item.ingredient_en }}
-            </li>
+                </li>
             </ul>
       </div>
       <div class="tableColumn" style="text-align: left;">
-            <ul>
-            <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 2">
+            <ul>Fruits &amp; Greens: ({{ counter2 }}/{{ fruits }})
+                <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 2">
                     {{ item.ingredient_en }}
-            </li>
+                </li>
             </ul>
       </div>
       <div class="tableColumn" style="text-align: left;">
-            <ul>
-            <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 3">
+            <ul>Extras: ({{ counter3 }}/{{ extras }})
+                <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 3">
                     {{ item.ingredient_en }}
-            </li>
+                </li>
             </ul>
       </div>
     </div>
@@ -290,22 +291,22 @@
           type="smoothie"
           v-for="item in ingredients"
           v-if="item.vol_smoothie > 0 && item.ingredient_type == 1"
-          v-on:increment="addIngredient(item, 'smoothie')"
-          v-on:decrement="removeIngredient(item, 'smoothie')"
+          v-on:increment="addIngredient(item, 'smoothie', 1)"
+          v-on:decrement="removeIngredient(item, 'smoothie', 1)"
           :item="item"
           :lang="lang"
           :key="item.ingredient_id">
         </ingredient>
       </details>    
       <details>
-        <summary>Fruits & Greens</summary>
+        <summary>Fruits &amp; Greens</summary>
         <ingredient
           ref="ingredient"
           type="smoothie"
           v-for="item in ingredients"
           v-if="item.vol_smoothie > 0 && item.ingredient_type == 2"
-          v-on:increment="addIngredient(item, 'smoothie')"
-          v-on:decrement="removeIngredient(item, 'smoothie')"
+          v-on:increment="addIngredient(item, 'smoothie', 2)"
+          v-on:decrement="removeIngredient(item, 'smoothie', 2)"
           :item="item"
           :lang="lang"
           :key="item.ingredient_id">
@@ -318,8 +319,8 @@
           type="smoothie"
           v-for="item in ingredients"
           v-if="item.vol_smoothie > 0 && item.ingredient_type == 3"
-          v-on:increment="addIngredient(item, 'smoothie')"
-          v-on:decrement="removeIngredient(item, 'smoothie')"
+          v-on:increment="addIngredient(item, 'smoothie', 3)"
+          v-on:decrement="removeIngredient(item, 'smoothie', 3)"
           :item="item"
           :lang="lang"
           :key="item.ingredient_id">
@@ -330,15 +331,15 @@
   <div id="sizeRectangle">
       <div class="popup" onclick="popupFunction()">Change size
           <span class="popupcontent" id="myPopup">
-              <p id="popupText">Changed your mind? No worries,<br> feel free to choose a new size below!</p>
-              <button class="changeSize" id="firstButton" v-on:click="getNewSize('firstButton')"></button>
-              <button class="changeSize" id="secondButton" v-on:click="getNewSize('secondButton')"></button>
+              <p id="popupText">Changed your mind? No worries,<br> feel free to choose a new size below!<br>Current size: {{ size }}</p>
+              <button class="changeSize" id="firstButton" v-on:click="getNewSize('firstButton', 1)"></button>
+              <button class="changeSize" id="secondButton" v-on:click="getNewSize('secondButton', 1)"></button>
           </span>
       </div>
   </div>
   <div class="tableRow" style="bottom: 0; position: absolute;">
       <div class="tableColumn" style="text-align: left;">
-        <button class="navButtons">&lt;</button>
+        <button class="navButtons" id="backButton">&#8678;</button>
         <label>Back</label>
       </div>
       <div class="tableColumn" style="text-align: center;">
@@ -346,10 +347,100 @@
       </div>
       <div class="tableColumn" style="text-align: right;">
         <label>Squeeze it!</label>
-        <button class="navButtons" id="forwarButton" v-on:click= "addToOrder()">&gt;</button> 
+          <button class="navButtons" id="forwardButton" v-on:click= "addToOrder()">&#8680;</button> 
       </div>
     </div>
   </div>
+
+
+<div id="juiceCustomize" class="sequenceSection">
+    <div class="headRow">
+        <div class="headColumn"><img src="https://i.imgur.com/86WLceg.png"></div>
+        <div class="headColumn"><h2>Custom juice</h2></div>
+        <div class="headColumn">
+            <button class="cancelButton"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
+        </div>
+    </div>
+    <div id="tooManyModal" class="modal">
+        <div class="modalContent">
+            <p>Oops! It looks like you have chosen too many ingredients for your selected size. Remove some or up the size of your order!</p>
+        </div>
+    </div>
+<div class="ingredientList">
+  <div class="tableRow">
+      <div class="tableColumn" style="text-align: left;">
+            <ul>Fruits &amp; Greens: ({{ counter2 }}/{{ fruits }})
+                <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 2">
+                    {{ item.ingredient_en }}
+                </li>
+            </ul>
+      </div>
+      <div class="tableColumn" style="text-align: left;">
+      </div>
+      <div class="tableColumn" style="text-align: left;">
+            <ul>Extras: ({{ counter3 }}/{{ extras }})
+                <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 3">
+                    {{ item.ingredient_en }}
+                </li>
+            </ul>
+      </div>
+    </div>
+    <div>   
+      <details>
+        <summary>Fruits &amp; Greens</summary>
+        <ingredient
+          ref="ingredient"
+          type="juice"
+          v-for="item in ingredients"
+          v-if="item.vol_juice > 0 && item.ingredient_type == 2"
+          v-on:increment="addIngredient(item, 'juice', 2)"
+          v-on:decrement="removeIngredient(item, 'juice', 2)"
+          :item="item"
+          :lang="lang"
+          :key="item.ingredient_id">
+        </ingredient>
+      </details>
+      <details>
+        <summary>Extras</summary>
+        <ingredient
+          ref="ingredient"
+          type="juice"
+          v-for="item in ingredients"
+          v-if="item.vol_juice > 0 && item.ingredient_type == 3"
+          v-on:increment="addIngredient(item, 'juice', 3)"
+          v-on:decrement="removeIngredient(item, 'juice', 3)"
+          :item="item"
+          :lang="lang"
+          :key="item.ingredient_id">
+        </ingredient>
+      </details>
+    </div>
+  </div>
+  <div id="sizeRectangle">
+      <div class="popup" onclick="popupFunction()">Change size
+          <span class="popupcontent" id="myPopup">
+              <p id="popupText">Changed your mind? No worries,<br> feel free to choose a new size below!<br>Current size: {{ size }}</p>
+              <button class="changeSize" id="firstButton" v-on:click="getNewSize('firstButton', 2)"></button>
+              <button class="changeSize" id="secondButton" v-on:click="getNewSize('secondButton', 2)"></button>
+          </span>
+      </div>
+  </div>
+  <div class="tableRow" style="bottom: 0; position: absolute;">
+      <div class="tableColumn" style="text-align: left;">
+        <button class="navButtons" id="backButton">&#8678;</button>
+        <label>Back</label>
+      </div>
+      <div class="tableColumn" style="text-align: center;">
+         {{ price }} kr  
+      </div>
+      <div class="tableColumn" style="text-align: right;">
+        <label>Squeeze it!</label>
+          <button class="navButtons" id="forwardButton" v-on:click= "addToOrder()">&#8680;</button> 
+      </div>
+    </div>
+  </div>
+
+
 <div id="hotDrinks" class="sequenceSection">
         <div class="headRow">
         <div class="headColumn"><img src="https://i.imgur.com/kj0zPIk.png"></div>
@@ -358,19 +449,30 @@
             <button class="cancelButton"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
         </div>
     </div>
-    <div class="hotDrinkTableRow" style="margin-top: 0">
-        <div class="hotDrinkNameColumn" style="background-color: #b3ff66;">Drink</div>
-        <div class="hotDrinkSizeColumn" style="background-color: #b3ff66;">Small</div>
-        <div class="hotDrinkSizeColumn" style="background-color: #b3ff66;">Medium</div>
-        <div class="hotDrinkSizeColumn" style="background-color: #b3ff66;">Large</div>
-    </div>
     <div class="hotDrinkTableRow">
-        <div class="hotDrinkNameColumn">Black Coffee</div>
-        <div class="hotDrinkSizeColumn">20 kr</div>
-        <div class="hotDrinkSizeColumn">25 kr</div>
-        <div class="hotDrinkSizeColumn">32 kr</div>
+        <div class="hotDrinkNameColumn">Drink</div>
+        <div class="hotDrinkSizeColumn">Small</div>
+        <div class="hotDrinkSizeColumn">Medium</div>
+        <div class="hotDrinkSizeColumn">Large</div>
+    </div>
+
+    <!--<div v-for="item in hotdrinks">   
+        <div class="premadeHotDrinks">
+            <label>
+                {{ item.hd_id }}
+                {{ item.hd_name_en }}   
+            </label>
+        </div>
     </div>
     
+    <hotdrink
+          ref="hotdrink"
+          type="coffee"
+          v-for="item in hotdrinks"
+          :item="item"
+          :lang="lang"
+          :key="item.hd_id">
+    </hotdrink>
         
         <!--<table id="hotDrinksTable">
             <tr>
@@ -423,11 +525,11 @@
     </div>
         <div id="basketContent">
             <div id="basketAdd" v-if="basket != []" style="text-align: left;">
-                <div v-for="product in basket" style="padding-left: 10px;">
-                    {{ product.quantity }}, {{ product.productName }}, {{ product.volume }} ml, {{ product.quantity * product.price }}
-                    <button type="submit" id="editButton">&#9998</button>
-                    <button v-on:click="removeProduct(product)" type="submit" class="minusButton">&#8722</button>
-                    <button v-on:click="addAdditional(product)" type="submit" class="plusButton">&#43</button>
+                <div v-for="product in basket" style="padding-left: 10px; font-size: 20pt;">
+                    {{ product.quantity }}, {{ product.productName }}, {{ product.volume }} cl, {{ product.quantity * product.price }} kr
+                    <button v-on:click="addAdditional(product)" type="submit" class="plusButton" style="float: right">&#43;</button>
+                    <button v-on:click="removeProduct(product)" type="submit" class="minusButton"  style="float: right">&#8722;</button>
+                    <button type="submit" id="editButton" style="float: right">&#9998;</button>
                 </div>
             </div>
         </div>
@@ -438,11 +540,11 @@
         <div>
             <div class="headRow1">
                 <div class="headColumn1">
-                    <h2>Subtotal: {{ totalPrice }}:- </h2>
+                    <h2>Subtotal: {{ totalPrice }} kr </h2>
                 </div>
                 <div class="headColumn1"></div>
                 <div class="headColumn1">
-                    <button v-on:click="placeOrder()" type="submit" id="goPayment">Payment &#10161</button>
+                    <button v-on:click="placeOrder()" type="submit" id="goPayment">Payment &#10161;</button>
                 </div>
             </div>
         </div>
@@ -486,7 +588,7 @@
         </div>
     </div>
         <section>
-            <h2 align=center>Total: </h2>
+            <h2 align=center>Total: {{ totalPrice }} kr</h2>
             <div class=paymentButtons>
                 <button type="submit" class="buttonDetails">
                     <p>Pay with Swish</p>
@@ -501,12 +603,23 @@
                 </button>
             </div>
         </section>
+    <div class="tableRow" style="bottom: 0; position: absolute;">
+    <div class="tableColumn" style="text-align: left;">
+      <button class="navButtons" id="backButton">&#8678;</button>
+      <label>Back</label>
+    </div>
+    <div class="tableColumn" style="text-align: center;">
+    </div>
+    <div class="tableColumn" style="text-align: right;">
+    </div>
+  </div>   
+
 
 </div>
 
 <div class="sequenceSection">
         <div id="orderPlaced">
-            <h1>Your order has <br> been placed!<br>Order number: </h1>
+            <h1>Your order has <br> been placed!<br>Your order number is: </h1>
         </div>
         <div id="numberBox"></div>
         <p id="finished">Enjoy!</p>

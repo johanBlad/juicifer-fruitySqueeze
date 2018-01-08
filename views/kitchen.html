@@ -38,8 +38,9 @@
       <order-item-to-prepare
         ref="orderItem"
         v-for="(order, key) in orders"
-        v-if="!order.done"
+        v-if="!order.done && !order.cancel"
         v-on:done="markDone(key)"
+        v-on:cancel="sendCancel(key)"
         :order-id="key"
         :order="order" 
         :ui-labels="uiLabels"
@@ -48,19 +49,7 @@
         id="orderDiv"
                              >
       </order-item-to-prepare>
-      
-      <order-item-to-prepare
-        ref="orderItem"
-        v-for="(order, key) in orders"
-        v-if="!order.done"
-        v-on:done="markDone(key)"
-        v-on:cancel="sendCancel(key)"
-        :order-id="key"
-        :order="order"
-        :ui-labels="uiLabels"
-        :lang="lang"
-        :key="key">
-      </order-item-to-prepare>
+
             
             </div>
       
@@ -70,7 +59,7 @@
 <!--History -->
 
     <div id="history-wrapper" v-on:click="showHistory()" v-bind:class="{ active: historyShown }">
-        
+        <!-- <input v-on:keyup.right="showHistory()"> -->
         
     <h1 v-if="historyShown===false" id=verticalHistory>{{ uiLabels.ordersFinished }}</h1>
     
@@ -78,28 +67,19 @@
             <div id="time"></div> 
             
             <h1 id="headlineHistory">{{ uiLabels.ordersFinished }}</h1>
-    
-            
-            
-      <order-item
+   
+            <order-item-to-prepare
+        ref="orderItem"
         v-for="(order, key) in orders"
-        v-if="order.done && order.type == 'smoothie'"
+        v-if="order.done"
         :order-id="key"
-        :order="order"
-        :lang="lang"
+        :order="order" 
         :ui-labels="uiLabels"
-        :key="key">
-      </order-item>
-    
-      <order-item
-        v-for="(order, key) in orders"
-        v-if="order.done && order.type == 'juice'"
-        :order-id="key"
-        :order="order"
         :lang="lang"
-        :ui-labels="uiLabels"
-        :key="key">
-      </order-item>
+        :key="key"
+        id="orderDiv"
+                             >
+      </order-item-to-prepare>
             
         </div>
     </div>

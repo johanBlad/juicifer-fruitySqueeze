@@ -1,7 +1,7 @@
 /*jslint es5:true, indent: 2 */
 /*global sharedVueStuff, Vue, socket */
 'use strict';
-var productSize = {};
+
 Vue.component('product', {
   props: ['product'],
   template: ' <div class="">\
@@ -99,7 +99,26 @@ Vue.component('ingredient', {
     }
   }
 });
-  
+
+Vue.component('hotdrink', {
+    props: ['item', 'lang'],
+    template: ' <div class="coffees">\
+                <label>\
+                {{item["hd_name_"+ lang]}}\
+                </label>\
+                <div style="float: right;">\
+                </label>\
+                {{ counter }}\
+                </label>\
+                <button class="minusButton" v-on:click="decreaseCounter">-</button>\
+                <button class="plusButton"  v-on:click="incrementCounter">+</button>\
+                <label style="margin-left: 10px;">\
+                {{item.selling_price_s}}:-\
+                </label>\
+                </div>\
+                </div>',
+});
+               
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -144,30 +163,56 @@ var vm = new Vue({
     totalPrice: 0,
     volume: 0,
     size: '',
+    base: 0,
+    fruits: 0,
+    extras: 0,
     basket: [],
     price: 0,
+    counter1: 0,
+    counter2: 0,
+    counter3: 0,
     availableProducts: [],
     selectedProduct: null,
     ok: false,
   },
   components: {readymadeDrinks: readymadeDrinks},
   methods: {
-    addIngredient: function (item, type) {
-      this.chosenIngredients.push(item);
-      this.price += +item.selling_price;   
-      console.log(item.ingredient_en) 
+    addIngredient: function (item, type, ing_type) {
+      
+          this.chosenIngredients.push(item);
+          this.price += +item.selling_price;
+          if (ing_type == 1) {
+                this.counter1 += 1; 
+          }
+          else if (ing_type == 2) {
+                this.counter2 += 1;
+          }
+          else {
+                this.counter3 += 1;
+          }
+          console.log(item.ingredient_en) 
     },
 
-    removeIngredient: function (item) {
+    removeIngredient: function (item, type, ing_type) {
       var i;
       for (i = 0; i < this.chosenIngredients.length; i++) {
         if (this.chosenIngredients[i] === item) {
           this.chosenIngredients.splice(i, 1);
           this.price = this.price - item.selling_price;
+          if (ing_type == 1) {
+                this.counter1 -= 1; 
+            }
+            else if (ing_type == 2) {
+                this.counter2 -= 1;
+            }
+            else {
+                this.counter3 -= 1;
+      }
           break;
         }
       }
     },
+
 
     initButtons: function () {
       var rmdrinks = vm.$refs.readymadedrink;
@@ -201,15 +246,42 @@ var vm = new Vue({
       console.log(this.productType);
     },
 
-    chooseSize: function (volume, selectedSize) {
+    chooseSize: function (volume, selectedSize, type) {
       this.volume = volume;
       this.size = selectedSize;
       console.log(this.volume);
       console.log(this.size);
       setAlternativeSizes(this.volume);
+        if (selectedSize == 'Small' && type == 1) {
+            this.base = 1;
+            this.fruits = 2;
+            this.extras = 1;
+        }
+        else if (selectedSize == 'Medium' && type == 1) {
+            this.base = 2;
+            this.fruits = 3;
+            this.extras = 2;
+        }
+        else if (selectedSize == 'Large' && type == 1){
+            this.base = 3;
+            this.fruits = 4;
+            this.extras = 3;
+        }
+        else if (selectedSize == 'Small' && type == 2) {
+            this.fruits = 3;
+            this.extras = 1;
+        }
+        else if (selectedSize == 'Medium' && type == 2) {
+            this.fruits = 5;
+            this.extras = 2; 
+        }
+        else {
+            this.fruits = 7;
+            this.extras = 2; 
+        }
     },
       
-    getNewSize: function (selectedButton) {
+    getNewSize: function (selectedButton, type) {
         var newSize = document.getElementById(selectedButton).textContent;
         if (newSize == 'Small') {
             this.volume = 30;
@@ -226,6 +298,33 @@ var vm = new Vue({
         console.log(this.volume);
         console.log(this.size);
         setAlternativeSizes(this.volume);
+        if (newSize == 'Small' && type == 1) {
+            this.base = 1;
+            this.fruits = 2;
+            this.extras = 1;
+        }
+        else if (newSize == 'Medium' && type == 1) {
+            this.base = 2;
+            this.fruits = 3;
+            this.extras = 2;
+        }
+        else if (newSize == 'Large' && type == 1){
+            this.base = 3;
+            this.fruits = 4;
+            this.extras = 3;
+        }
+        else if (newSize == 'Small' && type == 2) {
+            this.fruits = 3;
+            this.extras = 1;
+        }
+        else if (newSize == 'Medium' && type == 2) {
+            this.fruits = 5;
+            this.extras = 2; 
+        }
+        else {
+            this.fruits = 7;
+            this.extras = 2; 
+        }
     },
 
     confirmProductChoice: function () {
@@ -279,30 +378,31 @@ var vm = new Vue({
       console.log("------SQUEEZE IT!------");
 
       var productToAdd = wrapProduct(this.chosenIngredients, this.price, this.volume, this.productType, this.productName);
-      if (this.basket.length != 0) {
-        console.log("In the first If..")
-        for (var i = 0; i < this.basket.length; i++) {
-          if (productToAdd.productName == this.basket[i].productName && 
+      console.log(productToAdd.productName); 
+      console.log("BASKET SIZE: " + this.basket.length); 
+      var basketSize = this.basket.length;
+
+      if (basketSize != 0) {
+        var i;
+        var existingProduct = false;
+        for (i = 0; i < basketSize; i++) {
+          if (productToAdd.productName != "dummyName" &&
+              productToAdd.productName == this.basket[i].productName && 
               productToAdd.volume == this.basket[i].volume) {
-                console.log("In the if-statement")
-              if (productToAdd.productName != "dummyName") {
+                existingProduct = true;
                 this.basket[i].quantity++;
-                console.log("In the wrong place")
-              } else {
-                //Right now there is no functionality for incrementing the quantity of identical "Squeeze your own" smoothies
-                //This should be added here.
-                this.basket.push(productToAdd);
-                console.log("Pushing product (from within)");
-              }
-          } else {
-              console.log("Pushing product");
-              this.basket.push(productToAdd);
+                console.log("Increasing 'quantity' of: " + this.basket[i].productName);
               }
         }
-    } else {
-      console.log("Pushing...")
-       this.basket.push(productToAdd);
-    }
+        if (!existingProduct) {
+          this.basket.push(productToAdd);
+          console.log("Adding new product to basket: " + productToAdd.productName);
+        }
+      } else {
+        this.basket.push(productToAdd);
+        console.log("Adding first product to basket: " + productToAdd.productName);
+      }
+
       this.totalPrice = this.totalPrice + this.price;
       console.log('--------TEST BASKET---------');
       console.log('Total price in basket: ' + this.totalPrice);
@@ -311,9 +411,17 @@ var vm = new Vue({
       }
       this.productType = '';
       this.chosenIngredients = [];
+      this.productName = 'dummyName';
       this.price = 0;
       this.volume = 0;
+      this.size = '';
+      this.counter1 = 0;
+      this.counter2 = 0;
+      this.counter3 = 0;
       this.ok = true;
+      for (var i = 0; i < this.$refs.ingredient.length; i += 1) {
+        this.$refs.ingredient[i].resetCounter();
+      }
     },
 
     placeOrder: function () {
@@ -405,4 +513,3 @@ function popupFunction() {
     var popup = document.getElementById("myPopup");
     popup.classList.toggle("show");
 }
-
