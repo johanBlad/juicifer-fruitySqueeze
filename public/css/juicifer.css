@@ -639,8 +639,11 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     height: 100%;
     overflow: hidden;
     width: 7%;
-    border: 4px dashed #ab1234;
+    border: 4px dashed #339933;
     transition: width 0.5s;
+    background-color: #b3ff66;
+
+    
 }
 #verticalOrders{
     transform: rotate(90deg);
@@ -652,7 +655,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     overflow: hidden;
 }
 
-#orderNumber{
+.orderNumber{
     position: absolute;
     font-size: 20px;
     margin-left: 10px;
@@ -706,8 +709,10 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     height: 100%;
     overflow: hidden;
     width: 7%;
-    border: 4px dashed #ab1234;
+    border: 4px dashed #339933;
     transition: width 0.5s;
+    background-color: #b3ff66;
+    
 }
 #verticalHistory{
     transform: rotate(90deg);
@@ -726,11 +731,11 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 #stock-wrapper {
     display:inline-block;
     height: 100%;
-    overflow: hidden;
     width: 7%;
-    border: 4px dashed #ab1234;
-    
+    border: 4px dashed #339933;
+    /*#ab1234 dark red*/
     transition: width 0.5s;
+    background-color: #b3ff66;
 }
 
 #verticalStock{
@@ -755,6 +760,8 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 .active {
     display: inline-block !important;
     width: 78% !important;
+    background-color: white!important;
+    overflow: auto;
 }
 
 /*paddingen här under kan vi ändra för att få större på de två första*/
@@ -794,6 +801,17 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     margin-bottom: 1050px;
     margin-left:50px;
     
+}
+
+#languageButton{
+    font-family: Lobster;
+    font-size: 14pt;
+    width: 15%;
+    border-radius: 20px;
+    border: 1px solid #000000;
+    background-color: azure;
+    margin-top: 1%;
+    margin-left: 1%;
 }
 
 /* ---------- slut på kitchen -------- */
