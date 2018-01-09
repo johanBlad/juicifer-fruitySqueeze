@@ -18,7 +18,6 @@ Vue.component('product', {
 var readymadeDrinks = Vue.component('readymadedrink', {
   props: ['product', 'ingredients', 'lang'],
   template: ' <div class="premadeDrink">\
-<<<<<<< HEAD
       <div class="premadeInfo">\
       <h4>\
        {{ product["rm_name"] }}\
@@ -31,16 +30,6 @@ var readymadeDrinks = Vue.component('readymadedrink', {
       <button class="productButton" v-bind:class="{ productSelected: isSelected }" v-on:click="markSelected" >Select</button>\
       </div>\
       </div>',
-=======
-  <label>\
-  {{ product["rm_id"] }}.\
-  {{ product["rm_name"] }}\
-  <br>\
-  {{ getIngredientNameList(product["rm_ingredients"]) }}\
-  </label>\
-  <button class="productButton" v-bind:class="{ productSelected: isSelected }" v-on:click="markSelected" >Select</button>\
-  </div>',
->>>>>>> b5f001792283f9047dea7e25c7d6922fe01ddfc1
   data: function () {
     return {
       isSelected: false
