@@ -110,9 +110,9 @@ Vue.component('hotdrink', {
     props: ['drink', 'lang'],
     template: ' <div class="hotDrinkTableRow">\
                     <div class="hotDrinkNameColumn1"><p style="margin-top: 7%; margin-bottom: 7%;">{{ drink["hotdrink_name_"+ lang] }}</p></div>\
-                    <div class="hotDrinkSizeColumn1"><button class="chooseHot" v-bind:class="{ productSelected: isSelected }" v-on:click="markSelected">{{ drink.selling_price_s }}kr</button></div>\
-                    <div class="hotDrinkSizeColumn1"><button class="chooseHot" v-bind:class="{ productSelected: isSelected }" v-on:click="markSelected">{{ drink.selling_price_m }}kr</button></div>\
-                    <div class="hotDrinkSizeColumn1"><button class="chooseHot" v-bind:class="{ productSelected: isSelected }" v-on:click="markSelected">{{ drink.selling_price_l }}kr</button></div>\
+                    <div class="hotDrinkSizeColumn1"><button class="chooseHotSmall" v-bind:class="{ productSelected: isSelected }" v-on:click="markSelected">{{ drink.selling_price_s }}kr</button></div>\
+                    <div class="hotDrinkSizeColumn1"><button class="chooseHotMedium" v-bind:class="{ productSelected: isSelected }" v-on:click="markSelected">{{ drink.selling_price_m }}kr</button></div>\
+                    <div class="hotDrinkSizeColumn1"><button class="chooseHotLarge" v-bind:class="{ productSelected: isSelected }" v-on:click="markSelected">{{ drink.selling_price_l }}kr</button></div>\
                 </div>',
     data: function () {
     return {
