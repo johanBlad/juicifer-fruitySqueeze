@@ -68,7 +68,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 
 .ingredientList {
 	height: 90vh;
-	overflow: auto;
+    overflow-y: auto;
 }
 
 .tableRow {
@@ -255,6 +255,10 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 
 .navButtons:active {
     background-color:#339933;
+}
+
+.customIngredients {
+   /*overflow: scroll;*/
 }
 
 /* Popup container - can be anything you want */
