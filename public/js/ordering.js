@@ -239,7 +239,7 @@ var vm = new Vue({
     },
 
     setSelectedProduct: function (_product) {
-      this.selectedProduct = null;
+      this.selectedProduct = '';
       this.productName = "";
       var customDrinkBtn = document.getElementById('squeezeOwnButton');
       if (_product === "customSmoothie") {
@@ -249,6 +249,7 @@ var vm = new Vue({
         } else {
           deselectAll();
           this.productName = "Custom Smoothie";
+          
           document.getElementById('squeezeOwnButton').classList.add('productSelected');
         }
       } else if (_product === "customJuice") {
@@ -360,13 +361,16 @@ var vm = new Vue({
     },
 
     confirmProductChoice: function () {
-      if (selectedProduct != null) {
-        orderReadymade(selectedProduct);
-        //Go to basket
-      } else if (this.productName == "Custom Smoothie") {
-        //Go to Custom Smoothie
-      } else {
-        //Go to Custom Juice 
+      if (this.selectedProduct != undefined) {
+        if (this.productName == "Custom Smoothie") {
+          //goToCustomSmoothie
+          console.log("...Directing to Custom Smoothie")
+        } else if (this.productName == "Custom Juice") {
+          //goToCustomJuice
+          console.log("...Directing to Custom Juice")          
+        } else {
+          this.orderReadymade(this.selectedProduct);
+        }
       }
     },
 
