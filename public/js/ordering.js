@@ -483,10 +483,9 @@ var vm = new Vue({
         setAlternativeSizes(this.volume);
     },
       
-      chooseHotSize: function (drink) {
+      chooseHotSize: function (drink, size) {
           this.volume = drink.volume_s;
           console.log(this.volume);
-          console.log('hej');
       },
 
     confirmProductChoice: function () {

@@ -497,7 +497,7 @@
         <hotdrink
               ref="hotdrink"
               v-for="drink in hotdrinks"
-              v-on:select="setSelectedProduct(drink), chooseHotSize(drink)"
+              v-on:select="setSelectedProduct(drink)"
               v-on:deselect="setSelectedProduct(undefined)"
               :drink="drink"
               :lang="lang"
