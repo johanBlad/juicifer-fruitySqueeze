@@ -38,6 +38,8 @@ var sharedVueStuff = {
       this.orders = data.orders;
       if (typeof data.ingredients !== 'undefined') {
         this.ingredients = data.ingredients;
+        this.hotdrinks = data.hotdrinks;
+        this.readymade = data.readymade;
       }
     }.bind(this));
   },

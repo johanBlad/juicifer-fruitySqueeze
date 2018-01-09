@@ -108,11 +108,31 @@ Vue.component('cancelmodal', {
 
 Vue.component('hotdrink', {
     props: ['drink', 'lang'],
-    template: ' <div class="hotDrinks">\
-                <label>\
-                {{ drink["hotdrink_name_"+ lang] }}\
-                </label>\
-                </div>'
+    template: ' <div class="hotDrinkTableRow">\
+                    <div class="hotDrinkNameColumn1"><p style="margin-top: 7%; margin-bottom: 7%;">{{ drink["hotdrink_name_"+ lang] }}</p></div>\
+                    <div class="hotDrinkSizeColumn1"><button class="chooseHot" v-bind:class="{ productSelected: isSelected }" v-on:click="markSelected">{{ drink.selling_price_s }}kr</button></div>\
+                    <div class="hotDrinkSizeColumn1"><button class="chooseHot" v-bind:class="{ productSelected: isSelected }" v-on:click="markSelected">{{ drink.selling_price_m }}kr</button></div>\
+                    <div class="hotDrinkSizeColumn1"><button class="chooseHot" v-bind:class="{ productSelected: isSelected }" v-on:click="markSelected">{{ drink.selling_price_l }}kr</button></div>\
+                </div>',
+    data: function () {
+    return {
+      isSelected: false
+    };
+  },
+  methods: {
+    
+    markSelected: function () {
+      if (this.isSelected == false) {
+        deselectAll();
+        this.isSelected = true;
+        this.$emit('select');
+      } else {
+        deselectAll();
+        this.$emit('deselect');
+      }
+      
+    }
+}
 });
 
                
