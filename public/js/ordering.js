@@ -2,19 +2,6 @@
 /*global sharedVueStuff, Vue, socket */
 'use strict';
 
-Vue.component('product', {
-  props: ['product'],
-  template: ' <div class="">\
-                <label>\
-                  {{ basket[0].productName }} {{ basket[0].price }}\
-              </div>',
-  data: function () {
-    return {
-
-    }
-  }
-});
-
 var readymadeDrinks = Vue.component('readymadedrink', {
   props: ['product', 'ingredients', 'lang'],
   template: ' <div class="premadeDrink">\
@@ -254,11 +241,25 @@ var vm = new Vue({
     setSelectedProduct: function (_product) {
       this.selectedProduct = null;
       this.productName = "";
-
+      var customDrinkBtn = document.getElementById('squeezeOwnButton');
       if (_product === "customSmoothie") {
-        this.productName = "Custom Smoothie" 
+        if (customDrinkBtn.classList.contains("productSelected")) {
+          deselectAll();
+          this.productName = '';
+        } else {
+          deselectAll();
+          this.productName = "Custom Smoothie";
+          document.getElementById('squeezeOwnButton').classList.add('productSelected');
+        }
       } else if (_product === "customJuice") {
-        this.productName = "Custom Juice";
+        if (customDrinkBtn.classList.contains("productSelected")) {
+          deselectAll();
+          this.productName = '';
+        } else {
+          deselectAll();
+          this.productName = "Custom Juice";
+          document.getElementById('squeezeOwnButton').classList.add('productSelected');
+        }
       } else if (_product === undefined) {
         this.selectedProduct = undefined;
       } else {
@@ -405,6 +406,11 @@ var vm = new Vue({
       }
     },
 
+    selectCustomDrink: function () {
+      deselectAll();
+
+    },
+
     addToOrder: function () { 
       console.log("------SQUEEZE IT!------");
 
@@ -497,7 +503,11 @@ function deselectAll () {
   for (i = 0; i < rmdrinks.length; i++) {
     rmdrinks[i].$data.isSelected = false;
   }
-}
+  var customDrinkBtn = document.getElementById('squeezeOwnButton');
+  if (customDrinkBtn.classList.contains("productSelected")) {
+    customDrinkBtn.classList.remove("productSelected");
+  }
+};
 
 
 //tillagt!!!! 
