@@ -115,7 +115,8 @@ var vm = new Vue({
        historyShown: false,
         stockShown: false,
         currentOrdersShown: true,
-        transactions: null
+        transactions: null,
+        arrows: []
     },
     
   methods: {
@@ -172,14 +173,14 @@ var vm = new Vue({
             }
             var popIngList = [];
             for (let i in popIng) {
-                popIngList.push({name: i, value: popIng[i]}); //TODO uilabels?
+                popIngList.push({name: i, value: popIng[i]}); 
             }
                 var sortedIngredients = popIngList.sort((a,b) => b.value - a.value);
                 
                 var top5 = sortedIngredients.slice(0,5);
                 
             var chartData = [];
-            chartData.push(['Ingrediens', 'Antal beställningar']); // TODO: Hämta från UiLabels
+            chartData.push(['Ingrediens', 'Antal beställningar']); 
             for (let i in top5) {
                 chartData.push([top5[i].name, top5[i].value]);
             }
@@ -187,8 +188,39 @@ var vm = new Vue({
             drawChart(chartData, this.uiLabels.popularIngredients);
         }.bind(this));
     }.bind(this)); //drawChart(chartData, this.uiLabels.popularIngredients)); 
+    },
+  
+      arrowsListener: function(evt) {
+          if (evt.keyCode === 39) {
+            if (this.currentOrdersShown){
+                console.log('ska anropa showhistory')
+                this.showHistory();
+                console.log(historyShown);
+            }
+            else if(this.historyShown){
+                console.log('ska anropa showstock')
+                this.showStock();
+            }
+          }
+          if (evt.keyCode === 37) {
+            if (this.historyShown){
+                
+                this.showCurrentOrders();
+            }
+            else if(this.stockShown){
+               this.showHistory();
+          }
+        }
+      }
+      
+    },
+    
+    created: function() {
+        document.addEventListener('keyup', this.arrowsListener);
+    },
+    destroyed: function() {
+        document.removeEventListener('keyup', this.arrowsListener);
     }
-  }
 });
 
 function drawChart(inputData, title) {
