@@ -479,28 +479,29 @@
         </div>
     </div>
     <div class="hotDrinkTableRow">
-        <div class="hotDrinkNameColumn">Drink</div>
-        <div class="hotDrinkSizeColumn">Small</div>
-        <div class="hotDrinkSizeColumn">Medium</div>
-        <div class="hotDrinkSizeColumn">Large</div>
+        <div class="hotDrinkNameColumn"><p>Drink</p></div>
+        <div class="hotDrinkSizeColumn"><p>Small</p></div>
+        <div class="hotDrinkSizeColumn"><p>Medium</p></div>
+        <div class="hotDrinkSizeColumn"><p>Large</p></div>
     </div>
-    <div>
+    <div id="hotDrinks">
         <hotdrink
               ref="hotdrink"
               v-for="drink in hotdrinks"
+              v-on:select="setSelectedProduct(product)"
+              v-on:deselect="setSelectedProduct(undefined)"
               :drink="drink"
               :lang="lang"
               :key="drink.hotdrink_id">
         </hotdrink>
     </div>
 
-<div class="tableRow" style="bottom: 0; position: absolute;">
+<div class="tableRow">
     <div class="tableColumn" style="text-align: left;">
       <button class="navButtons" id="backButton">&#8678;</button>
       <label>Back</label>
     </div>
-    <div class="tableColumn" style="text-align: center;">
-    </div>
+    <div class="tableColumn" style="text-align: center;"></div>
     <div class="tableColumn" style="text-align: right;">
       <label>Next</label>
       <button v-on:click="orderReadymade(selectedProduct)" class="navButtons" id="forwardButton" v-on:click= "addToOrder()">&#8680;</button> 

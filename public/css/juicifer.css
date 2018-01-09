@@ -153,19 +153,51 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 
 .hotDrinkNameColumn {
     display: table-cell;
-    border: 2px solid; 
+    border: 1px solid; 
     /*border-style: solid;*/
     background-color: #b3ff66;
     font-size: 20pt;
+    width: 50%;
+    margin-left: 3%;
+}
+
+.hotDrinkNameColumn1 {
+    display: table-cell;
+    border: 1px solid #000000;
+    border-right: none;
+    border-top: none;
+    /*border-style: solid;*/
+    background-color: #FFFFFF;
+    font-size: 16pt;
     width: 50%;
 }
 
 .hotDrinkSizeColumn {
     display: table-cell;
-    border: 2px solid;
+    border: 1px solid;
     background-color: #b3ff66;
     font-size: 20pt;
     width: 15%;
+}
+
+.hotDrinkSizeColumn1 {
+    display: table-cell;
+    border: none;
+    border-bottom: 1px solid #000000;
+    background-color: #FFFFFF;
+    font-size: 16pt;
+    width: 15%;
+}
+
+.chooseHot {
+    font-family: Lobster;
+    font-size: 15pt;
+    width: 77px;
+    height: 40px;
+    margin-top: 7%;
+    margin-left: 3%;
+    border-radius: 15px;
+    border: 1px solid #000000;
 }
 
 /*Calle*/ 
@@ -185,13 +217,13 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 }
 
 .modalContent {
-    font-size: 20pt;
+    font-size: 18pt;
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
     border: 6px solid #000000;
     border-radius: 20px;
-    width: 35%;
+    width: 39%;
 }
 
 
@@ -396,6 +428,10 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 
 /*Adam*/
 
+#hotDrinks {
+    overflow: auto;
+}
+
 .langButton {
     font-family: Lobster;
     font-size: 14pt;
@@ -426,7 +462,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     border: 3px solid #000000;
     font-size: 16pt;
     margin-top: 5%;
-    margin-right: 10%;
+    margin-right: 5%;
 }
 
 /* Size of payment buttons till Payment.html*/
@@ -482,9 +518,9 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 }
 
 #addButton {
-    text-align: center;
-    position: relative;
-    bottom: 0;
+    position: absolute;
+    bottom: 90px;
+    left: 13%;
 }
 
 #basketButton {
@@ -506,7 +542,6 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     margin-left: -100px;
     top: 320px;
     width: 100px;
-    text-align: right;
 }
 
 .headRow1 {
