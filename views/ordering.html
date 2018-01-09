@@ -397,22 +397,26 @@
         </div>
     </div>
   <div class="tableRow">
-      <div class="tableColumn" style="text-align: left;">
-            <ul>Fruits &amp; Greens: ({{ counter2 }}/{{ fruits }})
-                <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 2">
-                    {{ item.ingredient_en }}
-                </li>
-            </ul>
-      </div>
-      <div class="tableColumn" style="text-align: left;">
-      </div>
-      <div class="tableColumn" style="text-align: left;">
-            <ul>Extras: ({{ counter3 }}/{{ extras }})
-                <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 3">
-                    {{ item.ingredient_en }}
-                </li>
-            </ul>
-      </div>
+        <div class="tableColumn" style="text-align: right; width: 23vh;">
+                <p>
+                    Fruits &amp; Greens ({{ counter2 }}/{{ fruits }}):
+                </p>
+                <p>
+                    Extras ({{ counter3 }}/{{ extras }}):
+                </p>
+            </div>
+            <div class="tableColumn" style="text-align: left;">
+                <p>-
+                    <label v-for="item in chosenIngredients" v-if="item.ingredient_type == 2"> 
+                        {{ item.ingredient_en }}, 
+                    </label>
+                </p>
+                <p>-
+                    <label v-for="item in chosenIngredients" v-if="item.ingredient_type == 3"> 
+                        {{ item.ingredient_en }},  
+                    </label>
+                </p>
+            </div>
     </div>
     <div class="ingredientList">
       <details>
