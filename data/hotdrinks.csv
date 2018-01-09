@@ -1,4 +1,4 @@
-hd_id,hd_name_sv,hd_name_en,selling_price_s,selling_price_m,selling_price_l
+hotdrink_id,hotdrink_name_sv,hotdrink_name_en,selling_price_s,selling_price_m,selling_price_l
 1,Svart kaffe,Black coffee,20,25,32
 2,Te,Tea,15,20,25
 3,Cappuccino,Cappuccino,35,40,45

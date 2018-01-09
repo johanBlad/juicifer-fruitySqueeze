@@ -15,7 +15,7 @@
 <div id="ordering">
 
 <div id="chooseProduct" class="sequenceSection">
-    <button v-on:click="switchLang()" id="langButton">{{ uiLabels.language }}</button>
+    <button v-on:click="switchLang()" class="langButton">{{ uiLabels.language }}</button>
     <div class="headRow1">
         <div class="headColumn"></div>
         <div class="headColumn"><h1 style="font-size: 25pt;">Juicifer Craft Beverages</h1></div>
@@ -386,12 +386,14 @@
             <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
         </div>
     </div>
-        <div id="tooManyModal" class="modal">
+    <div id="tooManyModal" class="modal">
         <div class="modalContent">
             <span id="closeModal">&#10060;</span>
             <p>Oops! <br>It looks like you have chosen too many ingredients for your selected size.</p>
-            <p v-if="size == 'Large'">We're afraid you need to remove some ingredients... &#x2639;</p>
-            <p v-else>Remove some or up the size of your order! &#128077;</p>
+            <p v-if="size == 'Large'">We're afraid you need to remove some ingredients... &#x2639;<br>
+            <button class="modalButtons" id="modalNoChange">I understand!</button></p>
+            <p v-else>Remove some or up the size of your order! &#128077;<br>
+            <button class="modalButtons" id="modalChange">I want to <br> change size</button><button class="modalButtons" id="modalNoChange">I'll remove some ingredients</button></p>
         </div>
     </div>
   <div class="tableRow">
@@ -482,24 +484,15 @@
         <div class="hotDrinkSizeColumn">Medium</div>
         <div class="hotDrinkSizeColumn">Large</div>
     </div>
-
-    <!--<div v-for="item in hotdrinks">   
-        <div class="premadeHotDrinks">
-            <label>
-                {{ item.hd_id }}
-                {{ item.hd_name_en }}   
-            </label>
-        </div>
+    <div>
+        <hotdrink
+              ref="hotdrink"
+              v-for="drink in hotdrinks"
+              :drink="drink"
+              :lang="lang"
+              :key="drink.hotdrink_id">
+        </hotdrink>
     </div>
-    
-    <hotdrink
-          ref="hotdrink"
-          type="coffee"
-          v-for="item in hotdrinks"
-          :item="item"
-          :lang="lang"
-          :key="item.hd_id">
-    </hotdrink>-->
 
 <div class="tableRow" style="bottom: 0; position: absolute;">
     <div class="tableColumn" style="text-align: left;">
