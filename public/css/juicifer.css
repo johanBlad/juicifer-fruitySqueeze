@@ -483,25 +483,26 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 
 #addButton {
     text-align: center;
+    position: relative;
+    bottom: 0;
 }
 
 #basketButton {
     font-family: Lobster;
-    width: 420px;
+    width: 440px;
     height: 160px;
     border-radius: 20px;
     border: 2px solid #000000;
     text-align: right;
     font-size: 23pt;
     top: 200px;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin-bottom: 10px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 } 
 
 /*Plussymbol för basket.html*/
 #plusSymbol {
-    position: absolute;
+    position: inherit;
     margin-left: -100px;
     top: 320px;
     width: 100px;
