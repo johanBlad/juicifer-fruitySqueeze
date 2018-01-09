@@ -335,6 +335,7 @@
           v-on:decrement="removeIngredient(item, 'smoothie', 2)"
           :item="item"
           :lang="lang"
+          :id = "item.ingredient_id"
           :key="item.ingredient_id">
         </ingredient>
       </details>
@@ -349,6 +350,7 @@
           v-on:decrement="removeIngredient(item, 'smoothie', 3)"
           :item="item"
           :lang="lang"
+          :id = "item.ingredient_id"
           :key="item.ingredient_id">
         </ingredient>
       </details>
@@ -431,7 +433,7 @@
           v-on:decrement="removeIngredient(item, 'juice', 2)"
           :item="item"
           :lang="lang"
-            
+          :id = "item.ingredient_id"    
           :key="item.ingredient_id">
         </ingredient>
       </details>
@@ -446,6 +448,7 @@
           v-on:decrement="removeIngredient(item, 'juice', 3)"
           :item="item"
           :lang="lang"
+          :id = "item.ingredient_id"
           :key="item.ingredient_id">
         </ingredient>
       </details>
