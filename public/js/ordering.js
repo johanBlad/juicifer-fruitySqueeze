@@ -97,7 +97,6 @@ Vue.component('ingredient', {
   }
 });
 
-
 Vue.component('cancelmodal', {
     template: ' <div id="cancelModal" class="modal">\
                     <div class="modalContent">\
@@ -107,29 +106,15 @@ Vue.component('cancelmodal', {
                 </div>'
 });
 
-new Vue({
-    el: '.headRow'
-})
-
-
 Vue.component('hotdrink', {
-    props: ['item', 'lang'],
-    template: ' <div class="coffees">\
+    props: ['drink', 'lang'],
+    template: ' <div class="hotDrinks">\
                 <label>\
-                {{item["hd_name_"+ lang]}}\
+                {{ drink["hotdrink_name_"+ lang] }}\
                 </label>\
-                <div style="float: right;">\
-                </label>\
-                {{ counter }}\
-                </label>\
-                <button class="minusButton" v-on:click="decreaseCounter">-</button>\
-                <button class="plusButton"  v-on:click="incrementCounter">+</button>\
-                <label style="margin-left: 10px;">\
-                {{item.selling_price_s}}:-\
-                </label>\
-                </div>\
-                </div>',
+                </div>'
 });
+
                
 function getRandomInt(min, max) {
   min = Math.ceil(min);
@@ -190,6 +175,7 @@ var vm = new Vue({
   components: {readymadeDrinks: readymadeDrinks},
   methods: {
     addIngredient: function (item, type, ing_type) {
+      console.log(this.hotdrinks.length);
           if (ing_type == 1 && this.counter1 < this.base) {
                 this.counter1 += 1; 
                 this.chosenIngredients.push(item);
@@ -239,7 +225,7 @@ var vm = new Vue({
     },
 
     setSelectedProduct: function (_product) {
-      this.selectedProduct = null;
+      this.selectedProduct = '';
       this.productName = "";
       var customDrinkBtn = document.getElementById('squeezeOwnButton');
       if (_product === "customSmoothie") {
@@ -249,6 +235,7 @@ var vm = new Vue({
         } else {
           deselectAll();
           this.productName = "Custom Smoothie";
+          
           document.getElementById('squeezeOwnButton').classList.add('productSelected');
         }
       } else if (_product === "customJuice") {
@@ -360,13 +347,16 @@ var vm = new Vue({
     },
 
     confirmProductChoice: function () {
-      if (selectedProduct != null) {
-        orderReadymade(selectedProduct);
-        //Go to basket
-      } else if (this.productName == "Custom Smoothie") {
-        //Go to Custom Smoothie
-      } else {
-        //Go to Custom Juice 
+      if (this.selectedProduct != undefined) {
+        if (this.productName == "Custom Smoothie") {
+          //goToCustomSmoothie
+          console.log("...Directing to Custom Smoothie")
+        } else if (this.productName == "Custom Juice") {
+          //goToCustomJuice
+          console.log("...Directing to Custom Juice")          
+        } else {
+          this.orderReadymade(this.selectedProduct);
+        }
       }
     },
 

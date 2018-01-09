@@ -120,7 +120,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 	display: table;
 	table-layout: fixed;
 	width: 100%;
-	height: 10vh;
+	
 	border-spacing: 5px;
     background-color: #b3ff66;
     flex: 0 1 auto;
@@ -191,7 +191,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     padding: 20px;
     border: 6px solid #000000;
     border-radius: 20px;
-    width: 40%;
+    width: 35%;
 }
 
 
@@ -396,7 +396,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 
 /*Adam*/
 
-#langButton {
+.langButton {
     font-family: Lobster;
     font-size: 14pt;
     width: 15%;
