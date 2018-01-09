@@ -71,7 +71,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     border: dotted;
     margin: 5px;
     overflow: hidden;
-    height: 20vh;
+    height: 10vh;
     display: table;
     background-color: rgba(108, 250, 61, 0.3);
 }
@@ -120,7 +120,6 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 	display: table;
 	table-layout: fixed;
 	width: 100%;
-	
 	border-spacing: 5px;
     background-color: #b3ff66;
     flex: 0 1 auto;
