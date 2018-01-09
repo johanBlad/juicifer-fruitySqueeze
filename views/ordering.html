@@ -206,11 +206,10 @@
         <h2 style="text-align: center; font-size: 20pt;">Juicifer Specials</h2>
         <p style="text-align: center; font-size: 14pt; margin-top: -3%;">Choose from our selection of readymade smoothies below.<br> It simply can't go wrong!</p>
         <hr>
-        <button v-on:click="updatePrice()">updateprice</button>
         <readymadedrink
           ref="readymadedrink"
           v-for="product in readymade"
-          v-on:select="setSelectedProduct(product)"
+          v-on:select="setSelectedProduct"
           v-on:deselect="setSelectedProduct(undefined)"
           :ingredients="ingredients"
           :product="product"
