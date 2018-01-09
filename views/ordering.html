@@ -454,8 +454,8 @@
       </details>
     </div>
   <div id="sizeRectangle">
-      <div class="popup" onclick="popupFunction()">Change size
-          <span class="popupcontent" id="myPopup">
+      <div class="popup" onclick="popupFunction2()">Change size
+          <span class="popupcontent" id="myPopup2">
               <p id="popupText">Changed your mind? No worries,<br> feel free to choose a new size below!<br>Current size: {{ size }}</p>
               <button class="changeSize" id="firstButton" v-on:click="getNewSize('firstButton', 2)"></button>
               <button class="changeSize" id="secondButton" v-on:click="getNewSize('secondButton', 2)"></button>
@@ -569,7 +569,7 @@
     </div>
         <div id="basketContent" style="overflow: auto;">
             <div id="basketAdd" v-if="basket != []" style="text-align: left;">
-                <div v-for="product in basket" style="padding-left: 10px; font-size: 20pt;">
+                <div v-for="product in basket" style="padding-left: 10px; font-size: 20pt; margin-top: 3%;">
                     {{ product.quantity }}, {{ product.productName }}, {{ product.volume }} cl, {{ product.quantity * product.price }} kr
                     <button v-on:click="addAdditional(product)" type="submit" class="plusButton" style="float: right">&#43;</button>
                     <button v-on:click="removeProduct(product)" type="submit" class="minusButton"  style="float: right">&#8722;</button>

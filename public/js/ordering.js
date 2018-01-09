@@ -200,6 +200,7 @@ var vm = new Vue({
   methods: {
     addIngredient: function (item, type, ing_type) {
       console.log(this.hotdrinks.length);
+        if (this.productName == 'Custom Smoothie' || this.productName == 'Custom Juice'){
           if (ing_type == 1 && this.counter1 < this.base) {
                 this.counter1 += 1; 
                 this.chosenIngredients.push(item);
@@ -224,6 +225,7 @@ var vm = new Vue({
             }  
         }
           console.log(item.ingredient_en);
+        }
     },
 
     removeIngredient: function (item, type, ing_type) {
@@ -579,6 +581,11 @@ function checkTime(i) {
 // When the user clicks on div, open the popup
 function popupFunction() {
     var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+}
+
+function popupFunction2() {
+    var popup = document.getElementById("myPopup2");
     popup.classList.toggle("show");
 }
 
