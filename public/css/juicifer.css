@@ -7,6 +7,10 @@ body {
 	margin: 0;
 }
 
+p {
+    margin: 10px;
+}
+
 h4 {
     margin: 5px;
     text-align: center;
@@ -509,7 +513,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     table-layout: fixed;
     flex: 0 1 auto;
     width: 100%;
-    height: 5vh;
+    height: 20vh;
     border-spacing: 10px;
     bottom: 0;
 }
