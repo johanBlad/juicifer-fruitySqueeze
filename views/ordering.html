@@ -253,6 +253,39 @@
             <button class="modalButtons" id="modalChange">I want to <br> change size</button><button class="modalButtons" id="modalNoChange">I'll remove some ingredients</button></p>
         </div>
     </div>
+
+    <div class="tableRow">
+        <div class="tableColumn" style="text-align: right; width: 23vh;">
+                <p>
+                    Base ({{ counter1}}/{{ base }}):
+                </p>
+                <p>
+                    Fruits &amp; Greens ({{ counter2 }}/{{ fruits }}):
+                </p>
+                <p>
+                    Extras ({{ counter3 }}/{{ extras }}):
+                </p>
+            </div>
+            <div class="tableColumn" style="text-align: left;">
+                <p>-
+                    <label v-for="item in chosenIngredients" v-if="item.ingredient_type == 1"> 
+                        {{ item.ingredient_en }}, 
+                    </label>
+                </p>
+                <p>-
+                    <label v-for="item in chosenIngredients" v-if="item.ingredient_type == 2"> 
+                        {{ item.ingredient_en }}, 
+                    </label>
+                </p>
+                <p>-
+                    <label v-for="item in chosenIngredients" v-if="item.ingredient_type == 3"> 
+                        {{ item.ingredient_en }},  
+                    </label>
+                </p>
+            </div>
+    </div>
+
+<!--
   <div class="tableRow">
     <div class="tableColumn" style="text-align: left;">
         <ul>Base: ({{ counter1}}/{{ base }})<ul>
@@ -274,7 +307,7 @@
                 </li>
             </ul>
       </div>
-    </div>
+    </div>-->
     <div class="ingredientList">
       <details>
         <summary>Base</summary>
@@ -539,19 +572,16 @@
         </div>
         <div id="addButton">
             <button type="submit" id="basketButton"><img src="https://i.imgur.com/nVTe6Jz.png" id="plusSymbol">Squeeze more to basket</button>
-            <hr width=100% color=#000000>
         </div>
-        <div>
-            <div class="headRow1">
-                <div class="headColumn1">
+            <div class="tableRow" style="bottom: 0; position: absolute;">
+                <div class="tableColumn">
                     <h2>Subtotal: {{ totalPrice }} kr </h2>
                 </div>
-                <div class="headColumn1"></div>
-                <div class="headColumn1">
+                <div class="tableColumn"></div>
+                <div class="tableColumn">
                     <button v-on:click="placeOrder()" type="submit" id="goPayment">Payment &#10161;</button>
                 </div>
             </div>
-        </div>
 </div>
 
 <!--
@@ -597,14 +627,14 @@
             <div class=paymentButtons>
                 <button type="submit" class="buttonDetails">
                     <p>Pay with Swish</p>
-                    <img src="http://www.rkgrastorp.se/globalassets/ridklubben-i-grastorp---ridsport-boka-tid/bilder/logo_swish_product_benefit_280x280.png" id="swishSymbol">
+                    <img src="http://www.rkgrastorp.se/globalassets/ridklubben-i-grastorp---ridsport-boka-tid/bilder/logo_swish_product_benefit_280x280.png" id="swishSymbol" style="margin-top: 12%">
                 </button>
             </div>
             <br>
             <div class="paymentButtons">
                 <button type="submit" class="buttonDetails">
                     <p>Pay by card</p>
-                    <img src="http://www.mygardenpizza.net/uploads/credit_card_logo_visa_mastercard.jpg" id="cardSymbol">
+                    <img src="http://www.freelogovectors.net/wp-content/uploads/2016/12/mastercard-logo-visa.png" id="cardSymbol" style="margin-top: 10%">
                 </button>
             </div>
         </section>

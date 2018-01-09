@@ -195,6 +195,7 @@ var vm = new Vue({
   components: {readymadeDrinks: readymadeDrinks},
   methods: {
     addIngredient: function (item, type, ing_type) {
+      console.log(this.hotdrinks.length);
           if (ing_type == 1 && this.counter1 < this.base) {
                 this.counter1 += 1; 
                 this.chosenIngredients.push(item);
