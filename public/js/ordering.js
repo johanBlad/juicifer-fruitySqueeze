@@ -345,7 +345,6 @@ var vm = new Vue({
         } else {
           deselectAll();
           this.productName = "Custom Smoothie";
-          
           document.getElementById('squeezeOwnButton').classList.add('productSelected');
         }
       } else if (_product === "customJuice") {
@@ -361,7 +360,6 @@ var vm = new Vue({
         this.selectedProduct = undefined;
       } else {
         this.selectedProduct = _product;
-          console.log(_product);
       }
     },
 
@@ -488,16 +486,6 @@ var vm = new Vue({
       }
      } 
     },
-
-    orderReadymade: function (rm) {
-      console.log("Ordering a readymade drink");
-      var i;
-      for (i = 0; i < rm.rm_ingredients.length; i++) {
-        this.addIngredient(this.getIngredientById(rm.rm_ingredients[i]));
-      }
-      this.productName = rm.rm_name;
-      this.addToOrder();
-    },
       
     orderHotdrink: function (hd) {
         console.log('Ordering a hot drink');
@@ -525,14 +513,22 @@ var vm = new Vue({
       }
     },
 
-    addToOrder: function () { 
+    updatePrice: function () {
+      var rmdrinks = vm.$refs.readymadedrink;
+      for (var i = 0; i < rmdrinks.length; i++) {
+        rmdrinks[i].volume = this.volume;
+      }
+    },
+
+    addToOrder: function (productToAdd) { 
       console.log("------SQUEEZE IT!------");
-        var productToAdd;
-        if (this.productType == 3) {
+        if (productToAdd == undefined) {
+          if (this.productType == 3) {
             productToAdd = wrapProduct(undefined, this.price, this.volume, this.productType, this.productName);
+          } else {
+            var productToAdd = wrapProduct(this.chosenIngredients, this.price, this.volume, this.productType, this.productName);
+          }
         }
-        else {var productToAdd = wrapProduct(this.chosenIngredients, this.price, this.volume, this.productType, this.productName);
-             }
       console.log(productToAdd.productName); 
       console.log("BASKET SIZE: " + this.basket.length); 
       var basketSize = this.basket.length;
