@@ -137,7 +137,7 @@
             <p>
                 Small: 30 cl
                 <ul class="ingridientList">
-                    <li>3 Fruits &amp; Greens</li>
+                    <li>2 Fruits &amp; Greens</li>
                     <li>1 Extra</li>
                 </ul>
             </p>
@@ -151,7 +151,7 @@
             <p>
                 Medium: 40 cl
                 <ul class="ingridientList">
-                    <li>5 Fruits &amp; Greens</li>
+                    <li>4 Fruits &amp; Greens</li>
                     <li>2 Extra</li>
                 </ul>
             </p>
@@ -165,8 +165,8 @@
             <p>
                 Large: 50 cl
                 <ul class="ingridientList">
-                    <li>7 Fruits &amp; Greens</li>
-                    <li>2 Extra</li>
+                    <li>6 Fruits &amp; Greens</li>
+                    <li>3 Extra</li>
                 </ul>
             </p>
         </div>
@@ -320,6 +320,7 @@
           v-on:decrement="removeIngredient(item, 'smoothie', 1)"
           :item="item"
           :lang="lang"
+          :id = "item.ingredient_id"
           :key="item.ingredient_id">
         </ingredient>
       </details>
@@ -334,6 +335,7 @@
           v-on:decrement="removeIngredient(item, 'smoothie', 2)"
           :item="item"
           :lang="lang"
+          :id = "item.ingredient_id"
           :key="item.ingredient_id">
         </ingredient>
       </details>
@@ -348,6 +350,7 @@
           v-on:decrement="removeIngredient(item, 'smoothie', 3)"
           :item="item"
           :lang="lang"
+          :id = "item.ingredient_id"
           :key="item.ingredient_id">
         </ingredient>
       </details>
@@ -430,6 +433,7 @@
           v-on:decrement="removeIngredient(item, 'juice', 2)"
           :item="item"
           :lang="lang"
+          :id = "item.ingredient_id"    
           :key="item.ingredient_id">
         </ingredient>
       </details>
@@ -444,13 +448,14 @@
           v-on:decrement="removeIngredient(item, 'juice', 3)"
           :item="item"
           :lang="lang"
+          :id = "item.ingredient_id"
           :key="item.ingredient_id">
         </ingredient>
       </details>
     </div>
   <div id="sizeRectangle">
-      <div class="popup" onclick="popupFunction()">Change size
-          <span class="popupcontent" id="myPopup">
+      <div class="popup" onclick="popupFunction2()">Change size
+          <span class="popupcontent" id="myPopup2">
               <p id="popupText">Changed your mind? No worries,<br> feel free to choose a new size below!<br>Current size: {{ size }}</p>
               <button class="changeSize" id="firstButton" v-on:click="getNewSize('firstButton', 2)"></button>
               <button class="changeSize" id="secondButton" v-on:click="getNewSize('secondButton', 2)"></button>
@@ -564,7 +569,7 @@
     </div>
         <div id="basketContent" style="overflow: auto;">
             <div id="basketAdd" v-if="basket != []" style="text-align: left;">
-                <div v-for="product in basket" style="padding-left: 10px; font-size: 20pt;">
+                <div v-for="product in basket" style="padding-left: 10px; font-size: 20pt; margin-top: 3%;">
                     {{ product.quantity }}, {{ product.productName }}, {{ product.volume }} cl, {{ product.quantity * product.price }} kr
                     <button v-on:click="addAdditional(product)" type="submit" class="plusButton" style="float: right">&#43;</button>
                     <button v-on:click="removeProduct(product)" type="submit" class="minusButton"  style="float: right">&#8722;</button>
