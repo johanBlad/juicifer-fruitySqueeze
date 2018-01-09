@@ -253,14 +253,12 @@
             <button class="modalButtons" id="modalChange">I want to <br> change size</button><button class="modalButtons" id="modalNoChange">I'll remove some ingredients</button></p>
         </div>
     </div>
-<div class="ingredientList">
   <div class="tableRow">
-      <div class="tableColumn" style="text-align: left;">
-            <ul>Base:({{ counter1 }}/{{ base }})
-                <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 1">
-                    {{ item.ingredient_en }}
-                </li>
-            </ul>
+    <div class="tableColumn" style="text-align: left;">
+        <ul>Base: ({{ counter1}}/{{ base }})<ul>
+            <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 1">
+                {{ item.ingredient_en }}
+            </li>
       </div>
       <div class="tableColumn" style="text-align: left;">
             <ul>Fruits &amp; Greens: ({{ counter2 }}/{{ fruits }})
@@ -277,6 +275,7 @@
             </ul>
       </div>
     </div>
+    <div class="ingredientList">
       <details>
         <summary>Base</summary>
           <ingredient
@@ -329,7 +328,7 @@
           </span>
       </div>
   </div>
-  <div class="tableRow" style="bottom: 0; position: absolute;">
+  <div class="tableRow">
       <div class="tableColumn" style="text-align: left;">
         <button class="navButtons" id="backButton">&#8678;</button>
         <label>Back</label>
@@ -362,7 +361,6 @@
             <p v-else>Remove some or up the size of your order! &#128077;</p>
         </div>
     </div>
-<div class="ingredientList">
   <div class="tableRow">
       <div class="tableColumn" style="text-align: left;">
             <ul>Fruits &amp; Greens: ({{ counter2 }}/{{ fruits }})
@@ -381,7 +379,8 @@
             </ul>
       </div>
     </div>
-    <div>   
+    <div>
+    <div class="ingredientList">
       <details>
         <summary>Fruits &amp; Greens</summary>
         <ingredient
@@ -421,7 +420,7 @@
           </span>
       </div>
   </div>
-  <div class="tableRow" style="bottom: 0; position: absolute;">
+  <div class="tableRow">
       <div class="tableColumn" style="text-align: left;">
         <button class="navButtons" id="backButton">&#8678;</button>
         <label>Back</label>
