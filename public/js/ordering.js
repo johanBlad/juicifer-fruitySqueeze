@@ -213,6 +213,7 @@ var vm = new Vue({
           }
         else {
             showModal(this.size);
+            this.$refs.ingredient.resetCounter();
         }
           console.log(item.ingredient_en)
     },
