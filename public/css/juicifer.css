@@ -7,6 +7,11 @@ body {
 	margin: 0;
 }
 
+h4 {
+    margin: 5px;
+    text-align: center;
+    font-size: 18px;
+}
 
 
 #ordering {
@@ -46,11 +51,42 @@ summary:before{border-radius: 5px; content: "+"; color: #363636; display: block;
 details[open] summary:before {content: "-"; margin-top: -4px;}
 
 .productSelected {
-    background-color: green;
+    background-color: rgba(55, 159, 20, 0.966);
 }
 
 .productButton {
-    
+    width: 12vh;
+    height: 6vh;
+    display: table-cell;
+    vertical-align: middle;
+    border-style: groove;
+    margin: 5px;
+}
+
+.premadeDrink {
+    border: dotted;
+    margin: 5px;
+    overflow: hidden;
+    height: 20vh;
+    display: table;
+    background-color: rgba(108, 250, 61, 0.3);
+}
+
+.premadeInfo {
+    width: 65vh;
+    border-style: groove;
+    margin: 5px;
+    display: table-cell;
+    vertical-align: top;
+}
+
+.premadeButton {
+    width: 12vh;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    border-style: groove;
+    margin: 5px;
 }
 
 .sequenceSection {
@@ -63,11 +99,16 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     background-repeat: no-repeat;
     background-position: center;
     background-size: 60%;
+    display: flex;
+    flex-flow: column;
 }
 
 .ingredientList {
 	height: 90vh;
-	overflow: auto;
+    overflow: auto;
+    flex: 1 1 auto;
+    margin: 3px;
+    border: groove;
 }
 
 .tableRow {
@@ -76,7 +117,8 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 	width: 100%;
 	height: 10vh;
 	border-spacing: 5px;   
-	background-color: #b3ff66;
+    background-color: #b3ff66;
+    flex: 0 1 auto;
 }
 
 .tableColumn {
@@ -109,15 +151,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     font-size: 20pt;
     width: 10%;
 }
-.testDiv {
-    border-style: dashed;
-    margin: 5px;
-}
 
-.premadeDrink {
-    border: dotted;
-    margin: 5px;
-}
 
 /*Calle*/ 
 
@@ -152,7 +186,8 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 
 .headRow {
 	display: table;
-	table-layout: fixed;
+    table-layout: fixed;
+    flex: 0 1 auto;
 	width: 100%;
 	height: 20%;
 	border-spacing: 10px;
@@ -204,6 +239,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 .mainDiv {
     display: flex;
     margin-left: 30%;
+    flex: 0 1 auto;
 }
 
 .buttonDiv {
@@ -440,6 +476,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 .headRow1 {
     display: table;
     table-layout: fixed;
+    flex: 0 1 auto;
     width: 100%;
     height: 5vh;
     border-spacing: 10px;
