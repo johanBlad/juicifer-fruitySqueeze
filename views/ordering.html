@@ -528,11 +528,8 @@
     </div>
         <div id="basketContent" style="overflow: auto;">
             <div id="basketAdd" v-if="basket != []" style="text-align: left;">
-<<<<<<< HEAD
                 <div v-for="product in basket" style="padding-left: 10px; padding-bottom: 10px; font-size: 20pt;">
-=======
                 <div v-for="product in basket" style="padding-left: 10px; font-size: 20pt; margin-top: 3%;">
->>>>>>> 73b1db7455a0013886574ef4636ae1aaf11ae79b
                     {{ product.quantity }}, {{ product.productName }}, {{ product.volume }} cl, {{ product.quantity * product.price }} kr
                     <button v-on:click="addAdditional(product)" type="submit" class="plusButton" style="float: right">&#43;</button>
                     <button v-on:click="removeProduct(product)" type="submit" class="minusButton"  style="float: right">&#8722;</button>
