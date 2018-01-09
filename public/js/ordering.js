@@ -18,6 +18,7 @@ Vue.component('product', {
 var readymadeDrinks = Vue.component('readymadedrink', {
   props: ['product', 'ingredients', 'lang'],
   template: ' <div class="premadeDrink">\
+<<<<<<< HEAD
       <div class="premadeInfo">\
       <h4>\
        {{ product["rm_name"] }}\
@@ -30,6 +31,16 @@ var readymadeDrinks = Vue.component('readymadedrink', {
       <button class="productButton" v-bind:class="{ productSelected: isSelected }" v-on:click="markSelected" >Select</button>\
       </div>\
       </div>',
+=======
+  <label>\
+  {{ product["rm_id"] }}.\
+  {{ product["rm_name"] }}\
+  <br>\
+  {{ getIngredientNameList(product["rm_ingredients"]) }}\
+  </label>\
+  <button class="productButton" v-bind:class="{ productSelected: isSelected }" v-on:click="markSelected" >Select</button>\
+  </div>',
+>>>>>>> b5f001792283f9047dea7e25c7d6922fe01ddfc1
   data: function () {
     return {
       isSelected: false
@@ -109,6 +120,21 @@ Vue.component('ingredient', {
     }
   }
 });
+
+
+Vue.component('cancelmodal', {
+    template: ' <div id="cancelModal" class="modal">\
+                    <div class="modalContent">\
+                        <p>&#10071; Are you sure you want to cancel the order? &#10071;</p>\
+                        <button class="modalButtons" id="exit" style="background-color:#ADFF2F;">Yes</button><button class="modalButtons" id="noExit" style="background-color:#FF0000;">No</button>\
+                    </div>\
+                </div>'
+});
+
+new Vue({
+    el: '.headRow'
+})
+
 
 Vue.component('hotdrink', {
     props: ['item', 'lang'],
@@ -204,7 +230,7 @@ var vm = new Vue({
                 this.price += +item.selling_price;
           }
         else {
-            showModal();
+            showModal(this.size);
         }
           console.log(item.ingredient_en)
     },
@@ -530,9 +556,26 @@ function popupFunction() {
     popup.classList.toggle("show");
 }
 
-function showModal() {
+function cancelWindow() {
+    var modal = document.getElementById('cancelModal');
+    modal.style.display = 'block';
+    var exitButton = document.getElementById('exit');
+    var noExitButton = document.getElementById('noExit');
+    // exitButton.onclick = Vad ska hända här? Avbryter order i alla fall
+    noExitButton.onclick = function() {
+        modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+}
+
+function showModal(size) {
     var modal = document.getElementById('tooManyModal');
     var span = document.getElementById("closeModal");
+    var modalButton2 = document.getElementById('modalNoChange');
     modal.style.display = 'block';
     span.onclick = function() {
         modal.style.display = "none";
@@ -542,4 +585,14 @@ function showModal() {
             modal.style.display = 'none';
         }
     }
+    modalButton2.onclick = function() {
+        modal.style.display = "none";
+    }
+    if (size != 'Large') {
+        var modalButton1 = document.getElementById('modalChange');
+        modalButton1.onclick = function() {
+            modal.style.display = "none";
+            popupFunction();
+        }  
+    } 
 }

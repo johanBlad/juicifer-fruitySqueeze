@@ -103,6 +103,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     flex-flow: column;
 }
 
+
 .ingredientList {
 	height: 90vh;
     overflow: auto;
@@ -131,14 +132,14 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     display: table;
     table-layout: auto;
     width: 100%;
-    height: 5vh;
-    border-spacing: 5px:
-        
+    height: 6vh;
+    /*border-spacing: 5px;*/
 }
 
 .hotDrinkNameColumn {
     display: table-cell;
-    border-style: dotted;
+    border: 2px solid; 
+    /*border-style: solid;*/
     background-color: #b3ff66;
     font-size: 20pt;
     width: 50%;
@@ -146,12 +147,27 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 
 .hotDrinkSizeColumn {
     display: table-cell;
-    border-style: dotted;
+    border: 2px solid;
     background-color: #b3ff66;
     font-size: 20pt;
-    width: 10%;
+    width: 15%;
+}
+<<<<<<< HEAD
+
+=======
+.testDiv {
+    /*border-style: dashed;*/
+    margin: 5px;
 }
 
+.premadeDrink {
+    border: 2px solid;
+    margin: 5px;
+    font-size: 14pt;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+>>>>>>> b5f001792283f9047dea7e25c7d6922fe01ddfc1
 
 /*Calle*/ 
 
@@ -192,7 +208,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 	height: 20%;
 	border-spacing: 10px;
     top: 0;
-	background-color: lightgrey;
+	background: linear-gradient(to right, MediumSpringGreen, LimeGreen);
 }
 
 .headColumn {
@@ -214,6 +230,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     border-radius: 10px;
     border: none;
     font-size: 10pt;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 .cancelButton:active {
@@ -250,7 +267,6 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     flex: 1;
 }
 
-
 .navButtonsDiv {
     display: flex;
 }
@@ -273,6 +289,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     color: white;
     border: 1px solid #000000;
     margin-top: 3%;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
 }
 
 #backButton {
@@ -387,11 +404,26 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     background-color: azure;
 }
 
+.howMany {
+    text-decoration: underline;
+}
+
 #closeModal {
     color: #aaaaaa;
     float: right;
     font-size: 40px;
     font-weight: bold;
+}
+
+.modalButtons {
+    font-family: Lobster;
+    height: 70px;
+    width: 200px;
+    border-radius: 50px;
+    border: 3px solid #000000;
+    font-size: 16pt;
+    margin-top: 5%;
+    margin-right: 10%;
 }
 
 /* Size of payment buttons till Payment.html*/
