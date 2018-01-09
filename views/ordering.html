@@ -253,6 +253,39 @@
             <button class="modalButtons" id="modalChange">I want to <br> change size</button><button class="modalButtons" id="modalNoChange">I'll remove some ingredients</button></p>
         </div>
     </div>
+
+    <div class="tableRow">
+        <div class="tableColumn" style="text-align: right; width: 23vh;">
+                <p>
+                    Base ({{ counter1}}/{{ base }}):
+                </p>
+                <p>
+                    Fruits &amp; Greens ({{ counter2 }}/{{ fruits }}):
+                </p>
+                <p>
+                    Extras ({{ counter3 }}/{{ extras }}):
+                </p>
+            </div>
+            <div class="tableColumn" style="text-align: left;">
+                <p>-
+                    <label v-for="item in chosenIngredients" v-if="item.ingredient_type == 1"> 
+                        {{ item.ingredient_en }}, 
+                    </label>
+                </p>
+                <p>-
+                    <label v-for="item in chosenIngredients" v-if="item.ingredient_type == 2"> 
+                        {{ item.ingredient_en }}, 
+                    </label>
+                </p>
+                <p>-
+                    <label v-for="item in chosenIngredients" v-if="item.ingredient_type == 3"> 
+                        {{ item.ingredient_en }},  
+                    </label>
+                </p>
+            </div>
+    </div>
+
+<!--
   <div class="tableRow">
     <div class="tableColumn" style="text-align: left;">
         <ul>Base: ({{ counter1}}/{{ base }})<ul>
@@ -274,7 +307,7 @@
                 </li>
             </ul>
       </div>
-    </div>
+    </div>-->
     <div class="ingredientList">
       <details>
         <summary>Base</summary>
