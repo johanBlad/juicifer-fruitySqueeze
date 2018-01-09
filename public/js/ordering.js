@@ -229,7 +229,7 @@ var vm = new Vue({
     removeIngredient: function (item, type, ing_type) {
       var i;
       for (i = 0; i < this.chosenIngredients.length; i++) {
-        if (this.chosenIngredients[i] === item) {
+        if (this.chosenIngredients[i] === item && alert($('#tooManyModal').hasClass('in'))) {
           this.chosenIngredients.splice(i, 1);
           this.price = this.price - item.selling_price;
           if (ing_type == 1) {
