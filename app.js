@@ -138,6 +138,12 @@ Data.prototype.cancelOrder = function (orderId) {
   this.makeTransaction(this.orders[orderId], 1)*/
 };
 
+// Returnera transaktioner
+Data.prototype.getTransactions = function () {
+  var d = this.data;
+  return d[transactionsDataName];
+};
+
 var readymadeDataName = "readymade";
 var hotDrinksDataName = "hotdrinks";
 
@@ -165,6 +171,10 @@ io.on('connection', function (socket) {
     io.emit('currentQueue', { orders: data.getAllOrders(),
                           ingredients: data.getIngredients(),
                           readymade: data.getReadymade() });
+  });
+    
+  socket.on('getTransactions', function () {
+    socket.emit("transactions", data.getTransactions());
   });
   // send UI labels in the chosen language
   socket.on('switchLang', function (lang) {

@@ -91,7 +91,7 @@
           
     <h1 v-if="stockShown===false" id=verticalStock>{{ uiLabels.stock }}</h1>
           
-          <div v-if="stockShown">
+          <div v-show="stockShown">
               
             <div id="time"></div> 
               
@@ -108,7 +108,7 @@
               <div id="stockQuantity">
                   <h2>{{uiLabels.stockQuantity}}</h2>
               <div v-for = "item in ingredients">
-              {{item.vol_smoothie}}
+              {{item.vol_smoothie + item.vol_juice}}
                   <!-- lägg till {{item.vol_juice}}-->
                   </div>
               </div>
@@ -116,60 +116,9 @@
               
               <!--Funkar ej när den ligger här men funkar i main -->
              <div id="piechart"></div>
-              
-<!--
-    <div id="smoothieCircle"></div>
-              
-    <div id="stockitems">
-      <details>
-        <summary>Base</summary>
-        <ingredient
-          ref="stockItem"
-          type="smoothie"
-          v-for="item in ingredients"
-          v-if="item.vol_smoothie > 0 && item.ingredient_type == 1"
-          v-on:increment="addIngredient(item, 'smoothie')"
-          v-on:decrement="removeIngredient(item, 'smoothie')"
-          :item="item"
-          :lang="lang"
-          :key="item.ingredient_id">
-        </ingredient>
-      </details>
-        
-      <details>
-        <summary>Fruits & Greens</summary>
-        <ingredient
-          ref="stockItem"
-          type="smoothie"
-          v-for="item in ingredients"
-          v-if="item.vol_smoothie > 0 && item.ingredient_type == 2"
-        v-on:increment="addIngredient(item, 'smoothie')"
-          v-on:decrement="removeIngredient(item, 'smoothie')"
-          :item="item"
-          :lang="lang"
-          :key="item.ingredient_id">
-        </ingredient>
-      </details>
-      <details>
-        <summary>Extras</summary>
-        <ingredient
-          ref="stockItem"
-          type="smoothie"
-          v-for="item in ingredients"
-          v-if="item.vol_smoothie > 0 && item.ingredient_type == 3"
-             v-on:increment="addIngredient(item, 'smoothie')"
-          v-on:decrement="removeIngredient(item, 'smoothie')"
-          :item="item"
-          :lang="lang"
-          :key="item.ingredient_id">
-        </ingredient>
-      </details>
-
-        
-    </div>
-    -->
-              
-    </div>
+          
+        </div>
+             
       
           
     </div>
@@ -180,24 +129,7 @@
        <div id="langButton"> 
           <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
         </div>
-      
-
-<!-- Stock -->
-    
- <!--   <h1>{{ uiLabels.stock }}</h1>
-    <div>
-      <order-item-to-prepare
-        v-for="(order, key) in orders"
-        v-if="!order.done && order.type == 'smoothie'"
-        v-on:done="markDone(key)"
-        :order-id="key"
-        :order="order" 
-        :ui-labels="uiLabels"
-        :lang="lang"
-        :key="key">
-      </order-item-to-prepare>
-    </div>-->
-    
+ 
       </div>
     
 </body>

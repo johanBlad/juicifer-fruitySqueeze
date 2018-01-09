@@ -115,6 +115,7 @@ var vm = new Vue({
        historyShown: false,
         stockShown: false,
         currentOrdersShown: true,
+        transactions: null
     },
     
   methods: {
@@ -124,7 +125,9 @@ var vm = new Vue({
     sendCancel: function (orderid) {
       socket.emit("cancelOrder", orderid);
     },
-      
+    getTransactions: function(){
+        socket.emit("getTransactions");
+    },
     showCurrentOrders: function(){
         this.currentOrdersShown = true;
         this.stockShown = false;
@@ -140,34 +143,70 @@ var vm = new Vue({
         this.stockShown = true;
         this.historyShown = false;
     },
+    getIngredientById: function (id) {
+        for (var i =0; i < this.ingredients.length; i += 1) {
+        if (this.ingredients[i].ingredient_id === id){
+        return this.ingredients[i];
+        }
+      }
+    },
     showPieChart: function() {
-        
         google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
-    
-    function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
-        ]);
-
-        var options = {
-          title: 'My Daily Activities'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-        chart.draw(data, options);
-      
-    }
-        
+        google.charts.setOnLoadCallback(function() {
+            this.getTransactions();
+            socket.on("transactions", function(transactions) {
+            var popIng = {};
+            for(var i = 0; i < transactions.length; i++) {
+                let ingredId = transactions[i].ingredient_id;
+                let ingredient = this.getIngredientById(ingredId);
+                if(transactions[i].change === -1) {
+                    if(popIng[ingredient.ingredient_sv] === undefined) {
+                        popIng[ingredient.ingredient_sv] = 1;
+                    } else {
+                        popIng[ingredient.ingredient_sv] += 1;
+                    }
+                }
+            }
+            var popIngList = [];
+            for (let i in popIng) {
+                popIngList.push({name: i, value: popIng[i]});
+            }
+            popIngList.sort((a,b) => a.value - b.value);
+            var top5 = popIngList.slice(0,5);
+            var chartData = [];
+            chartData.push(['Ingrediens', 'Antal beställningar']); // TODO: Hämta från UiLabels
+            for (let i in top5) {
+                chartData.push([top5[i].name, top5[i].value]);
+            }
+            drawChart(chartData, this.uiLabels.popularIngredients);
+        }.bind(this));
+    }.bind(this)); 
     }
   }
 });
+
+function drawChart(inputData, title) {
+            
+            /*var data = google.visualization.arrayToDataTable([
+              ['Task', 'Hours per Day'],
+              ['Work',     11],
+              ['Eat',      2],
+              ['Commute',  2],
+              ['Watch TV', 2],
+              ['Sleep',    7]
+            ]);*/
+            var data = google.visualization.arrayToDataTable(inputData);
+
+            var options = {
+              title: title
+            };
+            
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            
+            var selection = chart.getSelection();
+            chart.draw(data, options);
+
+};
 
 function setTime(){
     document.getElementById('time').innerHTML = getCurrentTime();
