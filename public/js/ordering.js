@@ -1,6 +1,7 @@
 /*jslint es5:true, indent: 2 */
 /*global sharedVueStuff, Vue, socket */
 'use strict';
+var orderNumber = 0;
 
 var readymadeDrinks = Vue.component('readymadedrink', {
   props: ['product', 'ingredients', 'lang'],
@@ -145,7 +146,10 @@ function getRandomInt(min, max) {
 function getOrderNumber() {
   // It's probably not a good idea to generate a random order number, client-side. 
   // A better idea would be to let the server decide.
-  return "#" + getRandomInt(1, 1000000);
+  orderNumber = orderNumber+1;
+    return '#'+orderNumber;
+    
+  //return "#" + getRandomInt(1, 1000000);
 }
 
 function wrapProduct (_ingredients, _price, _volume, _productType, _productName) {

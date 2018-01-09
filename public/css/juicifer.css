@@ -731,7 +731,6 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 #stock-wrapper {
     display:inline-block;
     height: 100%;
-    overflow: hidden;
     width: 7%;
     border: 4px dashed #339933;
     /*#ab1234 dark red*/
@@ -762,6 +761,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     display: inline-block !important;
     width: 78% !important;
     background-color: white!important;
+    overflow: auto;
 }
 
 /*paddingen här under kan vi ändra för att få större på de två första*/
@@ -801,6 +801,17 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     margin-bottom: 1050px;
     margin-left:50px;
     
+}
+
+#languageButton{
+    font-family: Lobster;
+    font-size: 14pt;
+    width: 15%;
+    border-radius: 20px;
+    border: 1px solid #000000;
+    background-color: azure;
+    margin-top: 1%;
+    margin-left: 1%;
 }
 
 /* ---------- slut på kitchen -------- */
