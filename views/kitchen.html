@@ -28,7 +28,7 @@
         
     <div v-if="currentOrdersShown"> 
         
-        <p id="orderNumber">Order nr</p>
+        <p class="orderNumber">Order nr</p>
          <div id="time"></div>
         
         <h1 id="headlineOrders"> {{ uiLabels.ordersInQueue }}</h1>
@@ -64,6 +64,7 @@
     
         <div v-if="historyShown">
             
+             <p class="orderNumber">Order nr</p>
             
             <div id="time"></div> 
             
