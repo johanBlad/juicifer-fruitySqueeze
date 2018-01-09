@@ -23,7 +23,7 @@
     </div>
     <div class="mainDiv">
         <div class="buttonDiv">
-            <button class="chooseButtons"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="100" class="icon"></button>
+            <button class="chooseButtons" v-on:click="chooseType(2)"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="100" class="icon"></button>
         </div>
         <div class="headlineDiv">
             <p style="font-size: 20pt;">
@@ -33,7 +33,7 @@
     </div>
     <div class="mainDiv">
         <div class="buttonDiv">
-            <button class="chooseButtons"><img src="https://png.icons8.com/ios/540/milkshake.png" width=120 class="icon"></button>
+            <button class="chooseButtons" v-on:click="chooseType(2)"><img src="https://png.icons8.com/ios/540/milkshake.png" width=120 class="icon"></button>
         </div>
         <div class="headlineDiv">
             <p style="font-size: 20pt;">
@@ -43,7 +43,7 @@
     </div>
     <div class="mainDiv">
         <div class="buttonDiv">
-            <button class="chooseButtons"><img src="http://freevector.co/wp-content/uploads/2013/10/34819-hot-coffee-mug-outline.png" width="100" class="icon"></button>
+            <button class="chooseButtons" v-on:click="chooseType(3)"><img src="http://freevector.co/wp-content/uploads/2013/10/34819-hot-coffee-mug-outline.png" width="100" class="icon"></button>
         </div>
         <div class="headlineDiv">
             <p style="font-size: 20pt;">
@@ -497,7 +497,7 @@
         <hotdrink
               ref="hotdrink"
               v-for="drink in hotdrinks"
-              v-on:select="setSelectedProduct(product)"
+              v-on:select="setSelectedProduct(drink), chooseHotSize(drink)"
               v-on:deselect="setSelectedProduct(undefined)"
               :drink="drink"
               :lang="lang"
@@ -510,10 +510,10 @@
       <button class="navButtons" id="backButton">&#8678;</button>
       <label>Back</label>
     </div>
-    <div class="tableColumn" style="text-align: center;"></div>
+    <div class="tableColumn" style="text-align: center;">{{ price }} kr</div>
     <div class="tableColumn" style="text-align: right;">
       <label>Next</label>
-      <button v-on:click="orderReadymade(selectedProduct)" class="navButtons" id="forwardButton" v-on:click= "addToOrder()">&#8680;</button> 
+      <button v-on:click="confirmProductChoice()" class="navButtons" id="forwardButton" v-on:click= "addToOrder()">&#8680;</button> 
     </div>
   </div>
         

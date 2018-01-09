@@ -1,9 +1,9 @@
-hotdrink_id,hotdrink_name_sv,hotdrink_name_en,selling_price_s,selling_price_m,selling_price_l
-1,Svart kaffe,Black coffee,20,25,32
-2,Te,Tea,15,20,25
-3,Cappuccino,Cappuccino,35,40,45
-4,Café au lait,Café au lait,35,40,45
-5,Americano,Americano,35,40,45
-6,Kaffe latte,Latte,35,40,45
-7,Masala chai,Chai latte,40,45,50
-8,Espresso,Espresso,25,40,50
+hotdrink_id,hotdrink_name_sv,hotdrink_name_en,volume_s, volume_m, volume_l,selling_price_s,selling_price_m,selling_price_l
+1,Svart kaffe,Black coffee,20,25,30,20,25,32
+2,Te,Tea,30,37,44,15,20,25
+3,Cappuccino,Cappuccino,30,37,44,35,40,45
+4,Café au lait,Café au lait,30,37,44,35,40,45
+5,Americano,Americano,15,20,25,35,40,45
+6,Kaffe latte,Latte,30,37,44,35,40,45
+7,Masala chai,Chai latte,30,37,44,40,45,50
+8,Espresso,Espresso,5,7,10,25,40,50

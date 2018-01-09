@@ -111,29 +111,69 @@ Vue.component('hotdrink', {
     props: ['drink', 'lang'],
     template: ' <div class="hotDrinkTableRow">\
                     <div class="hotDrinkNameColumn1"><p style="margin-top: 7%; margin-bottom: 7%;">{{ drink["hotdrink_name_"+ lang] }}</p></div>\
-                    <div class="hotDrinkSizeColumn1"><button class="chooseHot" v-bind:class="{ productSelected: isSelected }" v-on:click="markSelected">{{ drink.selling_price_s }}kr</button></div>\
-                    <div class="hotDrinkSizeColumn1"><button class="chooseHot" v-bind:class="{ productSelected: isSelected }" v-on:click="markSelected">{{ drink.selling_price_m }}kr</button></div>\
-                    <div class="hotDrinkSizeColumn1"><button class="chooseHot" v-bind:class="{ productSelected: isSelected }" v-on:click="markSelected">{{ drink.selling_price_l }}kr</button></div>\
+                    <div class="hotDrinkSizeColumn1">\
+                            <button class="chooseHot" v-bind:class="{ productSelected: isSelectedS }" v-on:click="markSelectedS">{{ drink.selling_price_s }}kr\
+                            </button>\
+                    </div>\
+                    <div class="hotDrinkSizeColumn1">\
+                            <button class="chooseHot" v-bind:class="{ productSelected: isSelectedM }" v-on:click="markSelectedM">{{ drink.selling_price_m }}kr\
+                            </button>\
+                    </div>\
+                    <div class="hotDrinkSizeColumn1">\
+                            <button class="chooseHot" v-bind:class="{ productSelected: isSelectedL }" v-on:click="markSelectedL">{{ drink.selling_price_l }}kr\
+                            </button>\
+                    </div>\
                 </div>',
     data: function () {
     return {
-      isSelected: false
+      isSelectedS: false,
+      isSelectedM: false,
+      isSelectedL: false,
     };
   },
   methods: {
     
-    markSelected: function () {
-      if (this.isSelected == false) {
+    markSelectedS: function () {
+      if (this.isSelectedS == false) {
         deselectAll();
-        this.isSelected = true;
+        this.isSelectedS = true;
         this.$emit('select');
-      } else {
+      } 
+      else {
         deselectAll();
+        this.isSelectedS = false;
         this.$emit('deselect');
       }
+    },
+
+    markSelectedM: function () {
+        if (this.isSelectedM == false) {
+            deselectAll();
+            this.isSelectedM = true;
+            this.$emit('select');
+      }
+        else {
+            deselectAll();
+            this.isSelectedM = false;
+            this.$emit('deselect');
+        }
+    },
+
+    markSelectedL: function () {
+    if (this.isSelectedL == false) {
+        deselectAll();
+        this.isSelectedL = true;
+        this.$emit('select');
+    }
+    else {
+        deselectAll();
+        this.isSelectedL = false;
+        this.$emit('deselect');
+    }
+},
+      
       
     }
-}
 });
 
                
@@ -199,10 +239,9 @@ var vm = new Vue({
   components: {readymadeDrinks: readymadeDrinks},
   methods: {
     addIngredient: function (item, type, ing_type) {
-      console.log(this.hotdrinks.length);
         if (this.productName == 'Custom Smoothie' || this.productName == 'Custom Juice'){
           if (ing_type == 1 && this.counter1 < this.base) {
-                this.counter1 += 1; 
+                this.counter1 += 1;
                 this.chosenIngredients.push(item);
                 this.price += +item.selling_price;
           }
@@ -227,7 +266,7 @@ var vm = new Vue({
           console.log(item.ingredient_en);
         }
     },
-
+      
     removeIngredient: function (item, type, ing_type) {
       var i;
       for (i = 0; i < this.chosenIngredients.length; i++) {
@@ -282,6 +321,7 @@ var vm = new Vue({
         this.selectedProduct = undefined;
       } else {
         this.selectedProduct = _product;
+          console.log(_product);
       }
     },
 
@@ -384,6 +424,12 @@ var vm = new Vue({
         console.log(this.size);
         setAlternativeSizes(this.volume);
     },
+      
+      chooseHotSize: function (drink) {
+          this.volume = drink.volume_s;
+          console.log(this.volume);
+          console.log('hej');
+      },
 
     confirmProductChoice: function () {
       if (this.selectedProduct != undefined) {
@@ -393,8 +439,12 @@ var vm = new Vue({
         } else if (this.productName == "Custom Juice") {
           //goToCustomJuice
           console.log("...Directing to Custom Juice")          
-        } else {
+        } else if (this.productType == 'coffee'){
+            this.orderHotdrink(this.selectedProduct);
+        }
+        else {
           this.orderReadymade(this.selectedProduct);
+        console.log(this.selectedProduct);
         }
       }
     },
@@ -407,6 +457,12 @@ var vm = new Vue({
       }
       this.productName = rm.rm_name;
       this.addToOrder();
+    },
+      
+    orderHotdrink: function (hd) {
+        console.log('Ordering a hot drink');
+        this.productName = hd.hotdrink_name_en;
+        this.addToOrder();
     },
 
     getIngredientById: function (id) {
@@ -442,8 +498,12 @@ var vm = new Vue({
 
     addToOrder: function () { 
       console.log("------SQUEEZE IT!------");
-
-      var productToAdd = wrapProduct(this.chosenIngredients, this.price, this.volume, this.productType, this.productName);
+        var productToAdd;
+        if (this.productType == 3) {
+            productToAdd = wrapProduct(undefined, this.price, this.volume, this.productType, this.productName);
+        }
+        else {var productToAdd = wrapProduct(this.chosenIngredients, this.price, this.volume, this.productType, this.productName);
+             }
       console.log(productToAdd.productName); 
       console.log("BASKET SIZE: " + this.basket.length); 
       var basketSize = this.basket.length;
@@ -527,11 +587,15 @@ function getOrderIngredients (basket) {
 
 function deselectAll () {
   var rmdrinks = vm.$refs.readymadedrink;
+  var hotdrink = vm.$refs.hotdrink;
   var i;
   console.log("Deselecting!")
   for (i = 0; i < rmdrinks.length; i++) {
     rmdrinks[i].$data.isSelected = false;
   }
+  for (i = 0; i < hotdrink.length; i++) {
+    hotdrink[i].$data.isSelected = false;
+  } 
   var customDrinkBtn = document.getElementById('squeezeOwnButton');
   if (customDrinkBtn.classList.contains("productSelected")) {
     customDrinkBtn.classList.remove("productSelected");
