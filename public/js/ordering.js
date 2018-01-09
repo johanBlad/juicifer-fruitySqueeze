@@ -18,14 +18,18 @@ Vue.component('product', {
 var readymadeDrinks = Vue.component('readymadedrink', {
   props: ['product', 'ingredients', 'lang'],
   template: ' <div class="premadeDrink">\
-  <label>\
-  {{ product["rm_id"] }}.\
-  {{ product["rm_name"] }}\
-  <br>\
-  {{ getIngredientNameList(product["rm_ingredients"]) }}\
-  </label>\
-  <button class="productButton" v-bind:class="{ productSelected: isSelected }" v-on:click="markSelected" >Select</button>\
-  </div>',
+      <div class="premadeInfo">\
+      <h4>\
+       {{ product["rm_name"] }}\
+      </h4>\
+      <label style="margin-left: 10px;">\
+      {{ getIngredientNameList(product["rm_ingredients"]) }}\
+      </label>\
+      </div>\
+      <div class="premadeButton">\
+      <button class="productButton" v-bind:class="{ productSelected: isSelected }" v-on:click="markSelected" >Select</button>\
+      </div>\
+      </div>',
   data: function () {
     return {
       isSelected: false
@@ -51,6 +55,12 @@ var readymadeDrinks = Vue.component('readymadedrink', {
           return this.ingredients[i];
         }
       }
+    },
+
+    getIngredientList: function (idArr) {
+      return idArr.map(function(id) {
+        return this.getIngredientById(id);
+      }.bind(this)).join(", ");
     },
 
     getIngredientNameList: function (idArr) {
