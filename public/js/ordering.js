@@ -157,9 +157,6 @@ Vue.component('hotdrink', {
     props: ['drink', 'lang'],
     template: ' <div class="hotDrinkTableRow">\
                     <div class="hotDrinkNameColumn1"><p style="margin-top: 7%; margin-bottom: 7%;">{{ drink["hotdrink_name_"+ lang] }}</p></div>\
-                    <div class="hotDrinkSizeColumn1"><button class="chooseHotSmall" v-bind:class="{ productSelected: isSelected }" v-on:click="markSelected">{{ drink.selling_price_s }}kr</button></div>\
-                    <div class="hotDrinkSizeColumn1"><button class="chooseHotMedium" v-bind:class="{ productSelected: isSelected }" v-on:click="markSelected">{{ drink.selling_price_m }}kr</button></div>\
-                    <div class="hotDrinkSizeColumn1"><button class="chooseHotLarge" v-bind:class="{ productSelected: isSelected }" v-on:click="markSelected">{{ drink.selling_price_l }}kr</button></div>\
                     <div class="hotDrinkSizeColumn1">\
                             <button class="chooseHot" v-bind:class="{ productSelected: isSelectedS }" v-on:click="markSelectedS">{{ drink.selling_price_s }}kr\
                             </button>\
@@ -288,11 +285,7 @@ var vm = new Vue({
   components: {readymadeDrinks: readymadeDrinks},
   methods: {
     addIngredient: function (item, type, ing_type) {
-<<<<<<< HEAD
-      console.log(this.hotdrinks.length);
-=======
         if (this.productName == 'Custom Smoothie' || this.productName == 'Custom Juice'){
->>>>>>> 6f08d1f490f6f53920d61b48f56cd60819f897d4
           if (ing_type == 1 && this.counter1 < this.base) {
                 this.counter1 += 1;
                 this.chosenIngredients.push(item);
@@ -317,6 +310,7 @@ var vm = new Vue({
             
         }
           console.log(item.ingredient_en);
+      }
     },
       
     removeIngredient: function (item, type, ing_type) {
@@ -532,20 +526,6 @@ var vm = new Vue({
       }
     },
 
-<<<<<<< HEAD
-    updatePrice: function () {
-      var rmdrinks = vm.$refs.readymadedrink;
-      for (var i = 0; i < rmdrinks.length; i++) {
-        rmdrinks[i].volume = this.volume;
-      }
-    },
-
-    addToOrder: function (productToAdd) {
-      console.log("------SQUEEZE IT!------");
-      if (productToAdd == undefined) {
-        var productToAdd = wrapProduct(this.chosenIngredients, this.price, this.volume, this.productType, this.productName);
-      }
-=======
     addToOrder: function () { 
       console.log("------SQUEEZE IT!------");
         var productToAdd;
@@ -554,7 +534,6 @@ var vm = new Vue({
         }
         else {var productToAdd = wrapProduct(this.chosenIngredients, this.price, this.volume, this.productType, this.productName);
              }
->>>>>>> 6f08d1f490f6f53920d61b48f56cd60819f897d4
       console.log(productToAdd.productName); 
       console.log("BASKET SIZE: " + this.basket.length); 
       var basketSize = this.basket.length;
