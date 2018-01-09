@@ -13,6 +13,7 @@ var csv = require("csvtojson");
 var ingredientsDataName = "ingredients";
 var transactionsDataName = "transactions";
 var defaultLanguage = "en";
+var orderNumber = 0;
 
 // Pick arbitrary port for server
 var port = 3000;
@@ -61,6 +62,7 @@ Data.prototype.getIngredients = function () {
   });
 };
 
+
 /* 
   Function to load initial data from CSV files into the object
 */
@@ -101,29 +103,10 @@ Data.prototype.addOrder = function (order) {
   }
 };
 
-/* fanns inte i git-versionen men oklart vad den gör atm -- är det pga prototyp.addOrder är borttagen? 
-
-
-Data.prototype.makeTransaction = function(order,changeUnit){
-  var transactions = this.data[transactionsDataName],
-    //find out the currently highest transaction id
-    transId =  transactions[transactions.length - 1].transaction_id,
-    i = order.ingredients,
-    k;
-    
-  for (k = 0; k < i.length; k += 1) {
-    transId += 1;
-    transactions.push({transaction_id: transId,
-                       ingredient_id: i[k].ingredient_id,
-                       change: changeUnit});
-  }
-}
-
-*/
-
 
 Data.prototype.getAllOrders = function () {
-  return this.orders;
+  var allOrders = this.orders;
+  return allOrders;
 };
 
 Data.prototype.markOrderDone = function (orderId) {
@@ -196,6 +179,9 @@ io.on('connection', function (socket) {
                             ingredients: data.getIngredients(),
                             hotdrinks: data.getHotDrinks(),
                             readymade: data.getReadymade() });
+    socket.on('orderNumber', function(){
+        
+    });
         
         
   });

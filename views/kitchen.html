@@ -23,37 +23,33 @@
     
       <h1 v-if="currentOrdersShown===false" id="verticalOrders">  
         {{ uiLabels.ordersInQueue }}
-    <!--<h2>{{ uiLabels.smoothie }}</h2>-->
         </h1>
+         
+        <div v-if="currentOrdersShown"> 
+            <button v-on:click="switchLang()"  id="languageButton">{{ uiLabels.language }}</button>
+            <p class="orderNumber">Order nr</p>
+            <div id="time"></div>
         
-    <div v-if="currentOrdersShown"> 
-        
-        <p class="orderNumber">Order nr</p>
-         <div id="time"></div>
-        
-        <h1 id="headlineOrders"> {{ uiLabels.ordersInQueue }}</h1>
-    
+            <h1 id="headlineOrders"> {{ uiLabels.ordersInQueue }}</h1>
             
             <div id="time"></div> 
-      <order-item-to-prepare
-        ref="orderItem"
-        v-for="(order, key) in orders"
-        v-if="!order.done && !order.cancel"
-        v-on:done="markDone(key)"
-        v-on:cancel="sendCancel(key)"
-        :order-id="key"
-        :order="order" 
-        :ui-labels="uiLabels"
-        :lang="lang"
-        :key="key"
-        id="orderDiv"
-                             >
-      </order-item-to-prepare>
-
             
-            </div>
-      
-        
+            <order-item-to-prepare
+                ref="orderItem"
+                v-for="(order, key) in orders"
+                v-if="!order.done && !order.cancel"
+                v-on:done="markDone(key)"
+                v-on:cancel="sendCancel(key)"
+                :order-id="key"
+                :order="order" 
+                :ui-labels="uiLabels"
+                :lang="lang"
+                :key="key"
+                id="orderDiv"
+                             >
+            </order-item-to-prepare>
+            
+        </div> 
     </div>
     
 <!--History -->
@@ -63,14 +59,15 @@
         <h1 v-if="historyShown===false" id=verticalHistory>{{ uiLabels.ordersFinished }}</h1>
     
         <div v-if="historyShown">
+            <button v-on:click="switchLang()"  id="languageButton">{{ uiLabels.language }}</button>
             
-             <p class="orderNumber">Order nr</p>
+            <p class="orderNumber">Order nr</p>
             
             <div id="time"></div> 
             
             <h1 id="headlineHistory">{{ uiLabels.ordersFinished }}</h1>
    
-            <order-item-to-prepare
+            <order-item-to-history
                 ref="orderItem"
                 v-for="(order, key) in orders"
                 v-if="order.done"
@@ -81,7 +78,7 @@
                 :key="key"
                 id="orderDiv"
                              >
-            </order-item-to-prepare>
+            </order-item-to-history>
             
         </div>
     </div>
@@ -94,43 +91,40 @@
         <h1 v-if="stockShown===false" id=verticalStock>{{ uiLabels.stock }}</h1>
           
           <div v-show="stockShown">
+            <button v-on:click="switchLang()"  id="languageButton">{{ uiLabels.language }}</button>
               
             <div id="time"></div> 
               
-                <h1 id="headlineStock">{{ uiLabels.stock }}</h1>
+            <h1 id="headlineStock">{{ uiLabels.stock }}</h1>
               
-                <div id="stockIngredients">
-                    <h2>{{uiLabels.ingredients}}</h2>
+            <div id="stockIngredients">
+                <h2>{{uiLabels.ingredients}}</h2>
                   
-                  
-                    <div v-for ="item in ingredients">
-                        {{item["ingredient_"+ lang]}}
-                    </div>
-                    
+                <div v-for ="item in ingredients">
+                    {{item["ingredient_"+ lang]}}
                 </div>
+                    
+            </div>
               
               
-              <div id="stockQuantity">
-                  <h2>{{ uiLabels.stockQuantity }}</h2>
+            <div id="stockQuantity">
+                <h2>{{ uiLabels.stockQuantity }}</h2>
                   
-                    <div v-for = "item in ingredients">
-                        {{ item.vol_smoothie + item.vol_juice }}
-                    </div>
+                <div v-for = "item in ingredients">
+                    {{ item.vol_smoothie + item.vol_juice }}
+                </div>
                   
-              </div>
+            </div>
               
-             <div id="piechart"></div>
+            <div id="piechart"></div>
           
         </div>      
     </div>
-      
-      
-    <div> 
-        <button v-on:click="switchLang()"  class="langButton">{{ uiLabels.language }}</button>
+    
            
-    </div>
+    
  
-</div>
+  </div>
     
 </body>
 </html>

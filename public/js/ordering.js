@@ -1,6 +1,7 @@
 /*jslint es5:true, indent: 2 */
 /*global sharedVueStuff, Vue, socket */
 'use strict';
+var orderNumber = 0;
 
 var readymadeDrinks = Vue.component('readymadedrink', {
   props: ['product', 'ingredients', 'lang'],
@@ -145,7 +146,10 @@ function getRandomInt(min, max) {
 function getOrderNumber() {
   // It's probably not a good idea to generate a random order number, client-side. 
   // A better idea would be to let the server decide.
-  return "#" + getRandomInt(1, 1000000);
+  orderNumber = orderNumber+1;
+    return '#'+orderNumber;
+    
+  //return "#" + getRandomInt(1, 1000000);
 }
 
 function wrapProduct (_ingredients, _price, _volume, _productType, _productName) {
@@ -176,7 +180,7 @@ var vm = new Vue({
   data: {
     productType: '', 
     chosenIngredients: [],
-    productName: 'dummyName',
+    productName: '',
     totalPrice: 0,
     volume: 0,
     size: '',
@@ -200,6 +204,9 @@ var vm = new Vue({
                 this.counter1 += 1; 
                 this.chosenIngredients.push(item);
                 this.price += +item.selling_price;
+              var arr = this.chosenIngredients;
+              var hej = arr.length;
+                console.log(hej);
           }
           else if (ing_type == 2 && this.counter2 < this.fruits) {
                 this.counter2 += 1;
@@ -213,8 +220,10 @@ var vm = new Vue({
           }
         else {
             showModal(this.size);
+            this.$refs.ingredient.decreaseCounter();
+            
         }
-          console.log(item.ingredient_en)
+          console.log(item.ingredient_en);
     },
 
     removeIngredient: function (item, type, ing_type) {
@@ -321,6 +330,11 @@ var vm = new Vue({
     },
       
     getNewSize: function (selectedButton, type) {
+        this.chosenIngredients = [];
+        this.price = 0;
+        this.counter1 = 0;
+        this.counter2 = 0;
+        this.counter3 = 0;
         var newSize = document.getElementById(selectedButton).textContent;
         if (newSize == 'Small') {
             this.volume = 30;
@@ -334,9 +348,6 @@ var vm = new Vue({
             this.volume = 50;
             this.size = newSize;
         }
-        console.log(this.volume);
-        console.log(this.size);
-        setAlternativeSizes(this.volume);
         if (newSize == 'Small' && type == 1) {
             this.base = 1;
             this.fruits = 2;
@@ -364,6 +375,12 @@ var vm = new Vue({
             this.fruits = 7;
             this.extras = 2; 
         }
+        for (var i = 0; i < this.$refs.ingredient.length; i += 1) {
+            this.$refs.ingredient[i].resetCounter();
+        }
+        console.log(this.volume);
+        console.log(this.size);
+        setAlternativeSizes(this.volume);
     },
 
     confirmProductChoice: function () {
@@ -458,7 +475,7 @@ var vm = new Vue({
       }
       this.productType = '';
       this.chosenIngredients = [];
-      this.productName = 'dummyName';
+      this.productName = '';
       this.price = 0;
       this.volume = 0;
       this.size = '';
