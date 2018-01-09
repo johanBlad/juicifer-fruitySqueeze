@@ -316,15 +316,15 @@ var vm = new Vue({
             this.extras = 3;
         }
         else if (selectedSize == 'Small' && type == 2) {
-            this.fruits = 3;
+            this.fruits = 2;
             this.extras = 1;
         }
         else if (selectedSize == 'Medium' && type == 2) {
-            this.fruits = 5;
+            this.fruits = 4;
             this.extras = 2; 
         }
         else {
-            this.fruits = 7;
+            this.fruits = 6;
             this.extras = 3; 
         }
     },
@@ -364,15 +364,15 @@ var vm = new Vue({
             this.extras = 3;
         }
         else if (newSize == 'Small' && type == 2) {
-            this.fruits = 3;
+            this.fruits = 2;
             this.extras = 1;
         }
         else if (newSize == 'Medium' && type == 2) {
-            this.fruits = 5;
+            this.fruits = 4;
             this.extras = 2; 
         }
         else {
-            this.fruits = 7;
+            this.fruits = 6;
             this.extras = 3; 
         }
         for (var i = 0; i < this.$refs.ingredient.length; i += 1) {
