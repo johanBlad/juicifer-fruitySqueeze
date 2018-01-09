@@ -518,9 +518,9 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 }
 
 #addButton {
-    text-align: center;
-    position: relative;
-    bottom: 0;
+    position: absolute;
+    bottom: 90px;
+    left: 13%;
 }
 
 #basketButton {
@@ -542,7 +542,6 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     margin-left: -100px;
     top: 320px;
     width: 100px;
-    text-align: right;
 }
 
 .headRow1 {
