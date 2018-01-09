@@ -159,28 +159,34 @@ var vm = new Vue({
             for(var i = 0; i < transactions.length; i++) {
                 let ingredId = transactions[i].ingredient_id;
                 let ingredient = this.getIngredientById(ingredId);
+                
+                
                 if(transactions[i].change === -1) {
-                    if(popIng[ingredient.ingredient_sv] === undefined) {
-                        popIng[ingredient.ingredient_sv] = 1;
+                    var ingredient_name= "ingredient_"+this.lang;
+                    if(popIng[ingredient[ingredient_name]] === undefined) {
+                        popIng[ingredient[ingredient_name]] = 1;
                     } else {
-                        popIng[ingredient.ingredient_sv] += 1;
+                        popIng[ingredient[ingredient_name]] += 1;
                     }
                 }
             }
             var popIngList = [];
             for (let i in popIng) {
-                popIngList.push({name: i, value: popIng[i]});
+                popIngList.push({name: i, value: popIng[i]}); //TODO uilabels?
             }
-            popIngList.sort((a,b) => a.value - b.value);
-            var top5 = popIngList.slice(0,5);
+                var sortedIngredients = popIngList.sort((a,b) => b.value - a.value);
+                
+                var top5 = sortedIngredients.slice(0,5);
+                
             var chartData = [];
             chartData.push(['Ingrediens', 'Antal beställningar']); // TODO: Hämta från UiLabels
             for (let i in top5) {
                 chartData.push([top5[i].name, top5[i].value]);
             }
+            console.log(chartData);
             drawChart(chartData, this.uiLabels.popularIngredients);
         }.bind(this));
-    }.bind(this)); 
+    }.bind(this)); //drawChart(chartData, this.uiLabels.popularIngredients)); 
     }
   }
 });

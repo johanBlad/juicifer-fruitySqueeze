@@ -59,11 +59,12 @@
 <!--History -->
 
     <div id="history-wrapper" v-on:click="showHistory()" v-bind:class="{ active: historyShown }">
-        <!-- <input v-on:keyup.right="showHistory()"> -->
         
-    <h1 v-if="historyShown===false" id=verticalHistory>{{ uiLabels.ordersFinished }}</h1>
+        <h1 v-if="historyShown===false" id=verticalHistory>{{ uiLabels.ordersFinished }}</h1>
     
         <div v-if="historyShown">
+            
+            
             <div id="time"></div> 
             
             <h1 id="headlineHistory">{{ uiLabels.ordersFinished }}</h1>
