@@ -24,16 +24,30 @@ Vue.component('order-item-to-prepare', {
           </div>\
          </div>',
   methods: {
-    orderDone: function () {
+      orderDone: function () {
         this.$emit('done');
     },
     cancelOrder: function () {
         this.$emit('cancel');
-    }
+    },
   }
 });
 
-//lägg till vue orderitem history
+Vue.component('order-item-to-history', {
+  props: ['uiLabels', 'order', 'orderId', 'lang'],
+  template: '<div class="orderDiv">\
+            <div class="orderList">\
+                <order-item\
+                :ui-labels="uiLabels"\
+                :lang="lang"\
+                :order-id="orderId"\
+                :order="order">\
+                </order-item>\
+            </div>\
+            <div class="timeStamp">{{order.time}}</div>\
+         </div>',
+
+});
 
 Vue.component('stockItem', {
   props: ['item', 'type', 'lang'],
@@ -41,37 +55,7 @@ Vue.component('stockItem', {
                   <label>\
                     {{item["ingredient_"+ lang]}}\
                   </label>\
-                  <div style="float: right;">\
-                  <label>\
-                    {{ counter }}\
-                  </label>\
-                    <button class="minusButton" v-on:click="decreaseCounter">-</button>\
-                    <button class="plusButton"  v-on:click="incrementCounter">+</button>\
-                    <label style="margin-left: 10px;">\
-                      {{item.selling_price}}:-\
-                    </label>\
-                  </div>\
               </div>',
-  data: function () {
-    return {
-      counter: 0
-    };
-  },
-  methods: {
-    incrementCounter: function () {
-      this.counter += 1;
-      this.$emit('increment');
-    },
-    resetCounter: function () {
-      this.counter = 0;
-    },
-    decreaseCounter: function () {
-      if (this.counter != 0) {
-        this.counter -= 1;
-        this.$emit('decrement');
-      }
-    }
-  }
 });
   
 
@@ -120,6 +104,13 @@ var vm = new Vue({
     },
     
   methods: {
+       orderDone: function () {
+        
+        this.$emit('done');
+    },
+    cancelOrder: function () {
+        this.$emit('cancel');
+    },
     markDone: function (orderid) {
       socket.emit("orderDone", orderid);
     },
@@ -151,6 +142,7 @@ var vm = new Vue({
         }
       }
     },
+      
     showPieChart: function() {
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(function() {
@@ -190,18 +182,18 @@ var vm = new Vue({
     }.bind(this)); //drawChart(chartData, this.uiLabels.popularIngredients)); 
     },
   
-      arrowsListener: function(evt) {
+    arrowsListener: function(evt) {
+          //om höger piltangent är tryckt på:
           if (evt.keyCode === 39) {
             if (this.currentOrdersShown){
-                console.log('ska anropa showhistory')
                 this.showHistory();
                 console.log(historyShown);
             }
             else if(this.historyShown){
-                console.log('ska anropa showstock')
                 this.showStock();
             }
           }
+          //om vänster piltangent är tryckt på
           if (evt.keyCode === 37) {
             if (this.historyShown){
                 
@@ -211,6 +203,28 @@ var vm = new Vue({
                this.showHistory();
           }
         }
+        //om enter är tryckt på
+          if (evt.keyCode === 13){
+            if( this.currentOrdersShown){
+                
+               console.log(orders);
+              console.log('har tryckt på enter')
+              this.markDone(key);
+            }
+          }
+          //om nedåtknappen är tryckt på och sedan enter
+         // else if(evt.keyCode === 13 && evt.keyCode === 40){
+              
+          //}
+        /*
+          else if(evt.keyCode === 8){
+            if(this.currentOrdersShown){
+              this.cancelOrder();
+            }
+          }
+          */
+        //om backspace är tryckt på
+          
       }
       
     },

@@ -1,3 +1,6 @@
 ﻿rm_id,rm_name,rm_ingredients
-1,Sugar rush,"[6,7,45,46]"
-2,Orange bomb,"[4,4,4,13,14]"
+1,Sugar rush,"[6,19,26,46]"
+2,Orange bomb,"[9,4,4,14]"
+3,Salty passion, "[8,62,62,61]"
+4,Squeezy Colada, "[34,17,19,45]"
+5,Chaos Brew, "[7,2,13,63]"
