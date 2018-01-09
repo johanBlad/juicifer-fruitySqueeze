@@ -106,7 +106,7 @@ var readymadeDrinks = Vue.component('readymadedrink', {
 });
 
 Vue.component('ingredient', {
-  props: ['item', 'lang'],
+  props: ['item', 'lang', 'id'],
   template: ' <div class="ingredient">\
                   <label>\
                     {{item["ingredient_"+ lang]}}\
@@ -290,9 +290,6 @@ var vm = new Vue({
                 this.counter1 += 1;
                 this.chosenIngredients.push(item);
                 this.price += +item.selling_price;
-              var arr = this.chosenIngredients;
-              var hej = arr.length;
-                console.log(hej);
           }
           else if (ing_type == 2 && this.counter2 < this.fruits) {
                 this.counter2 += 1;
@@ -306,17 +303,20 @@ var vm = new Vue({
           }
         else {
             showModal(this.size);
-            this.$refs.ingredient.decreaseCounter();
-            
-        }
+            for (var i = 0; i < this.$refs.ingredient.length; i += 1) {
+                if (this.$refs.ingredient[i].id === item.ingredient_id) {
+                    this.$refs.ingredient[i].decreaseCounter();
+                }
+            }
           console.log(item.ingredient_en);
-      }
+        }
+    }
     },
       
     removeIngredient: function (item, type, ing_type) {
       var i;
       for (i = 0; i < this.chosenIngredients.length; i++) {
-        if (this.chosenIngredients[i] === item) {
+        if (this.chosenIngredients[i] === item && alert($('#tooManyModal').hasClass('in'))) {
           this.chosenIngredients.splice(i, 1);
           this.price = this.price - item.selling_price;
           if (ing_type == 1) {
