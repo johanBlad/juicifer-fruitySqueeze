@@ -166,7 +166,7 @@
                 Large: 50 cl
                 <ul class="ingridientList">
                     <li>7 Fruits &amp; Greens</li>
-                    <li>2 Extra</li>
+                    <li>3 Extra</li>
                 </ul>
             </p>
         </div>
@@ -320,6 +320,7 @@
           v-on:decrement="removeIngredient(item, 'smoothie', 1)"
           :item="item"
           :lang="lang"
+          :id = "item.ingredient_id"
           :key="item.ingredient_id">
         </ingredient>
       </details>
@@ -430,6 +431,7 @@
           v-on:decrement="removeIngredient(item, 'juice', 2)"
           :item="item"
           :lang="lang"
+            
           :key="item.ingredient_id">
         </ingredient>
       </details>

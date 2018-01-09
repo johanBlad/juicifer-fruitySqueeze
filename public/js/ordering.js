@@ -60,7 +60,7 @@ var readymadeDrinks = Vue.component('readymadedrink', {
 });
 
 Vue.component('ingredient', {
-  props: ['item', 'lang'],
+  props: ['item', 'lang', 'id'],
   template: ' <div class="ingredient">\
                   <label>\
                     {{item["ingredient_"+ lang]}}\
@@ -204,9 +204,6 @@ var vm = new Vue({
                 this.counter1 += 1; 
                 this.chosenIngredients.push(item);
                 this.price += +item.selling_price;
-              var arr = this.chosenIngredients;
-              var hej = arr.length;
-                console.log(hej);
           }
           else if (ing_type == 2 && this.counter2 < this.fruits) {
                 this.counter2 += 1;
@@ -220,8 +217,11 @@ var vm = new Vue({
           }
         else {
             showModal(this.size);
-            this.$refs.ingredient.decreaseCounter();
-            
+            for (var i = 0; i < this.$refs.ingredient.length; i += 1) {
+                if (this.$refs.ingredient[i].id == item.ingredient_id) {
+                    this.$refs.ingredient[i].decreaseCounter();
+                }
+            }  
         }
           console.log(item.ingredient_en);
     },
@@ -325,7 +325,7 @@ var vm = new Vue({
         }
         else {
             this.fruits = 7;
-            this.extras = 2; 
+            this.extras = 3; 
         }
     },
       
@@ -373,7 +373,7 @@ var vm = new Vue({
         }
         else {
             this.fruits = 7;
-            this.extras = 2; 
+            this.extras = 3; 
         }
         for (var i = 0; i < this.$refs.ingredient.length; i += 1) {
             this.$refs.ingredient[i].resetCounter();
