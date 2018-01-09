@@ -4,7 +4,7 @@
 var orderNumber = 0;
 
 var readymadeDrinks = Vue.component('readymadedrink', {
-  props: ['product', 'ingredients', 'lang'],
+  props: ['product', 'ingredients', 'lang',],
   template: ' <div class="premadeDrink">\
       <div class="premadeInfo">\
       <h4>\
@@ -15,16 +15,18 @@ var readymadeDrinks = Vue.component('readymadedrink', {
       </label>\
       </div>\
       <div class="premadeButton">\
-      <button class="productButton" v-bind:class="{ productSelected: isSelected }" v-on:click="markSelected" >Select</button>\
+      <button class="productButton" v-bind:class="{ productSelected: isSelected }" v-on:click="markSelected">\
+      <b>{{ getPrice(product["rm_ingredients"]) }} :- </b>\
+      </button>\
       </div>\
       </div>',
   data: function () {
     return {
-      isSelected: false
+      isSelected: false,
+      volume: 0
     };
   },
   methods: {
-    
     markSelected: function () {
       if (this.isSelected == false) {
         deselectAll();
@@ -34,7 +36,53 @@ var readymadeDrinks = Vue.component('readymadedrink', {
         deselectAll();
         this.$emit('deselect');
       }
+    },
+
+    addIngredientsBySize: function(arr, n) {
+      var i;
+      var addfruit = true;
+      var addbase = true;
+      var extra = true;
+
+      for (i = 0; i < n; i++) {
+        if (arr[i].ingredient_type == 1 && addbase) {
+          arr.push(arr[i]);
+          addbase = false;
+          console.log("Adding BASE");
+        } else if (arr[i].ingredient_type == 2 && addfruit) {
+          arr.push(arr[i]);
+          console.log("Adding FRUIT");
+          addfruit = false; 
+        } else if (arr[i].ingredient_type == 3 && extra) {
+          arr.push(arr[i]);
+          extra = false;
+          console.log("Adding EXTRA");
+        }
+      }
+      return arr;
+    },
+
+    getPrice: function(idArr) {
+      var price = 0;
+      var premadeIngredients = this.getIngredientList(idArr);
+      var n = premadeIngredients.length;
+      console.log("original size n is: " + n)
+      if (this.volume >= 40) {
+        premadeIngredients = this.addIngredientsBySize(premadeIngredients, n);
+        premadeIngredients = swapFruit(premadeIngredients, n);
+        console.log("In Meadium! Length is: " + premadeIngredients.length)
+      }
+      if (this.volume == 50) {
+        premadeIngredients = this.addIngredientsBySize(premadeIngredients, n);
+        console.log("In Large! Length is: " + premadeIngredients.length)   
+      }
+      console.log("GetPrice, volume is: " + this.volume);
+      for (var k = 0; k < premadeIngredients.length; k++) {
+        price = price + premadeIngredients[k].selling_price;
+        console.log(premadeIngredients[k].ingredient_en);
+      }
       
+      return price;
     },
 
     getIngredientById: function (id) {
@@ -48,7 +96,7 @@ var readymadeDrinks = Vue.component('readymadedrink', {
     getIngredientList: function (idArr) {
       return idArr.map(function(id) {
         return this.getIngredientById(id);
-      }.bind(this)).join(", ");
+      }.bind(this));
     },
 
     getIngredientNameList: function (idArr) {
@@ -369,7 +417,16 @@ var vm = new Vue({
             this.fruits = 6;
             this.extras = 3; 
         }
+        this.updatePrice();
     },
+
+    updatePrice: function() {
+      var rmdrinks = vm.$refs.readymadedrink;
+      for (var i = 0; i < rmdrinks.length; i++) {
+        rmdrinks[i].volume = this.volume;
+        //rmdrinks[i].$forceUpdate();
+      }
+     },
       
     getNewSize: function (selectedButton, type) {
         this.chosenIngredients = [];
@@ -422,6 +479,7 @@ var vm = new Vue({
         }
         console.log(this.volume);
         console.log(this.size);
+        this.updatePrice();
         setAlternativeSizes(this.volume);
     },
       
@@ -473,12 +531,6 @@ var vm = new Vue({
       }
     },
 
-    getIngredientNameList: function (idArr) {
-      return idArr.map(function(id) {
-        return this.getIngredientById(id)["ingredient_" + this.lang];
-      }.bind(this)).join(", ");
-    },
-
     addAdditional: function (product) {
       product.quantity++;
       this.totalPrice = this.totalPrice + product.price;
@@ -489,11 +541,6 @@ var vm = new Vue({
         product.quantity--;
         this.totalPrice = this.totalPrice - product.price;
       }
-    },
-
-    selectCustomDrink: function () {
-      deselectAll();
-
     },
 
     addToOrder: function () { 
@@ -692,4 +739,15 @@ function showModal(size) {
             popupFunction();
         }  
     } 
+}
+
+function swapFruit(arr, n) {
+  for(var i = 0; i < arr.length; i++) {
+    if (arr[i].ingredient_type == 2) {
+      arr.push(arr[i]);
+      arr.splice(i,1);
+      break;
+    }
+  }
+  return arr;
 }
