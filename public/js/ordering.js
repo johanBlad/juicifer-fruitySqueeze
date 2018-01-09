@@ -112,8 +112,9 @@ Vue.component('hotdrink', {
                 <label>\
                 {{ drink["hotdrink_name_"+ lang] }}\
                 </label>\
-                </div>',
+                </div>'
 });
+
                
 function getRandomInt(min, max) {
   min = Math.ceil(min);
