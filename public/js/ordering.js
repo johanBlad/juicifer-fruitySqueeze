@@ -2,19 +2,6 @@
 /*global sharedVueStuff, Vue, socket */
 'use strict';
 
-Vue.component('product', {
-  props: ['product'],
-  template: ' <div class="">\
-                <label>\
-                  {{ basket[0].productName }} {{ basket[0].price }}\
-              </div>',
-  data: function () {
-    return {
-
-    }
-  }
-});
-
 var readymadeDrinks = Vue.component('readymadedrink', {
   props: ['product', 'ingredients', 'lang'],
   template: ' <div class="premadeDrink">\
@@ -72,7 +59,7 @@ var readymadeDrinks = Vue.component('readymadedrink', {
 });
 
 Vue.component('ingredient', {
-  props: ['item', 'type', 'lang'],
+  props: ['item', 'lang'],
   template: ' <div class="ingredient">\
                   <label>\
                     {{item["ingredient_"+ lang]}}\
@@ -236,13 +223,28 @@ var vm = new Vue({
     },
 
     setSelectedProduct: function (_product) {
-      this.selectedProduct = null;
+      this.selectedProduct = '';
       this.productName = "";
-
+      var customDrinkBtn = document.getElementById('squeezeOwnButton');
       if (_product === "customSmoothie") {
-        this.productName = "Custom Smoothie" 
+        if (customDrinkBtn.classList.contains("productSelected")) {
+          deselectAll();
+          this.productName = '';
+        } else {
+          deselectAll();
+          this.productName = "Custom Smoothie";
+          
+          document.getElementById('squeezeOwnButton').classList.add('productSelected');
+        }
       } else if (_product === "customJuice") {
-        this.productName = "Custom Juice";
+        if (customDrinkBtn.classList.contains("productSelected")) {
+          deselectAll();
+          this.productName = '';
+        } else {
+          deselectAll();
+          this.productName = "Custom Juice";
+          document.getElementById('squeezeOwnButton').classList.add('productSelected');
+        }
       } else if (_product === undefined) {
         this.selectedProduct = undefined;
       } else {
@@ -343,13 +345,16 @@ var vm = new Vue({
     },
 
     confirmProductChoice: function () {
-      if (selectedProduct != null) {
-        orderReadymade(selectedProduct);
-        //Go to basket
-      } else if (this.productName == "Custom Smoothie") {
-        //Go to Custom Smoothie
-      } else {
-        //Go to Custom Juice 
+      if (this.selectedProduct != undefined) {
+        if (this.productName == "Custom Smoothie") {
+          //goToCustomSmoothie
+          console.log("...Directing to Custom Smoothie")
+        } else if (this.productName == "Custom Juice") {
+          //goToCustomJuice
+          console.log("...Directing to Custom Juice")          
+        } else {
+          this.orderReadymade(this.selectedProduct);
+        }
       }
     },
 
@@ -387,6 +392,11 @@ var vm = new Vue({
         product.quantity--;
         this.totalPrice = this.totalPrice - product.price;
       }
+    },
+
+    selectCustomDrink: function () {
+      deselectAll();
+
     },
 
     addToOrder: function () { 
@@ -481,7 +491,11 @@ function deselectAll () {
   for (i = 0; i < rmdrinks.length; i++) {
     rmdrinks[i].$data.isSelected = false;
   }
-}
+  var customDrinkBtn = document.getElementById('squeezeOwnButton');
+  if (customDrinkBtn.classList.contains("productSelected")) {
+    customDrinkBtn.classList.remove("productSelected");
+  }
+};
 
 
 //tillagt!!!! 
