@@ -58,7 +58,8 @@
         <div class="headColumn"><img src="https://i.imgur.com/kj0zPIk.png"></div>
         <div class="headColumn"><h2>Choose size</h2></div>
         <div class="headColumn">
-            <button class="cancelButton"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
+            <cancelModal></cancelModal>
+            <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
         </div>
     </div>
     <div class="mainDiv">
@@ -124,7 +125,8 @@
         <div class="headColumn"><img src="https://i.imgur.com/kj0zPIk.png"></div>
         <div class="headColumn"><h2>Choose size</h2></div>
         <div class="headColumn">
-            <button class="cancelButton"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
+            <cancelModal></cancelModal>
+            <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
         </div>
     </div>
     <div class="mainDiv">
@@ -188,7 +190,8 @@
         <div class="headColumn"><img src="https://i.imgur.com/86WLceg.png"></div>
         <div class="headColumn"><h2>Choose smoothie</h2></div>
         <div class="headColumn">
-            <button class="cancelButton"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
+            <cancelModal></cancelModal>
+            <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
         </div>
     </div>
 
@@ -236,15 +239,18 @@
         <div class="headColumn"><img src="https://i.imgur.com/86WLceg.png"></div>
         <div class="headColumn"><h2>Custom smoothie</h2></div>
         <div class="headColumn">
-            <button class="cancelButton"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
+            <cancelModal></cancelModal>
+            <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
         </div>
     </div>
     <div id="tooManyModal" class="modal">
         <div class="modalContent">
             <span id="closeModal">&#10060;</span>
             <p>Oops! <br>It looks like you have chosen too many ingredients for your selected size.</p>
-            <p v-if="size == 'Large'">We're afraid you need to remove some ingredients... &#x2639;</p>
-            <p v-else>Remove some or up the size of your order! &#128077;</p>
+            <p v-if="size == 'Large'">We're afraid you need to remove some ingredients... &#x2639;<br>
+            <button class="modalButtons" id="modalNoChange">I understand!</button></p>
+            <p v-else>Remove some or up the size of your order! &#128077;<br>
+            <button class="modalButtons" id="modalChange">I want to <br> change size</button><button class="modalButtons" id="modalNoChange">I'll remove some ingredients</button></p>
         </div>
     </div>
 <div class="ingredientList">
@@ -344,7 +350,8 @@
         <div class="headColumn"><img src="https://i.imgur.com/86WLceg.png"></div>
         <div class="headColumn"><h2>Custom juice</h2></div>
         <div class="headColumn">
-            <button class="cancelButton"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
+            <cancelModal></cancelModal>
+            <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
         </div>
     </div>
         <div id="tooManyModal" class="modal">
@@ -435,7 +442,8 @@
         <div class="headColumn"><img src="https://i.imgur.com/kj0zPIk.png"></div>
         <div class="headColumn"><h2>Choose hot drink</h2></div>
         <div class="headColumn">
-            <button class="cancelButton"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
+            <cancelModal></cancelModal>
+            <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
         </div>
     </div>
     <div class="hotDrinkTableRow">
@@ -522,7 +530,8 @@
         <div class="headColumn"><img src="https://i.imgur.com/TTGLBLp.png"></div>
         <div class="headColumn"><h2>Basket</h2></div>
         <div class="headColumn">
-            <button class="cancelButton"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
+            <cancelModal></cancelModal>
+            <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
         </div>
     </div>
         <div id="basketContent">
@@ -586,7 +595,8 @@
         <div class="headColumn"><img src="https://i.imgur.com/kD0kZib.png"></div>
         <div class="headColumn"><h2>Payment</h2></div>
         <div class="headColumn">
-            <button class="cancelButton"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
+            <cancelModal></cancelModal>
+            <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=40 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
         </div>
     </div>
         <section>
