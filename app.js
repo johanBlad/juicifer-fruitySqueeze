@@ -145,7 +145,8 @@ Data.prototype.getTransactions = function () {
 };
 
 var readymadeDataName = "readymade";
-var hotDrinksDataName = "hotdrinks";
+var hotdrinksDataName = "hotdrinks";
+
 
 var data = new Data();
 // Load initial ingredients. If you want to add columns, do it in the CSS file.
@@ -154,14 +155,15 @@ data.initializeData(ingredientsDataName);
 data.initializeData(transactionsDataName);
 //Load initial readymade drinks.
 data.initializeData(readymadeDataName);
-
-data.initializeData(hotDrinksDataName);
+//Load initial hotdrinks.
+data.initializeData(hotdrinksDataName);
 
 io.on('connection', function (socket) {
   // Send list of orders and text labels when a client connects
   socket.emit('initialize', { orders: data.getAllOrders(),
                           uiLabels: data.getUILabels(),
                           ingredients: data.getIngredients(),
+                          hotdrinks: data.getHotDrinks(),
                           readymade: data.getReadymade() });
 
   // When someone orders something
@@ -170,6 +172,7 @@ io.on('connection', function (socket) {
     // send updated info to all connected clients, note the use of io instead of socket
     io.emit('currentQueue', { orders: data.getAllOrders(),
                           ingredients: data.getIngredients(),
+                          hotdrinks: data.getHotDrinks(),
                           readymade: data.getReadymade() });
   });
     
@@ -191,6 +194,7 @@ io.on('connection', function (socket) {
     data.cancelOrder(orderId);
     io.emit('currentQueue', {orders: data.getAllOrders(),
                             ingredients: data.getIngredients(),
+                            hotdrinks: data.getHotDrinks(),
                             readymade: data.getReadymade() });
         
         
@@ -206,4 +210,9 @@ var server = http.listen(app.get('port'), function () {
 Data.prototype.getReadymade = function () {
   var d = this.data;
   return d[readymadeDataName];  
-}
+};
+
+Data.prototype.getHotDrinks = function () {
+  var d = this.data;
+  return d[hotdrinksDataName];
+};

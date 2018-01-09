@@ -377,7 +377,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 
 /*Adam*/
 
-#langButton {
+.langButton {
     font-family: Lobster;
     font-size: 14pt;
     width: 15%;

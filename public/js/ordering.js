@@ -110,7 +110,6 @@ Vue.component('ingredient', {
   }
 });
 
-
 Vue.component('cancelmodal', {
     template: ' <div id="cancelModal" class="modal">\
                     <div class="modalContent">\
@@ -120,27 +119,12 @@ Vue.component('cancelmodal', {
                 </div>'
 });
 
-new Vue({
-    el: '.headRow'
-})
-
-
 Vue.component('hotdrink', {
-    props: ['item', 'lang'],
-    template: ' <div class="coffees">\
+    props: ['drink', 'lang'],
+    template: ' <div class="hotDrinks">\
                 <label>\
-                {{item["hd_name_"+ lang]}}\
+                {{ drink["hotdrink_name_"+ lang] }}\
                 </label>\
-                <div style="float: right;">\
-                </label>\
-                {{ counter }}\
-                </label>\
-                <button class="minusButton" v-on:click="decreaseCounter">-</button>\
-                <button class="plusButton"  v-on:click="incrementCounter">+</button>\
-                <label style="margin-left: 10px;">\
-                {{item.selling_price_s}}:-\
-                </label>\
-                </div>\
                 </div>',
 });
                
