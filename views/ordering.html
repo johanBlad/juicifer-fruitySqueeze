@@ -23,7 +23,7 @@
     </div>
     <div class="mainDiv">
         <div class="buttonDiv">
-            <button class="chooseButtons"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="100" class="icon"></button>
+            <button class="chooseButtons" v-on:click="chooseType(2)"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="100" class="icon"></button>
         </div>
         <div class="headlineDiv">
             <p style="font-size: 20pt;">
@@ -33,7 +33,7 @@
     </div>
     <div class="mainDiv">
         <div class="buttonDiv">
-            <button class="chooseButtons"><img src="https://png.icons8.com/ios/540/milkshake.png" width=120 class="icon"></button>
+            <button class="chooseButtons" v-on:click="chooseType(2)"><img src="https://png.icons8.com/ios/540/milkshake.png" width=120 class="icon"></button>
         </div>
         <div class="headlineDiv">
             <p style="font-size: 20pt;">
@@ -43,7 +43,7 @@
     </div>
     <div class="mainDiv">
         <div class="buttonDiv">
-            <button class="chooseButtons"><img src="http://freevector.co/wp-content/uploads/2013/10/34819-hot-coffee-mug-outline.png" width="100" class="icon"></button>
+            <button class="chooseButtons" v-on:click="chooseType(3)"><img src="http://freevector.co/wp-content/uploads/2013/10/34819-hot-coffee-mug-outline.png" width="100" class="icon"></button>
         </div>
         <div class="headlineDiv">
             <p style="font-size: 20pt;">
@@ -496,7 +496,7 @@
         <hotdrink
               ref="hotdrink"
               v-for="drink in hotdrinks"
-              v-on:select="setSelectedProduct(product)"
+              v-on:select="setSelectedProduct(drink), chooseHotSize(drink)"
               v-on:deselect="setSelectedProduct(undefined)"
               :drink="drink"
               :lang="lang"
@@ -509,53 +509,12 @@
       <button class="navButtons" id="backButton">&#8678;</button>
       <label>Back</label>
     </div>
-    <div class="tableColumn" style="text-align: center;"></div>
+    <div class="tableColumn" style="text-align: center;">{{ price }} kr</div>
     <div class="tableColumn" style="text-align: right;">
       <label>Next</label>
-      <button v-on:click="orderReadymade(selectedProduct)" class="navButtons" id="forwardButton" v-on:click= "addToOrder()">&#8680;</button> 
+      <button v-on:click="confirmProductChoice()" class="navButtons" id="forwardButton" v-on:click= "addToOrder()">&#8680;</button> 
     </div>
   </div>
-        
-        <!--<table id="hotDrinksTable">
-            <tr>
-                <td>
-                    <table>
-                        <tr>
-                            <th class="hotDrinkNameHeader">Drink</th>
-                            <th class="hotDrinkSizeHeader">Small</th>
-                            <th class="hotDrinkSizeHeader">Medium</th>
-                            <th class="hotDrinkSizeHeader">Large</th>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div>
-                        <table id="scrollTableHotDrinks">
-                            <tr>
-                                <td class="hotDrinkName">Black coffee</td>
-                                <td class="hotDrinkSize">20 kr</td>
-                                <td class="hotDrinkSize">25 kr</td>
-                                <td class="hotDrinkSize">32 kr</td>
-                            </tr>
-                            <tr>
-                                <td class="hotDrinkName">Cappuccino</td>
-                                <td class="hotDrinkSize">35 kr</td>
-                                <td class="hotDrinkSize">40 kr</td>
-                                <td class="hotDrinkSize">45 kr</td>
-                            </tr>
-                            <tr>
-                                <td class="hotDrinkName">Café au lait</td>
-                                <td class="hotDrinkSize">35 kr</td>
-                                <td class="hotDrinkSize">40 kr</td>
-                                <td class="hotDrinkSize">45 kr</td>
-                            </tr>
-                        </table>
-                    </div>
-                </td>
-            </tr>
-        </table>-->
 </div>
 <div class="sequenceSection">
     <div class="headRow">
@@ -568,6 +527,7 @@
     </div>
         <div id="basketContent" style="overflow: auto;">
             <div id="basketAdd" v-if="basket != []" style="text-align: left;">
+                <div v-for="product in basket" style="padding-left: 10px; padding-bottom: 10px; font-size: 20pt;">
                 <div v-for="product in basket" style="padding-left: 10px; font-size: 20pt; margin-top: 3%;">
                     {{ product.quantity }}, {{ product.productName }}, {{ product.volume }} cl, {{ product.quantity * product.price }} kr
                     <button v-on:click="addAdditional(product)" type="submit" class="plusButton" style="float: right">&#43;</button>
@@ -581,43 +541,15 @@
         </div>
             <div class="tableRow" style="bottom: 0; position: absolute;">
                 <div class="tableColumn">
-                    <h2>Subtotal: {{ totalPrice }} kr </h2>
+                    <label>Subtotal: {{ totalPrice }} kr </label>
                 </div>
                 <div class="tableColumn"></div>
                 <div class="tableColumn">
-                    <button v-on:click="placeOrder()" type="submit" id="goPayment">Payment &#10161;</button>
+                    <label>Payment</label><button v-on:click="placeOrder()" type="submit" class="navButtons">&#8680;</button>
                 </div>
             </div>
 </div>
 
-<!--
-<div id="basket" class="sequenceSection">
-        <div id="title">
-            <h1>Basket</h1>
-            <hr width=100% color=#000000>
-        </div>
-        <section id="basketcontent">
-            <div  v-if= "ok">
-              {{ basket[0].productName }}
-              <ol>
-                <li v-for="product in basket">
-                  <p>A PRODUCT!</p>
-                  {{ product.productName }}
-                </li>
-              </ol>
-            </div>
-            <button type="submit"></button>
-            <hr width=100% color=#000000>
-        </section>
-        <div id="addbutton">
-            <button type="submit" class="buttondetails"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Nuvola_Green_Plus.svg/2000px-Nuvola_Green_Plus.svg.png" id="plusimage">
-            <p>Squeeze more to basket</p></button>
-            <hr width=100% color=#000000>
-        </div>
-        <div>
-            <h3>Subtotal: </h3>
-        </div>
-</div>--> 
 
 <div class="sequenceSection">
     <div class="headRow">
