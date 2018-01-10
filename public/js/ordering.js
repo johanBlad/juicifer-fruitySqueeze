@@ -149,14 +149,14 @@ Vue.component('ingredient', {
   }
 });
 
-Vue.component('cancelmodal', {
+/*Vue.component('cancelmodal', {
     template: ' <div id="cancelModal" class="modal">\
                     <div class="modalContent">\
                         <p>&#10071; Are you sure you want to cancel the order? &#10071;</p>\
-                        <button class="modalButtons" id="exit" style="background-color:#ADFF2F;">Yes</button><button class="modalButtons" id="noExit" style="background-color:#FF0000;">No</button>\
+                        <button class="modalButtons" id="exit" style="background-color:#ADFF2F;" v-on:click="cancelOrder()">Yes</button><button class="modalButtons" id="noExit" style="background-color:#FF0000;">No</button>\
                     </div>\
                 </div>'
-});
+});*/
 
 Vue.component('hotdrink', {
     props: ['drink', 'lang'],
@@ -167,11 +167,11 @@ Vue.component('hotdrink', {
                             </button>\
                     </div>\
                     <div class="hotDrinkSizeColumn1">\
-                            <button class="chooseHot" v-bind:class="{ productSelected: isSelectedM }" v-on:click="markSelectedM">{{ drink.selling_price_m }} kr\
+                            <button class="chooseHot" v-bind:class="{ productSelected: isSelectedM }" v-on:click="markSelectedM(drink.selling_price_m, drink.volume_m)">{{ drink.selling_price_m }} kr\
                             </button>\
                     </div>\
                     <div class="hotDrinkSizeColumn1">\
-                            <button class="chooseHot" v-bind:class="{ productSelected: isSelectedL }" v-on:click="markSelectedL">{{ drink.selling_price_l }} kr\
+                            <button class="chooseHot" v-bind:class="{ productSelected: isSelectedL }" v-on:click="markSelectedL(drink.selling_price_l, drink.volume_l)">{{ drink.selling_price_l }} kr\
                             </button>\
                     </div>\
                 </div>',
@@ -188,7 +188,7 @@ Vue.component('hotdrink', {
       if (this.isSelectedS == false) {
         deselectAll();
         this.isSelectedS = true;
-        this.$emit('select', chooseHotDrink(price, size));
+        this.$emit('select', {drink: this.drink, price: price, size: size});
       } 
       else {
         deselectAll();
@@ -197,11 +197,11 @@ Vue.component('hotdrink', {
       }
     },
 
-    markSelectedM: function () {
+    markSelectedM: function (price, size) {
         if (this.isSelectedM == false) {
             deselectAll();
             this.isSelectedM = true;
-            this.$emit('select');
+            this.$emit('select', {drink: this.drink, price: price, size: size});
       }
         else {
             deselectAll();
@@ -210,11 +210,11 @@ Vue.component('hotdrink', {
         }
     },
 
-    markSelectedL: function () {
+    markSelectedL: function (price, size) {
     if (this.isSelectedL == false) {
         deselectAll();
         this.isSelectedL = true;
-        this.$emit('select');
+        this.$emit('select', {drink: this.drink, price: price, size: size});
     }
     else {
         deselectAll();
@@ -356,7 +356,7 @@ var vm = new Vue({
     },
 
     setSelectedProduct: function (_product) {
-      console.log("Logging productname: " + _product.productName)
+      console.log("Logging productname: ", _product.drink, _product.price, _product.size);
       this.selectedProduct = '';
       this.productName = "";
       var customDrinkBtn = document.getElementById('squeezeOwnButton');
@@ -506,9 +506,9 @@ var vm = new Vue({
         setAlternativeSizes(this.volume);
     },
       
-      chooseHotDrink: function (price, size) {
-          this.volume = size;
-          this.price += price;
+      chooseHotDrink: function (_product) {
+          this.volume = _product.size;
+          this.price += _product.price;
           console.log("Volym:" + this.volume + "Pris:" + this.price);
       },
 
@@ -645,7 +645,23 @@ var vm = new Vue({
       this.price = 0;
       this.type = '';
       this.chosenIngredients = [];
-    }
+    },
+      
+      clearOrder: function () {
+        var i;
+      for (i = 0; i < this.$refs.ingredient.length; i += 1){
+          this.$refs.ingredient[i].resetCounter();
+      }
+        this.volume = 0;
+        this.price = 0;
+        this.totalPrice = 0;
+        this.type = '';
+        this.chosenIngredients = [];
+          this.counter1 = 0;
+          this.counter2 = 0;
+          this.counter3 = 0;
+          this.basket = [];
+  },
   }
 });
 
@@ -680,6 +696,24 @@ function deselectAll () {
   if (customDrinkBtn.classList.contains("productSelected")) {
     customDrinkBtn.classList.remove("productSelected");
   }
+};
+
+function cancelWindow () {
+        var modal = document.getElementById('cancelModal');
+        modal.style.display = 'block';
+        var cancelButton = document.getElementById('exit');
+        var noExitButton = document.getElementById('noExit');
+        noExitButton.onclick = function() {
+            modal.style.display = "none";
+        }
+        cancelButton.onclick = function() {
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
 };
 
 
@@ -726,22 +760,6 @@ function checkTime(i) {
 function popupFunction() {
     var popup = document.getElementById("myPopup");
     popup.classList.toggle("show");
-}
-
-function cancelWindow() {
-    var modal = document.getElementById('cancelModal');
-    modal.style.display = 'block';
-    var exitButton = document.getElementById('exit');
-    var noExitButton = document.getElementById('noExit');
-    // exitButton.onclick = Vad ska hända här? Avbryter order i alla fall
-    noExitButton.onclick = function() {
-        modal.style.display = "none";
-    }
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = 'none';
-        }
-    }
 }
 
 function showModal(size) {
