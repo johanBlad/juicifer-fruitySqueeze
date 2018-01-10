@@ -118,14 +118,14 @@
 </div>
     <div class="tableRow">
         <div class="tableColumn" style="text-align: left;">
-          <button class="navButtons" id="backButton">&#8678;</button>
+          <button v-on:click="addNewProduct" class="navButtons" id="backButton">&#8678;</button>
           <label>{{ uiLabels.back }}</label>
         </div>
         <div class="tableColumn" style="text-align: center;">
         </div>
         <div class="tableColumn" style="text-align: right;">
           <label>{{ uiLabels.next }}</label>
-          <button v-on:click="next_selectSize"class="navButtons" id="forwardButton">&#8680;</button> 
+          <button v-on:click="next_selectSize" class="navButtons" id="forwardButton">&#8680;</button> 
         </div>
       </div>   
 </div>
@@ -185,7 +185,7 @@
     </div>
     <div class="tableRow">
         <div class="tableColumn" style="text-align: left;">
-          <button class="navButtons" id="backButton">&#8678;</button>
+          <button v-on:click="addNewProduct" class="navButtons" id="backButton">&#8678;</button>
           <label>{{ uiLabels.back }}</label>
         </div>
         <div class="tableColumn" style="text-align: center;">
@@ -232,7 +232,7 @@
 </div>
 <div class="tableRow">
     <div class="tableColumn" style="text-align: left;">
-      <button class="navButtons" id="backButton">&#8678;</button>
+      <button  v-on:click="back_chooseSmoothie" class="navButtons" id="backButton">&#8678;</button>
       <label>{{ uiLabels.back }}</label>
     </div>
     <div class="tableColumn" style="text-align: center;">
@@ -403,7 +403,7 @@
 
 <div class="tableRow">
     <div class="tableColumn" style="text-align: left;">
-      <button class="navButtons" id="backButton">&#8678;</button>
+      <button v-on:click="back_chooseSmoothie" class="navButtons" id="backButton">&#8678;</button>
       <label>{{ uiLabels.back }}</label>
     </div>
     <div class="tableColumn" style="text-align: center;">

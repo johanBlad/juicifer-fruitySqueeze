@@ -312,6 +312,16 @@ var vm = new Vue({
       this.sq_orderPlaced = false;
     },
 
+    back_chooseSmoothie: function() {
+      this.setViewsFalse();
+      this.sq_selectSizeSmoothie = true;
+    },
+
+    back_chooseJuice: function() {
+      this.setViewsFalse();
+      this.sq_selectSizeJuice = true;
+    },
+
     next_toPayment: function() {
       this.setViewsFalse();
       this.sq_payment = true;
@@ -382,10 +392,6 @@ var vm = new Vue({
       this.resetOrderSequence();
       this.setViewsFalse();
       this.sq_selectType = true;
-    },
-
-    navigate: function() {
-
     },
 
     addIngredient: function (item, type, ing_type) {
