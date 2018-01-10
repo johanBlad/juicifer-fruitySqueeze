@@ -100,8 +100,8 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 
 .sequenceSection {
 	height:100vh;
-	position: relative;
-	border-style: dashed;
+    position: relative;
+    border: groove;
 	border-color: black;
     margin: 20px;
     background: url(https://i.imgur.com/Azmjyfm.png);

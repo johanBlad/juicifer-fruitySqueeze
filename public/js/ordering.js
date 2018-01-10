@@ -293,7 +293,7 @@ var vm = new Vue({
     sq_selectType: true,
     sq_selectSizeJuice: false,
     sq_selectSizeSmoothie:  false,
-    sq_chooseSmoothe: false,
+    sq_chooseSmoothie: false,
     sq_chooseJuice: false,
     sq_customSmoothie: false,
     sq_customJuice: false,
@@ -306,6 +306,97 @@ var vm = new Vue({
   },
   components: {readymadeDrinks: readymadeDrinks},
   methods: {
+
+    setViewsFalse: function() {
+      this.sq_selectType = false;
+      this.sq_selectSizeJuice = false;
+      this.sq_selectSizeSmoothie = false;
+      this.sq_chooseSmoothie = false;
+      this.sq_chooseJuice = false;
+      this.sq_customSmoothie = false;
+      this.sq_customJuice = false;
+      this.sq_chooseHotdrinks = false;
+      this.sq_basket = false;
+      this.sq_payment = false;
+      this.sq_orderPlaced = false;
+    },
+
+    next_toPayment: function() {
+      this.setViewsFalse();
+      this.sq_payment = true;
+    },
+
+    next_selectType: function() {
+      if (this.productType == 'smoothie') {
+        this.setViewsFalse();
+        this.sq_selectSizeSmoothie = true;
+        console.log("Nav to -> Select Smoothie Size");
+      } else if (this.productType == 'juice') {
+        this.setViewsFalse();
+        this.sq_selectSizeJuice = true;
+        console.log("Nav to -> Select Juice Size");
+      } else if (this.productType == 'coffee') {
+        this.setViewsFalse();
+        this.sq_chooseHotdrinks = true;
+        console.log("Nav to -> Select Hot Drink");
+      }
+    },
+
+    next_selectSize: function () {
+      if (this.productType == 'smoothie' && this.volume != 0) {
+        this.setViewsFalse();
+        this.sq_chooseSmoothie = true;
+        console.log("Nav to -> Select Smoothie");
+      }
+      if (this.productType == 'juice' && this.volume != 0) {
+        this.setViewsFalse();
+        this.sq_chooseJuice = true;       
+        console.log("Nav to -> Select Juice");
+      }
+    },
+
+    next_chooseSmoothie: function () {
+      console.log(this.productName);
+      if (this.productName == "Custom Smoothie") {
+        this.setViewsFalse();
+        this.sq_customSmoothie = true;
+        console.log("Nav to -> Make Custom Smoothie");  
+      } else if (this.selectedProduct != null) {
+        this.setViewsFalse();
+        this.sq_basket = true;
+        console.log("Nav to -> Basket");         
+      }
+    },
+
+    next_chooseJuice: function () {
+      console.log(this.productName);
+      if (this.productName == "Custom Juice") {
+        this.setViewsFalse();
+        this.sq_customJuice = true;
+        console.log("Nav to -> Make Custom Juice");  
+      } else if (this.selectedProduct != null) {
+        this.setViewsFalse();
+        this.sq_basket = true;
+        console.log("Nav to -> Basket");         
+      }
+    },
+
+    next_toBasket: function() {
+      this.setViewsFalse();
+      this.sq_basket = true;
+      console.log("Nav to -> Basket");   
+    },
+
+    addNewProduct: function () {
+      this.resetOrderSequence();
+      this.setViewsFalse();
+      this.sq_selectType = true;
+    },
+
+    navigate: function() {
+
+    },
+
     addIngredient: function (item, type, ing_type) {
         if (this.productName == 'Custom Smoothie' || this.productName == 'Custom Juice'){
           if (ing_type == 1 && this.counter1 < this.base) {
@@ -355,27 +446,29 @@ var vm = new Vue({
       }
     },
 
-    setSelectedProduct: function (_product) {
-      console.log("Logging productname: " + _product.productName)
-      this.selectedProduct = '';
+    setSelectedProduct: function (_product) {  
       this.productName = "";
       var customDrinkBtn = document.getElementById('squeezeOwnButton');
       if (_product === "customSmoothie") {
         if (customDrinkBtn.classList.contains("productSelected")) {
           deselectAll();
           this.productName = '';
+          this.selectedProduct = undefined;
         } else {
           deselectAll();
           this.productName = "Custom Smoothie";
           document.getElementById('squeezeOwnButton').classList.add('productSelected');
+          this.selectedProduct = "Custom Smoothie";
         }
       } else if (_product === "customJuice") {
         if (customDrinkBtn.classList.contains("productSelected")) {
           deselectAll();
           this.productName = '';
+          this.selectedProduct = undefined;
         } else {
           deselectAll();
           this.productName = "Custom Juice";
+          this.selectedProduct = "Custom Juice";
           document.getElementById('squeezeOwnButton').classList.add('productSelected');
         }
       } else if (_product === undefined) {
@@ -388,18 +481,13 @@ var vm = new Vue({
     chooseType: function (choosenType) {
       if (choosenType == 1) {
         this.productType = 'smoothie';
-
       } else if (choosenType == 2) {
         this.productType = 'juice';
-        deselectTypeAndSize(chooseButtons);
-        document.getElementById("selectJuice").classList.add("productSelected");
-      
       } else {
         this.productType = 'coffee';
-        deselectTypeAndSize(chooseButtons);
-        document.getElementById("selectHotdrink").classList.add("productSelected");
       }
       console.log(this.productType);
+      this.next_selectType();
     },
 
     chooseSize: function (volume, selectedSize, type) {
@@ -515,16 +603,17 @@ var vm = new Vue({
     confirmProductChoice: function () {
       if (this.selectedProduct != undefined) {
         if (this.productName == "Custom Smoothie") {
-          //goToCustomSmoothie
-          console.log("...Directing to Custom Smoothie")
+          console.log("...Directing to Custom Smoothie");
+          this.next_chooseSmoothie();
         } else if (this.productName == "Custom Juice") {
-          //goToCustomJuice
+          this.next_chooseJuice();
           console.log("...Directing to Custom Juice")          
         } else if (this.productType == 'coffee'){
             this.orderHotdrink(this.selectedProduct);
         } else {
           console.log("...Ordering a readymade drink")
           this.addToOrder(this.selectedProduct);
+          this.next_toBasket();
       }
      } 
     },
@@ -533,6 +622,7 @@ var vm = new Vue({
         console.log('Ordering a hot drink');
         this.productName = hd.hotdrink_name_en;
         this.addToOrder();
+        this.next_toBasket();
     },
 
     getIngredientById: function (id) {
@@ -564,11 +654,13 @@ var vm = new Vue({
 
     addToOrder: function (productToAdd) { 
       console.log("------SQUEEZE IT!------");
+      var toBasket = false;
         if (productToAdd == undefined) {
           if (this.productType == 3) {
             productToAdd = wrapProduct(undefined, this.price, this.volume, this.productType, this.productName);
           } else {
             productToAdd = wrapProduct(this.chosenIngredients, this.price, this.volume, this.productType, this.productName);
+            toBasket = true;
           }
         }
       console.log(productToAdd.productName); 
@@ -599,10 +691,15 @@ var vm = new Vue({
       this.totalPrice = this.totalPrice + productToAdd.price;
       console.log('--------TEST BASKET---------');
       console.log('Total price in basket: ' + this.totalPrice);
+      if (toBasket) {
+        this.next_toBasket();
+      }
       this.resetOrderSequence();
     },
 
     resetOrderSequence: function () {
+      deselectAll();
+      deselectTypeAndSize(document.getElementsByClassName("chooseButtonsSize"));
       this.productType = '';
       this.chosenIngredients = [];
       this.productName = '';
@@ -612,16 +709,10 @@ var vm = new Vue({
       this.counter1 = 0;
       this.counter2 = 0;
       this.counter3 = 0;
-      this.ok = true;
-      this.setSelectedProduct = null;
+      this.selectedProduct = null;
       for (var i = 0; i < this.$refs.ingredient.length; i += 1) {
         this.$refs.ingredient[i].resetCounter();
       }
-    },
-
-    addNewProdcut: function () {
-      this.resetOrderSequence();
-      //Return to startpage
     },
 
     placeOrder: function () {
@@ -645,7 +736,10 @@ var vm = new Vue({
       this.price = 0;
       this.type = '';
       this.chosenIngredients = [];
+      this.resetOrderSequence();
+      this.next_toPayment();
     }
+
   }
 });
 
