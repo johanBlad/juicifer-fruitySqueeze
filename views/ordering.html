@@ -14,7 +14,7 @@
 
 <div id="ordering">
 
-<div id="chooseProduct" class="sequenceSection">
+<div id="chooseProduct" class="sequenceSection" v-show="sq_selectType">
     <button v-on:click="switchLang()" class="langButton">{{ uiLabels.language }}</button>
     <div class="headRow1">
         <div class="headColumn"><h1 style="font-size: 25pt;">{{ uiLabels.frontTitle }}</h1></div>
@@ -53,7 +53,7 @@
     </div>
 </div>
 
-<div id="chooseSize" class="sequenceSection">
+<div id="chooseSize" class="sequenceSection" v-show="sq_selectSizeSmoothie">
     <div class="headRow">
         <div class="headColumn"><img src="https://i.imgur.com/kj0zPIk.png"></div>
         <div class="headColumn"><h2>{{ uiLabels.chooseSize }}</h2></div>
@@ -125,11 +125,12 @@
         </div>
         <div class="tableColumn" style="text-align: right;">
           <label>{{ uiLabels.next }}</label>
-          <button class="navButtons" id="forwardButton">&#8680;</button> 
+          <button v-on:click="next_selectSize"class="navButtons" id="forwardButton">&#8680;</button> 
         </div>
       </div>   
 </div>
-<div id="chooseSize" class="sequenceSection">
+
+<div id="chooseSize" class="sequenceSection" v-show="sq_selectSizeJuice">
       <div class="headRow">
         <div class="headColumn"><img src="https://i.imgur.com/kj0zPIk.png"></div>
         <div class="headColumn"><h2>{{ uiLabels.chooseSize }}</h2></div>
@@ -191,12 +192,13 @@
         </div>
         <div class="tableColumn" style="text-align: right;">
           <label>{{ uiLabels.next }}</label>
-          <button class="navButtons" id="forwardButton">&#8680;</button> 
+          <button v-on:click="next_selectSize" class="navButtons" id="forwardButton">&#8680;</button> 
         </div>
       </div>   
 </div>
-<div id="chooseSmoothie" class="sequenceSection">
 
+
+<div id="chooseSmoothie" class="sequenceSection" v-show="sq_chooseSmoothie">
     <div class="headRow">
         <div class="headColumn"><img src="https://i.imgur.com/86WLceg.png"></div>
         <div class="headColumn"><h2>{{ uiLabels.chooseSmoothie }}</h2></div>
@@ -228,7 +230,6 @@
           :key="product.rm_id">
         </readymadedrink>
 </div>
-
 <div class="tableRow">
     <div class="tableColumn" style="text-align: left;">
       <button class="navButtons" id="backButton">&#8678;</button>
@@ -238,13 +239,13 @@
     </div>
     <div class="tableColumn" style="text-align: right;">
       <label>{{ uiLabels.next }}</label>
-      <button v-on:click="confirmProductChoice()" class="navButtons" id="forwardButton" v-on:click= "addToOrder()">&#8680;</button> 
+      <button v-on:click="confirmProductChoice" class="navButtons" id="forwardButton" v-on:click= "addToOrder()">&#8680;</button> 
     </div>
   </div>   
 </div>
 
 
-<div id="smoothieCustomize" class="sequenceSection">
+<div id="smoothieCustomize" class="sequenceSection" v-show="sq_customSmoothie">
     <div class="headRow">
         <div class="headColumn"><img src="https://i.imgur.com/86WLceg.png"></div>
         <div class="headColumn"><h2>{{ uiLabels.customSmoothie }}</h2></div>
@@ -366,7 +367,7 @@
   </div>
 
 
-<div id="chooseJuice" class="sequenceSection">
+<div id="chooseJuice" class="sequenceSection" v-show="sq_chooseJuice">
 
     <div class="headRow">
         <div class="headColumn"><img src="https://i.imgur.com/86WLceg.png"></div>
@@ -409,12 +410,12 @@
     </div>
     <div class="tableColumn" style="text-align: right;">
       <label>{{ uiLabels.next }}</label>
-      <button v-on:click="confirmProductChoice()" class="navButtons" id="forwardButton" v-on:click= "addToOrder()">&#8680;</button> 
+      <button v-on:click="confirmProductChoice" class="navButtons" id="forwardButton" v-on:click= "addToOrder()">&#8680;</button> 
     </div>
   </div>   
 </div>
 
-<div id="juiceCustomize" class="sequenceSection">
+<div id="juiceCustomize" class="sequenceSection" v-show="sq_customJuice">
     <div class="headRow">
         <div class="headColumn"><img src="https://i.imgur.com/86WLceg.png"></div>
         <div class="headColumn"><h2>{{ uiLabels.custom }} {{ uiLabels.juice }}</h2></div>
@@ -512,7 +513,7 @@
   </div>
 
 
-  <div id="hotDrinks" class="sequenceSection">
+  <div id="hotDrinks" class="sequenceSection" v-show="sq_chooseHotdrinks">
         <div class="headRow">
         <div class="headColumn"><img src="https://i.imgur.com/kj0zPIk.png"></div>
         <div class="headColumn"><h2>{{ uiLabels.chooseHotdrink }}</h2></div>
@@ -592,7 +593,9 @@
             </tr>
         </table>-->
 </div>
-<div class="sequenceSection">
+
+
+<div class="sequenceSection" v-show="sq_basket">
     <div class="headRow">
         <div class="headColumn"><img src="https://i.imgur.com/TTGLBLp.png"></div>
         <div class="headColumn"><h2>{{ uiLabels.basket }}</h2></div>
@@ -612,7 +615,7 @@
             </div>
         </div>
         <div id="addButton">
-            <button v-on:click="addNewProduct()" type="submit" id="basketButton"><img src="https://i.imgur.com/nVTe6Jz.png" id="plusSymbol">{{ uiLabels.squeezeMore }}</button>
+            <button v-on:click="addNewProduct" type="submit" id="basketButton"><img src="https://i.imgur.com/nVTe6Jz.png" id="plusSymbol">{{ uiLabels.squeezeMore }}</button>
         </div>
             <div class="tableRow" style="bottom: 0; position: absolute;">
                 <div class="tableColumn">
@@ -625,7 +628,7 @@
             </div>
 </div>
 
-<div class="sequenceSection">
+<div class="sequenceSection" v-if="sq_payment">
     <div class="headRow">
         <div class="headColumn"><img src="https://i.imgur.com/kD0kZib.png"></div>
         <div class="headColumn"><h2>{{ uiLabels.payment }}</h2></div>
@@ -634,7 +637,7 @@
             <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
         </div>
     </div>
-    <div class="contentDiv" style="border: dotted;">
+    <div class="contentDiv">
         <h2 align=center>Total: {{ totalPrice }} kr</h2>
         <div class=paymentButtons>
             <button type="submit" class="buttonDetails">
@@ -662,11 +665,11 @@
   </div>   
 </div>
 
-<div class="sequenceSection">
+<div class="sequenceSection"  v-if="sq_orderPlaced">
         <div id="orderPlaced">
             <h1>{{ uiLabels.orderText1 }} <br> {{ uiLabels.orderText2 }}<br>{{ uiLabels.orderText3 }}: </h1>
         </div>
-        <div id="numberBox"></div>
+        <div id="numberBox"></div>  
         <div id="finished">
             {{ uiLabels.enjoy }}
         </div>
