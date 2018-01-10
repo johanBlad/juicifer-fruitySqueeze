@@ -19,34 +19,36 @@
     <div class="headRow1">
         <div class="headColumn"><h1 style="font-size: 25pt;">{{ uiLabels.frontTitle }}</h1></div>
     </div>
-    <div class="mainDiv">
-        <div class="buttonDiv">
-            <button class="chooseButtons" v-on:click="chooseType(2)"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="100" class="icon"></button>
+        <div class="contentDiv">
+        <div class="mainDiv">
+            <div class="buttonDiv">
+                <button id="selectJuice" class="chooseButtons" v-on:click="chooseType(2)"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="100" class="icon"></button>
+            </div>
+            <div class="headlineDiv">
+                <p style="font-size: 20pt;">
+                    {{ uiLabels.juice }}
+                </p>
+            </div>  
         </div>
-        <div class="headlineDiv">
-            <p style="font-size: 20pt;">
-                {{ uiLabels.juice }}
-            </p>
+        <div class="mainDiv">
+            <div class="buttonDiv">
+                <button id="selectSmoothie" class="chooseButtons" v-on:click="chooseType(1)"><img src="https://png.icons8.com/ios/540/milkshake.png" width=120 class="icon"></button>
+            </div>
+            <div class="headlineDiv">
+                <p style="font-size: 20pt;">
+                    {{ uiLabels.smoothie }}
+                </p>
+            </div>
         </div>
-    </div>
-    <div class="mainDiv">
-        <div class="buttonDiv">
-            <button class="chooseButtons" v-on:click="chooseType(2)"><img src="https://png.icons8.com/ios/540/milkshake.png" width=120 class="icon"></button>
-        </div>
-        <div class="headlineDiv">
-            <p style="font-size: 20pt;">
-                {{ uiLabels.smoothie }}
-            </p>
-        </div>
-    </div>
-    <div class="mainDiv">
-        <div class="buttonDiv">
-            <button class="chooseButtons" v-on:click="chooseType(3)"><img src="http://freevector.co/wp-content/uploads/2013/10/34819-hot-coffee-mug-outline.png" width="100" class="icon"></button>
-        </div>
-        <div class="headlineDiv">
-            <p style="font-size: 20pt;">
-                {{ uiLabels.hotDrinks }}
-            </p>
+        <div class="mainDiv">
+            <div class="buttonDiv">
+                <button id="selectHotdrink" class="chooseButtons" v-on:click="chooseType(3)"><img src="http://freevector.co/wp-content/uploads/2013/10/34819-hot-coffee-mug-outline.png" width="100" class="icon"></button>
+            </div>
+            <div class="headlineDiv">
+                <p style="font-size: 20pt;">
+                    {{ uiLabels.hotDrinks }}
+                </p>
+            </div>
         </div>
     </div>
 </div>
@@ -60,6 +62,7 @@
             <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>{{ uiLabels.cancelOrder }}</p></button>
         </div>
     </div>
+<div class="contentDiv">
     <div class="mainDiv">
         <div class="buttonDiv">
             <button class="chooseButtons" v-on:click= "chooseSize(30, 'Small', 1)"><img src="https://png.icons8.com/ios/540/milkshake.png" width="100" class="icon"></button>
@@ -105,7 +108,8 @@
             </p>
         </div>
     </div>
-    <div class="tableRow" style="bottom: 0; position: absolute;">
+</div>
+    <div class="tableRow">
         <div class="tableColumn" style="text-align: left;">
           <button class="navButtons" id="backButton">&#8678;</button>
           <label>{{ uiLabels.back }}</label>
@@ -127,49 +131,51 @@
             <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>{{ uiLabels.cancelOrder }}</p></button>
         </div>
     </div>
-    <div class="mainDiv">
-        <div class="buttonDiv">
-            <button class="chooseButtons" v-on:click= "chooseSize(30, 'Small', 2)"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="70" class="icon"></button>
+    <div class="contentDiv">
+        <div class="mainDiv">
+            <div class="buttonDiv">
+                <button class="chooseButtons" v-on:click= "chooseSize(30, 'Small', 2)"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="70" class="icon"></button>
+            </div>
+            <div class="ingridientDiv">
+                <p>
+                    {{ uiLabels.small }}: 30 cl
+                    <ul class="ingridientList">
+                        <li>2 {{ uiLabels.fruitGreens }}</li>
+                        <li>1 {{ uiLabels.extras }}</li>
+                    </ul>
+                </p>
+            </div>
         </div>
-        <div class="ingridientDiv">
-            <p>
-                {{ uiLabels.small }}: 30 cl
-                <ul class="ingridientList">
-                    <li>2 {{ uiLabels.fruitGreens }}</li>
-                    <li>1 {{ uiLabels.extras }}</li>
-                </ul>
-            </p>
+        <div class="mainDiv">
+            <div class="buttonDiv">
+                <button class="chooseButtons" v-on:click= "chooseSize(40, 'Medium', 2)"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width=90 class="icon"></button>
+            </div>
+            <div class="ingridientDiv">
+                <p>
+                    {{ uiLabels.medium }}: 40 cl
+                    <ul class="ingridientList">
+                        <li>4 {{ uiLabels.fruitGreens }}</li>
+                        <li>2 {{ uiLabels.extras }}</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+        <div class="mainDiv">
+            <div class="buttonDiv">
+                <button class="chooseButtons" v-on:click= "chooseSize(50, 'Large', 2)"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="110" class="icon"></button>
+            </div>
+            <div class="ingridientDiv">
+                <p>
+                    {{ uiLabels.large }}: 50 cl
+                    <ul class="ingridientList">
+                        <li>6 {{ uiLabels.fruitGreens }}</li>
+                        <li>3 {{ uiLabels.extras }}</li>
+                    </ul>
+                </p>
+            </div>
         </div>
     </div>
-    <div class="mainDiv">
-        <div class="buttonDiv">
-            <button class="chooseButtons" v-on:click= "chooseSize(40, 'Medium', 2)"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width=90 class="icon"></button>
-        </div>
-        <div class="ingridientDiv">
-            <p>
-                {{ uiLabels.medium }}: 40 cl
-                <ul class="ingridientList">
-                    <li>4 {{ uiLabels.fruitGreens }}</li>
-                    <li>2 {{ uiLabels.extras }}</li>
-                </ul>
-            </p>
-        </div>
-    </div>
-    <div class="mainDiv">
-        <div class="buttonDiv">
-            <button class="chooseButtons" v-on:click= "chooseSize(50, 'Large', 2)"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="110" class="icon"></button>
-        </div>
-        <div class="ingridientDiv">
-            <p>
-                {{ uiLabels.large }}: 50 cl
-                <ul class="ingridientList">
-                    <li>6 {{ uiLabels.fruitGreens }}</li>
-                    <li>3 {{ uiLabels.extras }}</li>
-                </ul>
-            </p>
-        </div>
-    </div>
-    <div class="tableRow"  style="bottom: 0; position: absolute;">
+    <div class="tableRow">
         <div class="tableColumn" style="text-align: left;">
           <button class="navButtons" id="backButton">&#8678;</button>
           <label>{{ uiLabels.back }}</label>
@@ -252,7 +258,7 @@
     </div>
 
     <div class="tableRow">
-        <div class="tableColumn" style="text-align: right; width: 23vh;">
+        <div class="tableColumn" style="text-align: right; width: 25vh;">
                 <p>
                     {{ uiLabels.base }} ({{ counter1}}/{{ base }}):
                 </p>
@@ -281,30 +287,6 @@
                 </p>
             </div>
     </div>
-
-<!--
-  <div class="tableRow">
-    <div class="tableColumn" style="text-align: left;">
-        <ul>Base: ({{ counter1}}/{{ base }})<ul>
-            <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 1">
-                {{ item.ingredient_en }}
-            </li>
-      </div>
-      <div class="tableColumn" style="text-align: left;">
-            <ul>Fruits &amp; Greens: ({{ counter2 }}/{{ fruits }})
-                <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 2">
-                    {{ item.ingredient_en }}
-                </li>
-            </ul>
-      </div>
-      <div class="tableColumn" style="text-align: left;">
-            <ul>Extras: ({{ counter3 }}/{{ extras }})
-                <li v-for="item in chosenIngredients" v-if="item.ingredient_type == 3">
-                    {{ item.ingredient_en }}
-                </li>
-            </ul>
-      </div>
-    </div>-->
     <div class="ingredientList">
       <details>
         <summary>{{ uiLabels.base }}</summary>

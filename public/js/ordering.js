@@ -367,12 +367,19 @@ var vm = new Vue({
     },
 
     chooseType: function (choosenType) {
+      var chooseButtons = document.getElementsByClassName("chooseButtons");
       if (choosenType == 1) {
         this.productType = 'smoothie';
+        deselectTypeAndSize(chooseButtons);
+        document.getElementById("selectSmoothie").classList.add("productSelected");
       } else if (choosenType == 2) {
         this.productType = 'juice';
+        deselectTypeAndSize(chooseButtons);
+        document.getElementById("selectedJuice").classList.add("productSelected");
       } else {
         this.productType = 'coffee';
+        deselectTypeAndSize(chooseButtons);
+        document.getElementById("selectedHotdrink").classList.add("productSelected");
       }
       console.log(this.productType);
     },
@@ -609,6 +616,13 @@ var vm = new Vue({
     }
   }
 });
+
+function deselectTypeAndSize(arr) {
+  for (var i = 0; i < arr.length; i++) {
+    console.log(arr.length);
+    arr[i].classList.remove("productSelected");
+  }
+}
 
 function getOrderIngredients (basket) {
   var i;
