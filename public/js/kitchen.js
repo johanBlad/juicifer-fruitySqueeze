@@ -86,7 +86,8 @@ var vm = new Vue({
             }.bind(this)).join(", ");
             }
             
-        }
+        
+    },
 
     })
 
@@ -176,7 +177,6 @@ var vm = new Vue({
             for (let i in top5) {
                 chartData.push([top5[i].name, top5[i].value]);
             }
-            console.log(chartData);
             drawChart(chartData, this.uiLabels.popularIngredients);
         }.bind(this));
     }.bind(this)); //drawChart(chartData, this.uiLabels.popularIngredients)); 
@@ -187,7 +187,6 @@ var vm = new Vue({
           if (evt.keyCode === 39) {
             if (this.currentOrdersShown){
                 this.showHistory();
-                console.log(historyShown);
             }
             else if(this.historyShown){
                 this.showStock();
@@ -207,8 +206,6 @@ var vm = new Vue({
           if (evt.keyCode === 13){
             if( this.currentOrdersShown){
                 
-               console.log(orders);
-              console.log('har tryckt på enter')
               this.markDone(key);
             }
           }
@@ -225,6 +222,13 @@ var vm = new Vue({
           */
         //om backspace är tryckt på
           
+      },
+      checkStockAmount: function () {
+            if (item.vol_smoothie + item.vol_juice < 6){
+                return true;
+            }
+    
+        
       }
       
     },
