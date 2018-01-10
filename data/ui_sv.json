@@ -23,6 +23,7 @@
   "chooseSize" : "Välj Storlek",
   "chooseSmoothie" : "Välj Smoothie",
   "chooseJuice" : "Välj Juice",
+  "chooseHotdrink" : "Välj Het Dryck",
   "small" : "Liten",
   "medium" : "Medium",
   "large" : "Stor",
@@ -36,7 +37,25 @@
   "squeezeYourOwnDescription" : "Välj från ett brett utbud av ingredienser och skräddarsy din alldeles egen utsökta dryck. Jättekul!!",
   "juiciferSpecials" : "Juicifer Specialer",
   "juiciferSpecialsDescription1" : "Välj från vårt utbud av färdiggjorda drycker",
-  "juiciferSpecialsDescription2" : "Det kan inte gå fel!"
+  "juiciferSpecialsDescription2" : "Det kan inte gå fel!",
+  "customSmoothie" : "Kläm Din Egen!",
+  "changeSize" : "Ändra Storlek",
+  "changeSizeText1" : "Ändrat dig? Inga problem,",
+  "changeSizeText2" : "välj en ny storlek nedan!",
+  "currentSize" : "Nuvarande storlek",
+  "basket" : "Varukorg",
+  "squeezeMore" : "Kläm mer till korgen!",
+  "payment" : "Betalning",
+  "paySwish" : "Betala med Swish",
+  "payCard" : "Betala med kort",
+  "orderText1" : "Din order har ",
+  "orderText2" : "placerats!",
+  "orderText3" : "Ditt ordernummer är",
+  "enjoy" : "Njut!",
+  "squeezeIt" : "Kläm den!",
+  "custom" : "Special",
+  "drink" : "Dryck"
+
 }
 
 

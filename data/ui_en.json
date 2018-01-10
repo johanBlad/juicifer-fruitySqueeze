@@ -23,6 +23,7 @@
   "chooseSize" : "Choose Size",
   "chooseSmoothie" : "Choose Smoothie",
   "chooseJuice" : "Choose Juice",
+  "chooseHotdrink" : "Choose Hotdrink",
   "small" : "Small",
   "medium" : "Medium",
   "large" : "Large",
@@ -36,7 +37,24 @@
   "squeezeYourOwnDescription" : "Choose from a wide variety of ingredients and customize your very own delicious smoothie. Great fun!",
   "juiciferSpecials" : "Juicifer Specials",
   "juiciferSpecialsDescription1" : "Choose from our selection of readymade smoothies below.",
-  "juiciferSpecialsDescription2" : "It simply can't go wrong!"
+  "juiciferSpecialsDescription2" : "It simply can't go wrong!",
+  "customSmoothie" : "Custom Smoothie",
+  "changeSize" : "Change Size",
+  "changeSizeText1" : "Changed your mind? No worries,",
+  "changeSizeText2" : "feel free to choose a new size below!",
+  "currentSize" : "Current size",
+  "basket" : "Basket",
+  "squeezeMore" : "Squeeze more to basket",
+  "payment" : "Payment",
+  "paySwish" : "Pay with Swish",
+  "payCard" : "Pay with kort",
+  "orderText1" : "Your order has ",
+  "orderText2" : "been placed!",
+  "orderText3" : "Your order number is",
+  "enjoy" : "Enjoy!",
+  "squeezeIt" : "Squeeze it!",
+  "custom" : "Custom",
+  "drink" : "Drink"
 
   
 }
