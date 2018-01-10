@@ -686,7 +686,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 #orders-wrapper {
     display:inline-block;
     height: 100%;
-    overflow: hidden;
+    overflow: auto;
     width: 7%;
     border: 4px dashed #339933;
     transition: width 0.5s;
@@ -702,6 +702,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 #headlineOrders{
     text-align: center;
     overflow: hidden;
+    font-size: 20px;
 }
 
 .orderNumber{
@@ -725,30 +726,33 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 .timeStamp{
    display:inline-block;
     width:8%;
-    border: 1px solid black;
+    font-size: 20px;
+
 }
 .buttonWrapper {
     display: inline-block;
-    width:8%;
+    width: 8%;
 }
-/*
+
 #buttonCancel{
-    font-size: 15px;
-    margin-left: 900px;
-    margin-bottom: 50px;
-    display:inline-block;
-    position:absolute;
-    z-index: 2;
+    font-family: Lobster;
+    border-radius: 20px;
+    border: 2px solid #000000;
+    border-radius: 20px;
+    font-size: 20px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 #buttonDone{
-    font-size: 15px;
-    margin-left: 900px;
-    margin-bottom: 50px;
-    display:inline-block;
-    position:absolute;
-    z-index: 1;
+    font-family: Lobster;
+    border-radius: 20px;
+    border: 2px solid #000000;
+    border-radius: 20px;
+    font-size: 20px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
+
+
 /* --------- */
 
 /*HISTORY*/
@@ -756,7 +760,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 #history-wrapper {
     display:inline-block;
     height: 100%;
-    overflow: hidden;
+    overflow: auto;
     width: 7%;
     border: 4px dashed #339933;
     transition: width 0.5s;
@@ -782,6 +786,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     height: 100%;
     width: 7%;
     border: 4px dashed #339933;
+    overflow: auto;
     /*#ab1234 dark red*/
     transition: width 0.5s;
     background-color: #b3ff66;
@@ -798,7 +803,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 
 /* -------- */ 
 
-/*Skulle kunna ta denna, order nr och rubriken i en wrapper och göra procent för att det ska följa med!!*/
+
 #time{
     position: absolute;
     font-size: 24px;
@@ -813,7 +818,7 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     overflow: auto;
 }
 
-/*paddingen här under kan vi ändra för att få större på de två första*/
+
 .listItem{
     overflow: hidden;
     position: relative;
@@ -862,5 +867,3 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     margin-top: 1%;
     margin-left: 1%;
 }
-
-/* ---------- slut på kitchen -------- */
