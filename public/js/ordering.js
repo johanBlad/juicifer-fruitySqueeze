@@ -378,19 +378,13 @@ var vm = new Vue({
 
       } else if (choosenType == 2) {
         this.productType = 'juice';
-<<<<<<< HEAD
         deselectTypeAndSize(chooseButtons);
         document.getElementById("selectJuice").classList.add("productSelected");
+      
       } else {
         this.productType = 'coffee';
         deselectTypeAndSize(chooseButtons);
         document.getElementById("selectHotdrink").classList.add("productSelected");
-=======
-
-      } else {
-        this.productType = 'coffee';
-
->>>>>>> 33e50add4d3d7ad2a388b4c3a65427972063daf0
       }
       console.log(this.productType);
     },
