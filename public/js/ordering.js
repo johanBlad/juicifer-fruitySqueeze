@@ -284,6 +284,19 @@ var vm = new Vue({
     counter2: 0,
     counter3: 0,
     selectedProduct: null,
+    sq_selectType: true,
+    sq_selectSizeJuice: false,
+    sq_selectSizeSmoothie:  false,
+    sq_chooseSmoothe: false,
+    sq_chooseJuice: false,
+    sq_customSmoothie: false,
+    sq_customJuice: false,
+    sq_chooseHotdrinks: false,
+    sq_basket: false,
+    sq_payment: false,
+    sq_orderPlaced: false,
+    sq_list: [this.sq_selectType, this.sq_selectSizeJuice, this.sq_selectSizeSmoothie, this.sq_chooseSmoothe, this.sq_chooseJuice, 
+              this.sq_customSmoothie, this.sq_customJuice, this.sq_chooseHotdrinks, this.sq_basket, this.sq_payment, this.sq_orderPlaced]
   },
   components: {readymadeDrinks: readymadeDrinks},
   methods: {
@@ -423,7 +436,7 @@ var vm = new Vue({
         else {
             this.fruits = 7;
             this.extras = 2;
-            deselectTypeAndSize(sizeButtons);
+            deselectTypeAndSize(sizeButtons); 
             document.getElementById("largeSizeJuice").classList.add("productSelected");
         }
         this.updatePrice();

@@ -647,11 +647,13 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 
 /*Text till ordernumber.html*/
 #orderPlaced {
-    margin-top: 150px;
+    margin-top: 10vh;
     text-align: center;
+    flex: 0 1 auto;
 }
 
 #numberBox {
+    flex: 1 1 auto;
     text-align: center;
     font-size: 25pt;
     width: 400px;
@@ -665,10 +667,14 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     border-width: 4px;
 }
 
-#finished {
+#finished { 
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    flex: 0 1 auto;
     text-align: center;
     font-size: 40pt;
-    margin-top: 30%;
+    margin-bottom: 20vh;
 }
 
 
