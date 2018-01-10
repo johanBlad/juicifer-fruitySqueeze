@@ -17,5 +17,26 @@
   "history" : "History",
   "currentOrders" : "Orders",
   "stockQuantity" : "Quantity",
-  "popularIngredients": "Most popular ingredients"
+  "popularIngredients": "Most popular ingredients",
+  "frontTitle" : "Juicifer Craft Beverages",
+  "hotDrinks" : "Hot Drinks",
+  "chooseSize" : "Choose Size",
+  "chooseSmoothie" : "Choose Smoothie",
+  "chooseJuice" : "Choose Juice",
+  "small" : "Small",
+  "medium" : "Medium",
+  "large" : "Large",
+  "base" : "Base",
+  "fruitGreens" : "Fruit & Greens",
+  "extras" : "Extras",
+  "next" : "Next",
+  "back" : "Back",
+  "cancelOrder" : "Cancel Order",
+  "squeezeYourOwn" : "Squeeze Your Own!",
+  "squeezeYourOwnDescription" : "Choose from a wide variety of ingredients and customize your very own delicious smoothie. Great fun!",
+  "juiciferSpecials" : "Juicifer Specials",
+  "juiciferSpecialsDescription1" : "Choose from our selection of readymade smoothies below.",
+  "juiciferSpecialsDescription2" : "It simply can't go wrong!"
+
+  
 }

@@ -14,10 +14,29 @@
   "order" : "Min beställning",
   "language" : "English",
   "stock" : "Lager",
-  "history" : "Historik,
+  "history" : "Historik",
   "currentOrders" : "Beställningar",
   "stockQuantity" : "Lager",
-  "popularIngredients": "Mest populära ingredienser"
+  "popularIngredients": "Mest populära ingredienser",
+  "frontTitle" : "Juicifer Hemgjorda Drycker",
+  "hotDrinks" : "Heta Drycker",
+  "chooseSize" : "Välj Storlek",
+  "chooseSmoothie" : "Välj Smoothie",
+  "chooseJuice" : "Välj Juice",
+  "small" : "Liten",
+  "medium" : "Medium",
+  "large" : "Stor",
+  "base" : "Bas",
+  "fruitGreens" : "Frukt & Grönt",
+  "extras" : "Toppings",
+  "next" : "Nästa",
+  "back" : "Tillbaka",
+  "cancelOrder" : "Avbryt Order",
+  "squeezeYourOwn" : "Kläm Din Egen!",
+  "squeezeYourOwnDescription" : "Välj från ett brett utbud av ingredienser och skräddarsy din alldeles egen utsökta dryck. Jättekul!!",
+  "juiciferSpecials" : "Juicifer Specialer",
+  "juiciferSpecialsDescription1" : "Välj från vårt utbud av färdiggjorda drycker",
+  "juiciferSpecialsDescription2" : "Det kan inte gå fel!"
 }
 
 
