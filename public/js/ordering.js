@@ -163,15 +163,15 @@ Vue.component('hotdrink', {
     template: ' <div class="hotDrinkTableRow">\
                     <div class="hotDrinkNameColumn1"><p style="margin-top: 7%; margin-bottom: 7%;">{{ drink["hotdrink_name_"+ lang] }}</p></div>\
                     <div class="hotDrinkSizeColumn1">\
-                            <button class="chooseHot" v-bind:class="{ productSelected: isSelectedS }" v-on:click="markSelectedS">{{ drink.selling_price_s }}kr\
+                            <button class="chooseHot" v-bind:class="{ productSelected: isSelectedS }" v-on:click="markSelectedS">{{ drink.selling_price_s }} kr\
                             </button>\
                     </div>\
                     <div class="hotDrinkSizeColumn1">\
-                            <button class="chooseHot" v-bind:class="{ productSelected: isSelectedM }" v-on:click="markSelectedM">{{ drink.selling_price_m }}kr\
+                            <button class="chooseHot" v-bind:class="{ productSelected: isSelectedM }" v-on:click="markSelectedM">{{ drink.selling_price_m }} kr\
                             </button>\
                     </div>\
                     <div class="hotDrinkSizeColumn1">\
-                            <button class="chooseHot" v-bind:class="{ productSelected: isSelectedL }" v-on:click="markSelectedL">{{ drink.selling_price_l }}kr\
+                            <button class="chooseHot" v-bind:class="{ productSelected: isSelectedL }" v-on:click="markSelectedL">{{ drink.selling_price_l }} kr\
                             </button>\
                     </div>\
                 </div>',
