@@ -283,9 +283,7 @@ var vm = new Vue({
     counter1: 0,
     counter2: 0,
     counter3: 0,
-    availableProducts: [],
     selectedProduct: null,
-    ok: false,
   },
   components: {readymadeDrinks: readymadeDrinks},
   methods: {
@@ -562,6 +560,10 @@ var vm = new Vue({
       this.totalPrice = this.totalPrice + productToAdd.price;
       console.log('--------TEST BASKET---------');
       console.log('Total price in basket: ' + this.totalPrice);
+      this.resetOrderSequence();
+    },
+
+    resetOrderSequence: function () {
       this.productType = '';
       this.chosenIngredients = [];
       this.productName = '';
@@ -572,9 +574,15 @@ var vm = new Vue({
       this.counter2 = 0;
       this.counter3 = 0;
       this.ok = true;
+      this.setSelectedProduct = null;
       for (var i = 0; i < this.$refs.ingredient.length; i += 1) {
         this.$refs.ingredient[i].resetCounter();
       }
+    },
+
+    addNewProdcut: function () {
+      this.resetOrderSequence();
+      //Return to startpage
     },
 
     placeOrder: function () {
