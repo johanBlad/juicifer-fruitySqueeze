@@ -16,7 +16,7 @@ var readymadeDrinks = Vue.component('readymadedrink', {
       </div>\
       <div class="premadeButton">\
       <button class="productButton" v-bind:class="{ productSelected: isSelected }" v-on:click="markSelected">\
-      <b>{{ getPrice(product["rm_ingredients"]) }} :- </b>\
+      <b>{{ getPrice(product["rm_ingredients"]) }} kr </b>\
       </button>\
       </div>\
       </div>',
@@ -140,6 +140,11 @@ Vue.component('ingredient', {
         this.counter -= 1;
         this.$emit('decrement');
       }
+    },
+    decreaseCounterOverload: function () {
+        if (this.counter != 0) {
+            this.counter -=1;
+        }
     }
   }
 });
@@ -305,7 +310,7 @@ var vm = new Vue({
             showModal(this.size);
             for (var i = 0; i < this.$refs.ingredient.length; i += 1) {
                 if (this.$refs.ingredient[i].id === item.ingredient_id) {
-                    this.$refs.ingredient[i].decreaseCounter();
+                    this.$refs.ingredient[i].decreaseCounterOverload();
                 }
             }
           console.log(item.ingredient_en);
@@ -316,7 +321,7 @@ var vm = new Vue({
     removeIngredient: function (item, type, ing_type) {
       var i;
       for (i = 0; i < this.chosenIngredients.length; i++) {
-        if (this.chosenIngredients[i] === item && alert($('#tooManyModal').hasClass('in'))) {
+          if (this.chosenIngredients[i] === item) {
           this.chosenIngredients.splice(i, 1);
           this.price = this.price - item.selling_price;
           if (ing_type == 1) {
@@ -526,7 +531,7 @@ var vm = new Vue({
           if (this.productType == 3) {
             productToAdd = wrapProduct(undefined, this.price, this.volume, this.productType, this.productName);
           } else {
-            var productToAdd = wrapProduct(this.chosenIngredients, this.price, this.volume, this.productType, this.productName);
+            productToAdd = wrapProduct(this.chosenIngredients, this.price, this.volume, this.productType, this.productName);
           }
         }
       console.log(productToAdd.productName); 

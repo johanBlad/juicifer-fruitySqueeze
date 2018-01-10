@@ -59,12 +59,16 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
 }
 
 .productButton {
+    font-family: Lobster;
+    font-size: 12pt;
     width: 12vh;
     height: 6vh;
     display: table-cell;
     vertical-align: middle;
     border-style: groove;
     margin: 5px;
+    border: 1px solid #000000;
+    border-radius: 10px;
 }
 
 .premadeDrink {
