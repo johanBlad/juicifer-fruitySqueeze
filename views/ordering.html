@@ -58,7 +58,14 @@
         <div class="headColumn"><img src="https://i.imgur.com/kj0zPIk.png"></div>
         <div class="headColumn"><h2>{{ uiLabels.chooseSize }}</h2></div>
         <div class="headColumn">
-            <cancelModal></cancelModal>
+            <!--<cancelModal>
+            </cancelModal>-->
+            <div id="cancelModal" class="modal">
+                    <div class="modalContent">
+                        <p>&#10071; Are you sure you want to cancel the order? &#10071;</p>
+                        <button class="modalButtons" id="exit" style="background-color:#ADFF2F;" v-on:click="clearOrder()">Yes</button><button class="modalButtons" id="noExit" style="background-color:#FF0000;">No</button>
+                    </div>
+                </div>
             <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>{{ uiLabels.cancelOrder }}</p></button>
         </div>
     </div>
@@ -128,7 +135,7 @@
         <div class="headColumn"><img src="https://i.imgur.com/kj0zPIk.png"></div>
         <div class="headColumn"><h2>{{ uiLabels.chooseSize }}</h2></div>
         <div class="headColumn">
-            <cancelModal></cancelModal>
+            <!--<cancelModal></cancelModal>-->
             <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>{{ uiLabels.cancelOrder }}</p></button>
         </div>
     </div>
@@ -196,7 +203,7 @@
         <div class="headColumn"><img src="https://i.imgur.com/86WLceg.png"></div>
         <div class="headColumn"><h2>{{ uiLabels.chooseSmoothie }}</h2></div>
         <div class="headColumn">
-            <cancelModal></cancelModal>
+            <!--<cancelModal></cancelModal>-->
             <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>{{ uiLabels.cancelOrder }}</p></button>
         </div>
     </div>
@@ -243,7 +250,7 @@
         <div class="headColumn"><img src="https://i.imgur.com/86WLceg.png"></div>
         <div class="headColumn"><h2>{{ uiLabels.customSmoothie }}</h2></div>
         <div class="headColumn">
-            <cancelModal></cancelModal>
+            <!--<cancelModal></cancelModal>-->
             <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>{{ uiLabels.cancelOrder }}</p></button>
         </div>
     </div>
@@ -366,7 +373,7 @@
         <div class="headColumn"><img src="https://i.imgur.com/86WLceg.png"></div>
         <div class="headColumn"><h2>{{ uiLabels.chooseJuice }}</h2></div>
         <div class="headColumn">
-            <cancelModal></cancelModal>
+            <!--<cancelModal></cancelModal>-->
             <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
         </div>
     </div>
@@ -413,7 +420,7 @@
         <div class="headColumn"><img src="https://i.imgur.com/86WLceg.png"></div>
         <div class="headColumn"><h2>{{ uiLabels.custom }} {{ uiLabels.juice }}</h2></div>
         <div class="headColumn">
-            <cancelModal></cancelModal>
+            <!--<cancelModal></cancelModal>-->
             <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>{{ uiLabels.cancelOrder }} </p></button>
         </div>
     </div>
@@ -511,7 +518,7 @@
         <div class="headColumn"><img src="https://i.imgur.com/kj0zPIk.png"></div>
         <div class="headColumn"><h2>{{ uiLabels.chooseHotdrink }}</h2></div>
         <div class="headColumn">
-            <cancelModal></cancelModal>
+            <!--<cancelModal></cancelModal>-->
             <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
         </div>
     </div>
@@ -525,7 +532,7 @@
         <hotdrink
               ref="hotdrink"
               v-for="drink in hotdrinks"
-              v-on:select="setSelectedProduct(drink)"
+              v-on:select="setSelectedProduct"
               v-on:deselect="setSelectedProduct(undefined)"
               :drink="drink"
               :lang="lang"
@@ -593,7 +600,7 @@
         <div class="headColumn"><img src="https://i.imgur.com/TTGLBLp.png"></div>
         <div class="headColumn"><h2>{{ uiLabels.basket }}</h2></div>
         <div class="headColumn">
-            <cancelModal></cancelModal>
+            <!--<cancelModal></cancelModal>-->
             <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
         </div>
     </div>
@@ -626,7 +633,7 @@
         <div class="headColumn"><img src="https://i.imgur.com/kD0kZib.png"></div>
         <div class="headColumn"><h2>{{ uiLabels.payment }}</h2></div>
         <div class="headColumn">
-            <cancelModal></cancelModal>
+            <!--<cancelModal></cancelModal>-->
             <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
         </div>
     </div>
