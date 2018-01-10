@@ -18,6 +18,7 @@ var sharedVueStuff = {
     uiLabels: {},
     ingredients: {},
     readymade: {},
+    readymadejuices: {},
     hotdrinks: {},
     lang: "en"
   },
@@ -27,6 +28,7 @@ var sharedVueStuff = {
       this.uiLabels = data.uiLabels;
       this.ingredients = data.ingredients;
       this.readymade = data.readymade;
+      this.readymadejuices = data.readymadejuices;
       this.hotdrinks = data.hotdrinks;
     }.bind(this));
 
@@ -40,6 +42,7 @@ var sharedVueStuff = {
         this.ingredients = data.ingredients;
         this.hotdrinks = data.hotdrinks;
         this.readymade = data.readymade;
+        this.readymadejuices = data.readymadejuices;
       }
     }.bind(this));
   },

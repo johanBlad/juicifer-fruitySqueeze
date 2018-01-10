@@ -128,8 +128,8 @@ Data.prototype.getTransactions = function () {
 };
 
 var readymadeDataName = "readymade";
+var readymadejuiceDataName = "readymadejuices";
 var hotdrinksDataName = "hotdrinks";
-
 
 var data = new Data();
 // Load initial ingredients. If you want to add columns, do it in the CSS file.
@@ -138,6 +138,8 @@ data.initializeData(ingredientsDataName);
 data.initializeData(transactionsDataName);
 //Load initial readymade drinks.
 data.initializeData(readymadeDataName);
+//Load initial readymade juices.
+data.initializeData(readymadejuiceDataName);
 //Load initial hotdrinks.
 data.initializeData(hotdrinksDataName);
 
@@ -147,6 +149,7 @@ io.on('connection', function (socket) {
                           uiLabels: data.getUILabels(),
                           ingredients: data.getIngredients(),
                           hotdrinks: data.getHotDrinks(),
+                          readymadejuices: data.getReadymadeJuices(),
                           readymade: data.getReadymade() });
 
   // When someone orders something
@@ -156,6 +159,7 @@ io.on('connection', function (socket) {
     io.emit('currentQueue', { orders: data.getAllOrders(),
                           ingredients: data.getIngredients(),
                           hotdrinks: data.getHotDrinks(),
+                          readymadejuices: data.getReadymadeJuices(),
                           readymade: data.getReadymade() });
   });
     
@@ -178,6 +182,7 @@ io.on('connection', function (socket) {
     io.emit('currentQueue', {orders: data.getAllOrders(),
                             ingredients: data.getIngredients(),
                             hotdrinks: data.getHotDrinks(),
+                            readymadejuices: data.getReadymadeJuices(),
                             readymade: data.getReadymade() });
     socket.on('orderNumber', function(){
         
@@ -196,6 +201,11 @@ var server = http.listen(app.get('port'), function () {
 Data.prototype.getReadymade = function () {
   var d = this.data;
   return d[readymadeDataName];  
+};
+
+Data.prototype.getReadymadeJuices = function () {
+  var d = this.data;
+  return d[readymadejuiceDataName]; 
 };
 
 Data.prototype.getHotDrinks = function () {
