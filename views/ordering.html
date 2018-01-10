@@ -136,7 +136,13 @@
         <div class="headColumn"><h2>{{ uiLabels.chooseSize }}</h2></div>
         <div class="headColumn">
             <!--<cancelModal></cancelModal>-->
-            <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>{{ uiLabels.cancelOrder }}</p></button>
+            <div id="cancelModal1" class="modal">
+                    <div class="modalContent">
+                        <p>&#10071; Are you sure you want to cancel the order? &#10071;</p>
+                        <button class="modalButtons" id="exit" style="background-color:#ADFF2F;" v-on:click="clearOrder()">Yes</button><button class="modalButtons" id="noExit" style="background-color:#FF0000;">No</button>
+                    </div>
+                </div>
+            <button class="cancelButton" id="cancelButton" onclick="cancelWindow1()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>{{ uiLabels.cancelOrder }}</p></button>
         </div>
     </div>
     <div class="contentDiv">
@@ -204,7 +210,13 @@
         <div class="headColumn"><h2>{{ uiLabels.chooseSmoothie }}</h2></div>
         <div class="headColumn">
             <!--<cancelModal></cancelModal>-->
-            <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>{{ uiLabels.cancelOrder }}</p></button>
+            <div id="cancelModal2" class="modal">
+                    <div class="modalContent">
+                        <p>&#10071; Are you sure you want to cancel the order? &#10071;</p>
+                        <button class="modalButtons" id="exit" style="background-color:#ADFF2F;" v-on:click="clearOrder()">Yes</button><button class="modalButtons" id="noExit" style="background-color:#FF0000;">No</button>
+                    </div>
+                </div>
+            <button class="cancelButton" id="cancelButton" onclick="cancelWindow2()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>{{ uiLabels.cancelOrder }}</p></button>
         </div>
     </div>
 
@@ -251,7 +263,13 @@
         <div class="headColumn"><h2>{{ uiLabels.customSmoothie }}</h2></div>
         <div class="headColumn">
             <!--<cancelModal></cancelModal>-->
-            <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>{{ uiLabels.cancelOrder }}</p></button>
+            <div id="cancelModal3" class="modal">
+                    <div class="modalContent">
+                        <p>&#10071; Are you sure you want to cancel the order? &#10071;</p>
+                        <button class="modalButtons" id="exit" style="background-color:#ADFF2F;" v-on:click="clearOrder()">Yes</button><button class="modalButtons" id="noExit" style="background-color:#FF0000;">No</button>
+                    </div>
+                </div>
+            <button class="cancelButton" id="cancelButton" onclick="cancelWindow3()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>{{ uiLabels.cancelOrder }}</p></button>
         </div>
     </div>
     <div id="tooManyModal" class="modal">
@@ -374,7 +392,13 @@
         <div class="headColumn"><h2>{{ uiLabels.chooseJuice }}</h2></div>
         <div class="headColumn">
             <!--<cancelModal></cancelModal>-->
-            <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
+            <div id="cancelModal4" class="modal">
+                    <div class="modalContent">
+                        <p>&#10071; Are you sure you want to cancel the order? &#10071;</p>
+                        <button class="modalButtons" id="exit" style="background-color:#ADFF2F;" v-on:click="clearOrder()">Yes</button><button class="modalButtons" id="noExit" style="background-color:#FF0000;">No</button>
+                    </div>
+                </div>
+            <button class="cancelButton" id="cancelButton" onclick="cancelWindow4()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
         </div>
     </div>
 
@@ -421,7 +445,13 @@
         <div class="headColumn"><h2>{{ uiLabels.custom }} {{ uiLabels.juice }}</h2></div>
         <div class="headColumn">
             <!--<cancelModal></cancelModal>-->
-            <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>{{ uiLabels.cancelOrder }} </p></button>
+            <div id="cancelModal5" class="modal">
+                    <div class="modalContent">
+                        <p>&#10071; Are you sure you want to cancel the order? &#10071;</p>
+                        <button class="modalButtons" id="exit" style="background-color:#ADFF2F;" v-on:click="clearOrder()">Yes</button><button class="modalButtons" id="noExit" style="background-color:#FF0000;">No</button>
+                    </div>
+                </div>
+            <button class="cancelButton" id="cancelButton" onclick="cancelWindow5()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>{{ uiLabels.cancelOrder }} </p></button>
         </div>
     </div>
     <div id="tooManyModal" class="modal">
@@ -519,7 +549,13 @@
         <div class="headColumn"><h2>{{ uiLabels.chooseHotdrink }}</h2></div>
         <div class="headColumn">
             <!--<cancelModal></cancelModal>-->
-            <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
+            <div id="cancelModal6" class="modal">
+                    <div class="modalContent">
+                        <p>&#10071; Are you sure you want to cancel the order? &#10071;</p>
+                        <button class="modalButtons" id="exit" style="background-color:#ADFF2F;" v-on:click="clearOrder()">Yes</button><button class="modalButtons" id="noExit" style="background-color:#FF0000;">No</button>
+                    </div>
+                </div>
+            <button class="cancelButton" id="cancelButton" onclick="cancelWindow6()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
         </div>
     </div>
     <div class="hotDrinkTableRow">
@@ -601,7 +637,13 @@
         <div class="headColumn"><h2>{{ uiLabels.basket }}</h2></div>
         <div class="headColumn">
             <!--<cancelModal></cancelModal>-->
-            <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
+            <div id="cancelModal7" class="modal">
+                    <div class="modalContent">
+                        <p>&#10071; Are you sure you want to cancel the order? &#10071;</p>
+                        <button class="modalButtons" id="exit" style="background-color:#ADFF2F;" v-on:click="clearOrder()">Yes</button><button class="modalButtons" id="noExit" style="background-color:#FF0000;">No</button>
+                    </div>
+                </div>
+            <button class="cancelButton" id="cancelButton" onclick="cancelWindow7()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
         </div>
     </div>
         <div id="basketContent" style="overflow: auto;">
@@ -634,7 +676,13 @@
         <div class="headColumn"><h2>{{ uiLabels.payment }}</h2></div>
         <div class="headColumn">
             <!--<cancelModal></cancelModal>-->
-            <button class="cancelButton" id="cancelButton" onclick="cancelWindow()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
+            <div id="cancelModal8" class="modal">
+                    <div class="modalContent">
+                        <p>&#10071; Are you sure you want to cancel the order? &#10071;</p>
+                        <button class="modalButtons" id="exit" style="background-color:#ADFF2F;" v-on:click="clearOrder()">Yes</button><button class="modalButtons" id="noExit" style="background-color:#FF0000;">No</button>
+                    </div>
+                </div>
+            <button class="cancelButton" id="cancelButton" onclick="cancelWindow8()"><img src="http://freevector.co/wp-content/uploads/2011/08/70460-cancel-music.png" width=30 style="margin-top: 3px" class="icon"><p>Cancel order</p></button>
         </div>
     </div>
     <div class="contentDiv">

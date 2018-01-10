@@ -752,6 +752,7 @@ var vm = new Vue({
           this.counter2 = 0;
           this.counter3 = 0;
           this.basket = [];
+          this.addNewProduct();
   },
       
     
@@ -793,6 +794,150 @@ function deselectAll () {
 
 function cancelWindow () {
         var modal = document.getElementById('cancelModal');
+        modal.style.display = 'block';
+        var cancelButton = document.getElementById('exit');
+        var noExitButton = document.getElementById('noExit');
+        noExitButton.onclick = function() {
+            modal.style.display = "none";
+        }
+        cancelButton.onclick = function() {
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+};
+
+function cancelWindow1 () {
+        var modal = document.getElementById('cancelModal1');
+        modal.style.display = 'block';
+        var cancelButton = document.getElementById('exit');
+        var noExitButton = document.getElementById('noExit');
+        noExitButton.onclick = function() {
+            modal.style.display = "none";
+        }
+        cancelButton.onclick = function() {
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+};
+
+function cancelWindow2 () {
+        var modal = document.getElementById('cancelModal2');
+        modal.style.display = 'block';
+        var cancelButton = document.getElementById('exit');
+        var noExitButton = document.getElementById('noExit');
+        noExitButton.onclick = function() {
+            modal.style.display = "none";
+        }
+        cancelButton.onclick = function() {
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+};
+
+function cancelWindow3 () {
+        var modal = document.getElementById('cancelModal3');
+        modal.style.display = 'block';
+        var cancelButton = document.getElementById('exit');
+        var noExitButton = document.getElementById('noExit');
+        noExitButton.onclick = function() {
+            modal.style.display = "none";
+        }
+        cancelButton.onclick = function() {
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+};
+
+function cancelWindow4 () {
+        var modal = document.getElementById('cancelModal4');
+        modal.style.display = 'block';
+        var cancelButton = document.getElementById('exit');
+        var noExitButton = document.getElementById('noExit');
+        noExitButton.onclick = function() {
+            modal.style.display = "none";
+        }
+        cancelButton.onclick = function() {
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+};
+
+function cancelWindow5 () {
+        var modal = document.getElementById('cancelModal5');
+        modal.style.display = 'block';
+        var cancelButton = document.getElementById('exit');
+        var noExitButton = document.getElementById('noExit');
+        noExitButton.onclick = function() {
+            modal.style.display = "none";
+        }
+        cancelButton.onclick = function() {
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+};
+
+function cancelWindow6 () {
+        var modal = document.getElementById('cancelModal6');
+        modal.style.display = 'block';
+        var cancelButton = document.getElementById('exit');
+        var noExitButton = document.getElementById('noExit');
+        noExitButton.onclick = function() {
+            modal.style.display = "none";
+        }
+        cancelButton.onclick = function() {
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+};
+
+function cancelWindow7 () {
+        var modal = document.getElementById('cancelModal7');
+        modal.style.display = 'block';
+        var cancelButton = document.getElementById('exit');
+        var noExitButton = document.getElementById('noExit');
+        noExitButton.onclick = function() {
+            modal.style.display = "none";
+        }
+        cancelButton.onclick = function() {
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+};
+
+function cancelWindow8 () {
+        var modal = document.getElementById('cancelModal8');
         modal.style.display = 'block';
         var cancelButton = document.getElementById('exit');
         var noExitButton = document.getElementById('noExit');
