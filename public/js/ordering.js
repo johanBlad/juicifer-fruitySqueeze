@@ -163,7 +163,7 @@ Vue.component('hotdrink', {
     template: ' <div class="hotDrinkTableRow">\
                     <div class="hotDrinkNameColumn1"><p style="margin-top: 7%; margin-bottom: 7%;">{{ drink["hotdrink_name_"+ lang] }}</p></div>\
                     <div class="hotDrinkSizeColumn1">\
-                            <button class="chooseHot" v-bind:class="{ productSelected: isSelectedS }" v-on:click="markSelectedS">{{ drink.selling_price_s }} kr\
+                            <button class="chooseHot" v-bind:class="{ productSelected: isSelectedS }" v-on:click="markSelectedS(drink.selling_price_s, drink.volume_s)">{{ drink.selling_price_s }} kr\
                             </button>\
                     </div>\
                     <div class="hotDrinkSizeColumn1">\
@@ -184,11 +184,11 @@ Vue.component('hotdrink', {
   },
   methods: {
     
-    markSelectedS: function () {
+    markSelectedS: function (price, size) {
       if (this.isSelectedS == false) {
         deselectAll();
         this.isSelectedS = true;
-        this.$emit('select');
+        this.$emit('select', chooseHotDrink(price, size));
       } 
       else {
         deselectAll();
@@ -222,12 +222,18 @@ Vue.component('hotdrink', {
         this.$emit('deselect');
     }
 },
+    chooseHotSize: function (price, size) {
+        this.volume = size;
+        this.price = price;
+        this.$emit(chooseHotDrink(price, size));
+        
+      },
       
       
     }
 });
 
-               
+
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -385,10 +391,13 @@ var vm = new Vue({
 
       } else if (choosenType == 2) {
         this.productType = 'juice';
-
+        deselectTypeAndSize(chooseButtons);
+        document.getElementById("selectJuice").classList.add("productSelected");
+      
       } else {
         this.productType = 'coffee';
-
+        deselectTypeAndSize(chooseButtons);
+        document.getElementById("selectHotdrink").classList.add("productSelected");
       }
       console.log(this.productType);
     },
@@ -497,9 +506,10 @@ var vm = new Vue({
         setAlternativeSizes(this.volume);
     },
       
-      chooseHotSize: function (drink, size) {
-          this.volume = drink.volume_s;
-          console.log(this.volume);
+      chooseHotDrink: function (price, size) {
+          this.volume = size;
+          this.price += price;
+          console.log("Volym:" + this.volume + "Pris:" + this.price);
       },
 
     confirmProductChoice: function () {
