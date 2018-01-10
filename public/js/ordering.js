@@ -373,19 +373,24 @@ var vm = new Vue({
     },
 
     chooseType: function (choosenType) {
-      var chooseButtons = document.getElementsByClassName("chooseButtons");
       if (choosenType == 1) {
         this.productType = 'smoothie';
-        deselectTypeAndSize(chooseButtons);
-        document.getElementById("selectSmoothie").classList.add("productSelected");
+
       } else if (choosenType == 2) {
         this.productType = 'juice';
+<<<<<<< HEAD
         deselectTypeAndSize(chooseButtons);
         document.getElementById("selectJuice").classList.add("productSelected");
       } else {
         this.productType = 'coffee';
         deselectTypeAndSize(chooseButtons);
         document.getElementById("selectHotdrink").classList.add("productSelected");
+=======
+
+      } else {
+        this.productType = 'coffee';
+
+>>>>>>> 33e50add4d3d7ad2a388b4c3a65427972063daf0
       }
       console.log(this.productType);
     },
@@ -395,33 +400,46 @@ var vm = new Vue({
       this.size = selectedSize;
       console.log(this.volume);
       console.log(this.size);
+      var sizeButtons = document.getElementsByClassName("chooseButtonsSize");
       setAlternativeSizes(this.volume);
         if (selectedSize == 'Small' && type == 1) {
             this.base = 1;
             this.fruits = 2;
             this.extras = 1;
+            deselectTypeAndSize(sizeButtons);
+            document.getElementById("smallSizeSmoothie").classList.add("productSelected");
         }
         else if (selectedSize == 'Medium' && type == 1) {
             this.base = 2;
             this.fruits = 3;
             this.extras = 2;
+            deselectTypeAndSize(sizeButtons);
+            document.getElementById("mediumSizeSmoothie").classList.add("productSelected");
         }
         else if (selectedSize == 'Large' && type == 1){
             this.base = 3;
             this.fruits = 4;
             this.extras = 3;
+            deselectTypeAndSize(sizeButtons);
+            document.getElementById("largeSizeSmoothie").classList.add("productSelected");
         }
         else if (selectedSize == 'Small' && type == 2) {
             this.fruits = 3;
             this.extras = 1;
+            deselectTypeAndSize(sizeButtons);
+            document.getElementById("smallSizeJuice").classList.add("productSelected");
         }
         else if (selectedSize == 'Medium' && type == 2) {
             this.fruits = 5;
-            this.extras = 2; 
+            this.extras = 2;
+            deselectTypeAndSize(sizeButtons);
+            document.getElementById("mediumSizeJuice").classList.add("productSelected");
         }
         else {
             this.fruits = 7;
-            this.extras = 2; 
+            this.extras = 2;
+            deselectTypeAndSize(sizeButtons);
+            document.getElementById("largeSizeJuice").classList.add("productSelected");
         }
         this.updatePrice();
     },
@@ -626,7 +644,6 @@ var vm = new Vue({
 
 function deselectTypeAndSize(arr) {
   for (var i = 0; i < arr.length; i++) {
-    console.log(arr.length);
     arr[i].classList.remove("productSelected");
   }
 }

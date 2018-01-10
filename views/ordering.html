@@ -22,7 +22,7 @@
         <div class="contentDiv">
         <div class="mainDiv">
             <div class="buttonDiv">
-                <button id="selectJuice" class="chooseButtons" v-on:click="chooseType(2)"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="100" class="icon"></button>
+                <button class="chooseButtons" v-on:click="chooseType(2)"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="100" class="icon"></button>
             </div>
             <div class="headlineDiv">
                 <p style="font-size: 20pt;">
@@ -32,7 +32,7 @@
         </div>
         <div class="mainDiv">
             <div class="buttonDiv">
-                <button id="selectSmoothie" class="chooseButtons" v-on:click="chooseType(1)"><img src="https://png.icons8.com/ios/540/milkshake.png" width=120 class="icon"></button>
+                <button class="chooseButtons" v-on:click="chooseType(1)"><img src="https://png.icons8.com/ios/540/milkshake.png" width=120 class="icon"></button>
             </div>
             <div class="headlineDiv">
                 <p style="font-size: 20pt;">
@@ -42,7 +42,7 @@
         </div>
         <div class="mainDiv">
             <div class="buttonDiv">
-                <button id="selectHotdrink" class="chooseButtons" v-on:click="chooseType(3)"><img src="http://freevector.co/wp-content/uploads/2013/10/34819-hot-coffee-mug-outline.png" width="100" class="icon"></button>
+                <button class="chooseButtons" v-on:click="chooseType(3)"><img src="http://freevector.co/wp-content/uploads/2013/10/34819-hot-coffee-mug-outline.png" width="100" class="icon"></button>
             </div>
             <div class="headlineDiv">
                 <p style="font-size: 20pt;">
@@ -65,7 +65,7 @@
 <div class="contentDiv">
     <div class="mainDiv">
         <div class="buttonDiv">
-            <button class="chooseButtons" v-on:click= "chooseSize(30, 'Small', 1)"><img src="https://png.icons8.com/ios/540/milkshake.png" width="100" class="icon"></button>
+            <button id="smallSizeSmoothie" class="chooseButtonsSize" v-on:click= "chooseSize(30, 'Small', 1)"><img src="https://png.icons8.com/ios/540/milkshake.png" width="100" class="icon"></button>
         </div>
         <div class="ingridientDiv">
             <p>
@@ -80,7 +80,7 @@
     </div>
     <div class="mainDiv">
         <div class="buttonDiv">
-            <button class="chooseButtons" v-on:click= "chooseSize(40, 'Medium', 1)"><img src="https://png.icons8.com/ios/540/milkshake.png" width=120 class="icon"></button>
+            <button id="mediumSizeSmoothie" class="chooseButtonsSize" v-on:click= "chooseSize(40, 'Medium', 1)"><img src="https://png.icons8.com/ios/540/milkshake.png" width=120 class="icon"></button>
         </div>
         <div class="ingridientDiv">
             <p>
@@ -95,7 +95,7 @@
     </div>
     <div class="mainDiv">
         <div class="buttonDiv">
-            <button class="chooseButtons" v-on:click= "chooseSize(50, 'Large', 1)"><img src="https://png.icons8.com/ios/540/milkshake.png" width="140" class="icon"></button>
+            <button id="largeSizeSmoothie" class="chooseButtonsSize" v-on:click= "chooseSize(50, 'Large', 1)"><img src="https://png.icons8.com/ios/540/milkshake.png" width="140" class="icon"></button>
         </div>
         <div class="ingridientDiv">
             <p>
@@ -134,7 +134,7 @@
     <div class="contentDiv">
         <div class="mainDiv">
             <div class="buttonDiv">
-                <button class="chooseButtons" v-on:click= "chooseSize(30, 'Small', 2)"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="70" class="icon"></button>
+                <button id="smallSizeJuice" class="chooseButtonsSize" v-on:click= "chooseSize(30, 'Small', 2)"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="70" class="icon"></button>
             </div>
             <div class="ingridientDiv">
                 <p>
@@ -148,7 +148,7 @@
         </div>
         <div class="mainDiv">
             <div class="buttonDiv">
-                <button class="chooseButtons" v-on:click= "chooseSize(40, 'Medium', 2)"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width=90 class="icon"></button>
+                <button id="mediumSizeJuice" class="chooseButtonsSize" v-on:click= "chooseSize(40, 'Medium', 2)"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width=90 class="icon"></button>
             </div>
             <div class="ingridientDiv">
                 <p>
@@ -162,7 +162,7 @@
         </div>
         <div class="mainDiv">
             <div class="buttonDiv">
-                <button class="chooseButtons" v-on:click= "chooseSize(50, 'Large', 2)"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="110" class="icon"></button>
+                <button id="largeSizeJuice" class="chooseButtonsSize" v-on:click= "chooseSize(50, 'Large', 2)"><img src="http://freevector.co/wp-content/uploads/2010/08/78801-fresh-juice-with-citrus-slice.png" width="110" class="icon"></button>
             </div>
             <div class="ingridientDiv">
                 <p>
