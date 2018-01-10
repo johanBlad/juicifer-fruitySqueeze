@@ -240,15 +240,6 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function getOrderNumber() {
-  // It's probably not a good idea to generate a random order number, client-side. 
-  // A better idea would be to let the server decide.
-  orderNumber = orderNumber+1;
-    return '#'+orderNumber;
-    
-  //return "#" + getRandomInt(1, 1000000);
-}
-
 function wrapProduct (_ingredients, _price, _volume, _productType, _productName) {
   var  product = {
     ingredients: _ingredients,
@@ -636,7 +627,7 @@ var vm = new Vue({
             //--------
         };
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
-      socket.emit('order', {orderId: getOrderNumber(), order: order});
+      socket.emit('order', {order: order});
       //set all counters to 0. Notice the use of $refs
       for (i = 0; i < this.$refs.ingredient.length; i += 1) {
         this.$refs.ingredient[i].resetCounter();

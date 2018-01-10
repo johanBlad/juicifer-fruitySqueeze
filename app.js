@@ -62,6 +62,12 @@ Data.prototype.getIngredients = function () {
   });
 };
 
+Data.prototype.generateOrderNumber = function () {
+    orderNumber = orderNumber+1;
+    var orderId = '#'+orderNumber;
+    return orderId;
+}
+
 
 /* 
   Function to load initial data from CSV files into the object
@@ -86,9 +92,11 @@ Data.prototype.initializeData = function (table) {
   this is the right moment to do this.
 */
 Data.prototype.addOrder = function (order) {
-  this.orders[order.orderId] = order.order;
-  this.orders[order.orderId].done = false;
-  this.orders[order.orderId].cancel = false;
+    var orderId= this.generateOrderNumber(); 
+   // console.log(orderId);
+  this.orders[orderId] = order.order;
+  this.orders[orderId].done = false;
+  this.orders[orderId].cancel = false;
   var transactions = this.data[transactionsDataName],
     //find out the currently highest transaction id
     transId =  transactions[transactions.length - 1].transaction_id,
@@ -154,6 +162,7 @@ io.on('connection', function (socket) {
 
   // When someone orders something
   socket.on('order', function (order) {
+      //console.log('innan order läggs till i app.js');
     data.addOrder(order);
     // send updated info to all connected clients, note the use of io instead of socket
     io.emit('currentQueue', { orders: data.getAllOrders(),
@@ -161,6 +170,7 @@ io.on('connection', function (socket) {
                           hotdrinks: data.getHotDrinks(),
                           readymadejuices: data.getReadymadeJuices(),
                           readymade: data.getReadymade() });
+      //console.log('efter det har lagts till');
   });
     
   socket.on('getTransactions', function () {
@@ -185,7 +195,7 @@ io.on('connection', function (socket) {
                             readymadejuices: data.getReadymadeJuices(),
                             readymade: data.getReadymade() });
     socket.on('orderNumber', function(){
-        
+        data.generateOrderNumber();
     });
         
         
