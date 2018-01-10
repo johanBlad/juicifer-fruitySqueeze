@@ -299,6 +299,18 @@ details[open] summary:before {content: "-"; margin-top: -4px;}
     background-color: #cc0000;
 }
 
+
+.chooseButtonsSize {
+    width: 150px;
+    height: 150px;
+    background-color: #33cc33;
+    border-radius: 100%;
+    border: none;
+    margin-top: 10%;
+    text-align: center;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
 .chooseButtons {
     width: 150px;
     height: 150px;
